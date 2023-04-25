@@ -1,3 +1,11 @@
-<div>
-    <p> welcome 2 fitForge </p>
-</div>
+<form [formGroup]="userLoginForm">
+    <h1>Login</h1>
+
+    <h4>Email: </h4>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="example123@testdomain.com" formControlName="userEmail">
+
+    </mat-form-field>
+
+</form>
