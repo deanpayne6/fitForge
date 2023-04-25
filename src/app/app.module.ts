@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InitalLoginPageComponent } from './inital-login-page/inital-login-page.component';
+import { FitforgeLogoComponent } from './fitforge-logo/fitforge-logo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InitalLoginPageComponent
+    InitalLoginPageComponent,
+    FitforgeLogoComponent
   ],
   imports: [
     BrowserModule,
