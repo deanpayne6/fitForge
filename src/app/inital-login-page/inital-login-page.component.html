@@ -2,17 +2,22 @@
 
 <app-toolbar></app-toolbar>
 
-<div class="content" style="justify-content: center;" role="main">
+<div class="content" role="main">
     <form [formGroup]="userLoginForm">
         <h1 style="text-align: center;">Welcome to FitForge!</h1>
         <h3 style="text-align: center;">Please Log In Below</h3>
 
         <mat-form-field style="align-items: center;">
-            <h6>Please enter your email</h6>
+            <h6>Email:</h6>
             <mat-label>Email</mat-label>
             <input type="email" matInput placeholder="Ex. example123@testdomain.com" formControlName="userEmail">
-
         </mat-form-field>
 
+        <mat-form-field>
+            <h6>Password:</h6>
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="userPassword">
+        </mat-form-field>
+    
     </form>
 </div>
