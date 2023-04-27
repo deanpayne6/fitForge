@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-inital-login-page',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class InitalLoginPageComponent {
 
+  userLoginForm: FormGroup;
+
+  constructor(private fb: FormBuilder){ };
+
+  ngonInit(): void{
+    this.userLoginForm = this.fb.group({
+      userEmail: [''],
+      userPassword: ['']
+    });
+  }
 }
