@@ -1,0 +1,35 @@
+:host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #000000;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.loginCard{
+    display: flex;
+    margin: auto auto;
+    max-width: 600px;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(149, 95, 95);
+    text-align: center;
+}
+
+h2,h3,h4,h5{
+    margin: auto;
+}
+
+h1{
+    padding: 10px;
+    margin: auto;
+}
+
+h6{
+    margin: auto;
+    padding-bottom: -15px;
+}

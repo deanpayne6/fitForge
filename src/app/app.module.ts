@@ -7,12 +7,17 @@ import { InitalLoginPageComponent } from './inital-login-page/inital-login-page.
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InitalLoginPageComponent
+    InitalLoginPageComponent,
+    ToolbarComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -20,6 +25,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     MatFormFieldModule,
     NoopAnimationsModule,
+    MatCardModule,
 
   ],
   providers: [],

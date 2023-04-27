@@ -1,11 +1,17 @@
-<form [formGroup]="userLoginForm">
-    <h1>Login</h1>
+<app-toolbar></app-toolbar>
 
-    <h4>Email: </h4>
-    <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="example123@testdomain.com" formControlName="userEmail">
+<div class="loginCard" style="justify-content: center;">
+    <form [formGroup]="userLoginForm">
+        <h1 style="text-align: center;">Welcome to FitForge!</h1>
+        <h3 style="text-align: center;">Please Log In Below</h3>
+    
+        <mat-form-field style="align-items: center;">
+            <h6>Please enter your email</h6>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Ex. example123@testdomain.com" formControlName="userEmail">
+    
+        </mat-form-field>
+    
+    </form>
+</div>
 
-    </mat-form-field>
-
-</form>
