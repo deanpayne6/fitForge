@@ -18,4 +18,8 @@ export class InitalLoginPageComponent {
       userPassword: ['']
     });
   }
+
+  login(){
+    // do api stuff here
+  }
 }
