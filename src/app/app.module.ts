@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MatFormFieldModule,
     NoopAnimationsModule,
     MatCardModule,
-
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

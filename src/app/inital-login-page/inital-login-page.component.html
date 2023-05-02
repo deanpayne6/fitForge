@@ -1,24 +1,24 @@
-<app-toolbar></app-toolbar>
-
-<app-fitforge-logo></app-fitforge-logo>
-
-<div class="content" role="main">
-    <div>
-        <form [formGroup]="userLoginForm">
-            <h1 style="text-align: center;">Welcome to FitForge!</h1>
-            <h3 style="text-align: center;">Please Log In Below</h3>
-            <mat-form-field style="align-items: center;">
-                <h6>Email:</h6>
-                <mat-label>Email</mat-label>
-                <input type="email" matInput placeholder="Ex. example123@testdomain.com" formControlName="userEmail">
-            </mat-form-field>
-            <mat-form-field>
-                <h6>Password:</h6>
-                <mat-label>Password</mat-label>
-                <input type="password" matInput formControlName="userPassword">
-            </mat-form-field>
-        
-        </form>
-
-    </div>
+<div class="img-group">
+    <img src="assets/fitforge-logo.png">
 </div>
+
+
+<form submit="login()" [formGroup]="userLoginForm">
+    <div class="form-control">
+        <mat-form-field>
+            <label>Email</label>
+            <input type="email" matInput placeholder="Ex. example123@testdomain.com" formControlName="userEmail">
+        </mat-form-field>
+    </div>
+    <div class="form-control">
+        <mat-form-field>
+            <label>Password</label>
+            <input type="password" matInput formControlName="userPassword">
+        </mat-form-field>
+    </div>
+    
+    <button onclick="forgotPassword()" class="forgot-password-button">Forgot Password?</button>
+    <button type="submit" class="login-button">Login</button>
+
+</form>
+
