@@ -2,7 +2,6 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 14px;
     color: #000000;
-    box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -18,7 +17,7 @@
 }
 
 .userInput{
-    paddingtop: 8px;
+    padding-top: 8px;
 }
 
 h2,h3,h4,h5{
