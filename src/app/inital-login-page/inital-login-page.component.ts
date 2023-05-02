@@ -22,4 +22,8 @@ export class InitalLoginPageComponent {
   login(){
     // do api stuff here
   }
+
+  forgotPassword(){
+    // forgot password stuff here
+  }
 }
