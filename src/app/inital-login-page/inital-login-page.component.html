@@ -5,16 +5,12 @@
 
 <form submit="login()" [formGroup]="userLoginForm">
     <div class="form-control">
-        <mat-form-field>
             <label>Email</label>
-            <input type="email" matInput placeholder="Ex. example123@testdomain.com" formControlName="userEmail">
-        </mat-form-field>
+            <input type="email" placeholder="Ex. example123@testdomain.com" formControlName="userEmail"/>
     </div>
     <div class="form-control">
-        <mat-form-field>
-            <label>Password</label>
-            <input type="password" matInput formControlName="userPassword">
-        </mat-form-field>
+        <label>Password</label>
+        <input type="password" formControlName="userPassword"/>
     </div>
     
     <button onclick="forgotPassword()" class="forgot-password-button">Forgot Password?</button>

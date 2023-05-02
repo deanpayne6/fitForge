@@ -13,7 +13,7 @@ img{
     margin-left: auto;
     margin-right: auto;
     margin-top: 200px;
-    width: 25%;
+    width: 50%;
 }
 
 .img-group{
@@ -24,32 +24,30 @@ form{
     max-width: 400px;
     margin: 0 auto;
     padding: 16px 16px 24px;
+    /* stylelint-disable-next-line color-function-notation */
+    box-shadow: 0 2px 32px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
-    border-color: #D9D9D9;
+}
+
+input {
+    display: block;
+    padding: 8px;
+    height: 35px;
+    border-radius: 4px;
+    width: 95%;
+    border: 2px solid #ccc;
+    background-color: white;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 4px;
 }
 
 .form-control{
     margin-bottom: 16px;
-
-    input,
-    label{
-        display: block;
-    }
-    
-    label {
-        font-size: 0.9rem;
-        font-weight: 500;
-        margin-bottom: 4px;
-    }
-
-    input{
-        padding: 8px 20px;
-        height: 35px;
-        border-radius: 4px;
-        width: 100%;
-        border: 2px solid #ccc;
-        background-color: white;
-    }
 }
 
 .forgot-password-button{
