@@ -1,14 +1,11 @@
 .toolbar {
     position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
+    display:flex;
     align-items: center;
     background-color: #000000;
     color: white;
     font-weight: 600;
+    height: 100%;
 }
 
 .toolbar img {
