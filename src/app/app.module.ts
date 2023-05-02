@@ -15,8 +15,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
   declarations: [
     AppComponent,
     InitalLoginPageComponent,
-    FitforgeLogoComponent
-    ToolbarComponent,
+    FitforgeLogoComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
