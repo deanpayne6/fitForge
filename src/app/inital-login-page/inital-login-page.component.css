@@ -6,6 +6,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
 /* when adding float:left it gets rid of dead space
 under the img but it will move it to the left too much */
 img{
