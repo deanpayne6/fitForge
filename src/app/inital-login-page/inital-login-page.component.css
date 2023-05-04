@@ -13,7 +13,7 @@ img{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 75px;
+    margin-top: 225px;
     width: 40%;
 }
 
@@ -28,6 +28,7 @@ form{
     /* stylelint-disable-next-line color-function-notation */
     box-shadow: 0 2px 32px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
+    background-color: #848484;
 }
 
 input {
@@ -36,7 +37,7 @@ input {
     height: 30px;
     border-radius: 4px;
     width: 95%;
-    border: 2px solid #ccc;
+    border: 2px solid #5c5c5c;
     background-color: white;
 }
 
@@ -47,9 +48,12 @@ label {
     margin-bottom: 4px;
 }
 
-h6{
-    margin: 20px 125px;
+.register-link{
+    font-size: .9em;
+    text-align: center;
+    margin: 25px 0 10px;
     display: block;
+    font-weight: 500;
 }
 
 .form-control{
@@ -78,4 +82,23 @@ h6{
     border-radius: 4px;
     border-color: #D9D9D9;
     font-size: .65rem;
+}
+
+.left-side{
+    width: 50%;
+    position: absolute;
+    left: 0px;
+    height: 100%;
+    background-color: #454545;
+    justify-content: center;
+}
+
+.right-side{
+    background: url('~src/assets/gigachad.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    position: absolute;
+    right: 0px;
+    height: 100%;
 }
