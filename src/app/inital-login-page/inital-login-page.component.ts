@@ -10,20 +10,26 @@ export class InitalLoginPageComponent {
 
   userLoginForm: FormGroup;
 
-  constructor(private fb: FormBuilder){ };
+  constructor(private fb: FormBuilder) { };
 
-  ngonInit(): void{
+  ngonInit(): void {
     this.userLoginForm = this.fb.group({
       userEmail: [''],
       userPassword: ['']
     });
   }
 
-  login(){
+
+  login() {
     // do api stuff here
+    // Luis code:
+    const userData = {
+      email: this.userLoginForm.get('userEmail').value,
+      password: this.userLoginForm.get('userPassword').value
+    }
   }
 
-  forgotPassword(){
+  forgotPassword() {
     // forgot password stuff here
   }
 }
