@@ -5,7 +5,7 @@
     </div>
 
 
-    <form submit="login()" [formGroup]="userLoginForm">
+    <form (ngSubmit)="login()" [formGroup]="userLoginForm">
         <div class="form-control">
             <label>Email</label>
             <input type="email" placeholder="Ex. example123@testdomain.com" formControlName="userEmail" />
