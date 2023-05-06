@@ -32,5 +32,6 @@ export class InitalLoginPageComponent {
 
   forgotPassword() {
     // forgot password stuff here
+
   }
 }
