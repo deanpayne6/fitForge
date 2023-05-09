@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-inital-login-page',
@@ -10,20 +10,28 @@ export class InitalLoginPageComponent {
 
   userLoginForm: FormGroup;
 
-  constructor(private fb: FormBuilder){ };
+  constructor(private fb: FormBuilder) { };
 
-  ngonInit(): void{
+  ngOnInit(): void {
     this.userLoginForm = this.fb.group({
-      userEmail: [''],
+      userEmail: ['', [Validators.required, Validators.email]],
       userPassword: ['']
     });
   }
 
-  login(){
+
+  login() {
     // do api stuff here
+    // Luis code:
+    const userData = {
+      email: this.userLoginForm.get('userEmail').value,
+      password: this.userLoginForm.get('userPassword').value
+    }
+    console.log(userData);
   }
 
-  forgotPassword(){
+  forgotPassword() {
     // forgot password stuff here
+
   }
 }

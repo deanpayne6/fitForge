@@ -5,21 +5,33 @@
     </div>
 
 
-    <form submit="login()" [formGroup]="userLoginForm">
+    <form (ngSubmit)="login()" [formGroup]="userLoginForm">
         <div class="form-control">
-                <label>Email</label>
-                <input type="email" placeholder="Ex. example123@testdomain.com" formControlName="userEmail"/>
+            <label>Email</label>
+            <input type="email" placeholder="Ex. example123@testdomain.com" formControlName="userEmail"
+                [class.error-border]="userLoginForm.get('userEmail').invalid && (userLoginForm.get('userEmail').dirty || userLoginForm.get('userEmail').touched)">
+            <!-- doing some validation errors messages-->
+            <div
+                *ngIf="userLoginForm.get('userEmail').invalid && (userLoginForm.get('userEmail').dirty || userLoginForm.get('userEmail').touched)">
+                <div *ngIf="userLoginForm.get('userEmail').errors.required" class="error-message">Email is required.
+                </div>
+                <div *ngIf="userLoginForm.get('userEmail').errors.email" class="error-message">Invalid email format.
+                </div>
+            </div>
         </div>
-        <div class="form-control">
+        <div class=" form-control">
             <label>Password</label>
-            <input type="password" formControlName="userPassword"/>
+            <input type="password" formControlName="userPassword" />
         </div>
-        
+
         <button onclick="forgotPassword()" class="forgot-password-button">Forgot Password?</button>
         <button type="submit" class="login-button">Login</button>
 
-        <p class="register-link">Don't have one? <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUYbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXAg">Sign up!</a></p>
-        
+        <p class="register-link">Don't have one? <a
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUYbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXAg">Sign
+                up!</a>
+        </p>
+
     </form>
 </div>
 
