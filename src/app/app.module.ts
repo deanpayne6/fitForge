@@ -11,13 +11,15 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatButtonModule} from '@angular/material/button';
+import { CreateAccountPageComponent } from './create-account-page/create-account-page/create-account-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InitalLoginPageComponent,
     FitforgeLogoComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    CreateAccountPageComponent
   ],
   imports: [
     BrowserModule,
