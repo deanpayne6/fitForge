@@ -1,1 +1,25 @@
-<p>create-account-page works!</p>
+<app-toolbar></app-toolbar>
+
+<div class="img-logo">
+    <img src="assets/fitforge-logo.png">
+</div>
+
+
+<form (ngSubmit)="register()" [formGroup]="userRegisterForm">
+    
+    <div class="container">
+        <div class="form-control form-grid">
+            
+                <input type="text" placeholder="Username" formControlName="userName">
+                <input type="email" placeholder="Email Address" formControlName="userEmail">
+                <input type="password" placeholder="Password" formControlName="userPassword">
+                <input type="password" placeholder="Confirm Password" formControlName="userPasswordConfirm">
+                <input type="text" placeholder="First Name" formControlName="userFirstName">
+                <input type="text" placeholder="Last Name" formControlName="userLastName">
+                <input type="text" placeholder="Age" formControlName="userAge">
+                <input type="checkbox">
+        </div>
+    </div>
+
+    <!-- <button type="submit" class="login-button">Create Account</button>   -->
+</form>
