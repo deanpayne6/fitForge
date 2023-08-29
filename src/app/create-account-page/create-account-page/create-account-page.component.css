@@ -1,0 +1,19 @@
+.img-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+}
+
+.form-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 15%;
+    grid-row-gap: 12%;
+    width: 500px;
+    margin-left: 32.5%;
+}
+
+.container{
+    background-color: grey;
+}

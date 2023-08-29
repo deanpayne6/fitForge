@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-account-page',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class CreateAccountPageComponent {
 
+  userRegisterForm: FormGroup
+
+  constructor(private fb: FormBuilder){};
+
+  register(){
+    
+  }
 }

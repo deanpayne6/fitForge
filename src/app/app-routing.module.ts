@@ -6,7 +6,7 @@ import { InitalLoginPageComponent } from './inital-login-page/inital-login-page.
 import { CreateAccountPageComponent } from './create-account-page/create-account-page/create-account-page.component';
 
 const routes: Routes = [
-  {path: 'login', component: InitalLoginPageComponent},
+  {path: '', component: InitalLoginPageComponent},
   {path: 'register', component: CreateAccountPageComponent},
 ];
 
