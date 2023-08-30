@@ -14,56 +14,81 @@
         [class.invalid-border]="userRegisterForm.get('userEmail').hasError('email') && userRegisterForm.get('userEmail').touched">
         <div >
             <div class = "invalid-text text-warning" *ngIf="userRegisterForm.get('userEmail').hasError('email') && (userRegisterForm.get('userEmail').touched || userRegisterForm.get('userEmail').dirty)"> Invalid Email </div>
-            <div class = "invalid-text text-danger" *ngIf="userRegisterForm.get('userEmail').dirty && userRegisterForm.get('userEmail').hasError('required')">Required</div>
+            <div class = "invalid-text text-danger" *ngIf="(userRegisterForm.get('userEmail').dirty || userRegisterForm.get('userEmail').touched) && userRegisterForm.get('userEmail').hasError('required')">Required</div>
         </div>
 
         <!-- first and last name, validation and warning -->
         <input class = "form-control" type="text" placeholder="First Name" formControlName="userFirstName"
-        [class.error-border]="userRegisterForm.get('userFirstName').hasError('required') && userRegisterForm.get('userFirstName').touched">
+        [class.error-border]="userRegisterForm.get('userFirstName').hasError('required') && userRegisterForm.get('userFirstName').touched"
+        [class.valid-border]="userRegisterForm.get('userFirstName').value !== '' ">
+        
         <div>
-            <div class = "invalid-text text-danger" *ngIf="userRegisterForm.get('userFirstName').dirty && userRegisterForm.get('userFirstName').hasError('required')">Required</div>
+            <div class = "invalid-text text-danger" *ngIf="(userRegisterForm.get('userFirstName').dirty || userRegisterForm.get('userFirstName').touched) && userRegisterForm.get('userFirstName').hasError('required')">Required</div>
         </div>
 
         <input class = "form-control" type="text" placeholder="Last Name" formControlName="userLastName"
-        [class.error-border]="userRegisterForm.get('userLastName').hasError('required') && userRegisterForm.get('userLastName').touched">
+        [class.error-border]="userRegisterForm.get('userLastName').hasError('required') && userRegisterForm.get('userLastName').touched"
+        [class.valid-border]="userRegisterForm.get('userLastName').value !== '' ">
+        
         <div>
-            <div class = "invalid-text text-danger" *ngIf="userRegisterForm.get('userLastName').dirty && userRegisterForm.get('userLastName').hasError('required')">Required</div>
+            <div class = "invalid-text text-danger" *ngIf="(userRegisterForm.get('userLastName').dirty || userRegisterForm.get('userLastName').touched) && userRegisterForm.get('userLastName').hasError('required')">Required</div>
         </div>
 
         <!-- age, validation warning -->
         <input class = "form-control" type="number" placeholder="Age" formControlName="userAge"
-        [class.error-border]="userRegisterForm.get('userAge').hasError('required') && userRegisterForm.get('userAge').touched">
+        [class.error-border]="(userRegisterForm.get('userAge').hasError('min') || userRegisterForm.get('userAge').hasError('required')) && userRegisterForm.get('userAge').touched "
+        [class.valid-border]="!userRegisterForm.get('userAge').hasError('min') && userRegisterForm.get('userAge').dirty && userRegisterForm.get('userAge').touched">
         <div>
-            <div class = "invalid-text text-danger" *ngIf="userRegisterForm.get('userAge').dirty && userRegisterForm.get('userAge').hasError('required')">Required</div>
+            <div class = "invalid-text text-danger" *ngIf="(userRegisterForm.get('userAge').dirty || userRegisterForm.get('userAge').touched) && userRegisterForm.get('userAge').hasError('required')">Required</div>
+            <div class="invalid-text text-danger" *ngIf="userRegisterForm.get('userAge').dirty && userRegisterForm.get('userAge').hasError('min')">Must be 18 years or older</div>
         </div>
 
         <!-- username, and validation -->
         <input class = "form-control" type="text" placeholder="Username" formControlName="username"
         [class.error-border]="userRegisterForm.get('username').hasError('required') && userRegisterForm.get('username').touched">
         <div>
-            <div class = "invalid-text text-danger" *ngIf="userRegisterForm.get('username').dirty && userRegisterForm.get('username').hasError('required')">Required</div>
+            <div class = "invalid-text text-danger" *ngIf="(userRegisterForm.get('username').dirty || userRegisterForm.get('username').touched) && userRegisterForm.get('username').hasError('required')">Required</div>
         </div>
         
         <!-- password, and validation -->
         <input class = "form-control" type="password" placeholder="Password" formControlName="userPassword"
-        [class.error-border]="userRegisterForm.get('userPassword').hasError('required') && userRegisterForm.get('userPassword').touched">
+        [class.error-border]="userRegisterForm.get('userPassword').hasError('required') && userRegisterForm.get('userPassword').touched"
+        [class.error-border]="!isPasswordValid() && userRegisterForm.get('userPassword').touched"
+        [class.valid-border]="isPasswordValid() && userRegisterForm.get('userPassword').touched"
+        (focus)="showPasswordRequirements = true" (blur)="showPasswordRequirements = false">
+        
         <div>
-            <div class = "invalid-text text-danger" *ngIf="userRegisterForm.get('userPassword').dirty && userRegisterForm.get('userPassword').hasError('required')">Required</div>
+            <div class = "invalid-text text-danger" *ngIf="(userRegisterForm.get('userPassword').dirty || userRegisterForm.get('userPassword').touched) && userRegisterForm.get('userPassword').hasError('required')">Required</div>
+        </div>
+
+        <div class="password-requirements" *ngIf="showPasswordRequirements">
+            <div class="requirement" [class.met]="userRegisterForm.get('userPassword').value?.length >= 8">Must be 8 characters long</div>
+            <div class="requirement" [class.met]="userRegisterForm.get('userPassword').value?.match(specialCharacterPattern)">Must have at least 1 special character</div>
+            <div class="requirement" [class.met]="userRegisterForm.get('userPassword').value?.match(numberPattern)">Must have at least 1 number</div>
         </div>
 
         <input class = "form-control" type="password" placeholder="Confirm Password" formControlName="userPasswordConfirm"
-        [class.error-border]="userRegisterForm.get('userPasswordConfirm').hasError('required') && userRegisterForm.get('userPasswordConfirm').touched">
+        [class.error-border]="!isConfirmPasswordValid() && userRegisterForm.get('userPasswordConfirm').hasError('required') && userRegisterForm.get('userPasswordConfirm').touched"
+        [class.error-border]="!isConfirmPasswordValid()  && userRegisterForm.get('userPasswordConfirm').touched"
+        [class.valid-border]="isConfirmPasswordValid() && userRegisterForm.get('userPasswordConfirm').touched">
         <div>
-            <div class = "invalid-text text-danger" *ngIf="userRegisterForm.get('userPasswordConfirm').dirty && userRegisterForm.get('userPasswordConfirm').hasError('required')">Required</div>
+            <div class = "invalid-text text-danger" *ngIf="(userRegisterForm.get('userPasswordConfirm').dirty || userRegisterForm.get('userPasswordConfirm').touched) && userRegisterForm.get('userPasswordConfirm').hasError('required')">Required</div> 
+            <div class = "invalid-text text-danger" *ngIf="isConfirmPasswordValid() == false && userRegisterForm.get('userPasswordConfirm').touched && userRegisterForm.get('userPasswordConfirm').value !== ''">Passwords must match</div>
         </div>
 
 
-        <input class = "form-check-input" type="checkbox" id="termsAndConditions" formControlName="termsAndConditions">
-        <label class = "terms" for="termsAndConditions">Terms and Conditions</label>     
+        <!-- terms and conditions checkbox -->
+        <input class = "form-check-input" type="checkbox" id="termsAndConditions" formControlName="termsAndConditions" (change)="handleCheckboxChange()">
+        <label class = "terms" for="termsAndConditions">Terms and Conditions</label>
+        <div>
+            <div class="invalid-text text-danger" *ngIf="userRegisterForm.get('termsAndConditions').dirty &&
+            userRegisterForm.get('termsAndConditions').hasError('required') && !userRegisterForm.get('termsCheckboxStatus').value"> Required
+            </div>
+        </div>   
 
 
         <div class="d-grid gap-2">
-            <button class="btn btn-info" type="button">Register</button>
+            <button class="btn btn-info" type="button" [disabled]="!userRegisterForm.valid">Register</button>
           </div>  
     </div>
 </form>
