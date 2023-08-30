@@ -11,8 +11,7 @@
             <input type="email" placeholder="Ex. example123@testdomain.com" formControlName="userEmail"
                 [class.error-border]="userLoginForm.get('userEmail').invalid && (userLoginForm.get('userEmail').dirty || userLoginForm.get('userEmail').touched)">
             <!-- doing some validation errors messages-->
-            <div
-                *ngIf="userLoginForm.get('userEmail').invalid && (userLoginForm.get('userEmail').dirty || userLoginForm.get('userEmail').touched)">
+            <div *ngIf="userLoginForm.get('userEmail').invalid && (userLoginForm.get('userEmail').dirty || userLoginForm.get('userEmail').touched)">
                 <div *ngIf="userLoginForm.get('userEmail').errors.required" class="error-message">Email is required.
                 </div>
                 <div *ngIf="userLoginForm.get('userEmail').errors.email" class="error-message">Invalid email format.
