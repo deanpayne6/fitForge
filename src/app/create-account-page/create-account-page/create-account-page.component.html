@@ -4,7 +4,6 @@
     <img src="assets/fitforge-logo.png">
 </div>
 
-
 <form (ngSubmit)="register()" [formGroup]="userRegisterForm">
     
     <div class="container"> 
@@ -90,5 +89,7 @@
         <div class="d-grid gap-2">
             <button class="btn btn-info" type="button" [disabled]="!userRegisterForm.valid">Register</button>
           </div>  
+          
+        <p class="text-center fs-6">Already have one? <a href="/">Sign in</a> 
     </div>
 </form>
