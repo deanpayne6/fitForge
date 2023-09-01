@@ -13,6 +13,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatButtonModule} from '@angular/material/button';
 import { CreateAccountPageComponent } from './create-account-page/create-account-page/create-account-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AboutPageComponent } from './about-page/about-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     InitalLoginPageComponent,
     FitforgeLogoComponent,
     ToolbarComponent,
-    CreateAccountPageComponent
+    CreateAccountPageComponent,
+    AboutPageComponent
   ],
   imports: [
     BrowserModule,
