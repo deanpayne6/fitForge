@@ -79,7 +79,7 @@
 
         <!-- terms and conditions checkbox -->
         <input class = "form-check-input" type="checkbox" id="termsAndConditions" formControlName="termsAndConditions" (change)="handleCheckboxChange()">
-        <label class = "terms" for="termsAndConditions">Terms and Conditions</label>
+        <label class = "terms fs-6" for="termsAndConditions">Terms and Conditions</label>
         <div>
             <div class="invalid-text text-danger" *ngIf="userRegisterForm.get('termsAndConditions').dirty &&
             userRegisterForm.get('termsAndConditions').hasError('required') && !userRegisterForm.get('termsCheckboxStatus').value"> Required

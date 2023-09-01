@@ -53,3 +53,7 @@ input{
 .valid-border{
     border: 1px solid  #039487;
 }
+
+.terms{
+    margin-left:5px;
+}
