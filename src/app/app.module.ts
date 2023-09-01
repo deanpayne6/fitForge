@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatButtonModule} from '@angular/material/button';
 import { CreateAccountPageComponent } from './create-account-page/create-account-page/create-account-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CreateAccountPageComponent } from './create-account-page/create-account
     NoopAnimationsModule,
     MatCardModule,
     MatButtonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

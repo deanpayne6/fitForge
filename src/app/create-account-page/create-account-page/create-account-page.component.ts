@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-create-account-page',
@@ -11,8 +12,9 @@ export class CreateAccountPageComponent {
 
   userRegisterForm: FormGroup;
   showPasswordRequirements = false;
+  isEmailAvailable = false;
 
-  constructor(private fb: FormBuilder){};
+  constructor(private fb: FormBuilder, private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.userRegisterForm = this.fb.group({
@@ -53,6 +55,22 @@ export class CreateAccountPageComponent {
     }
     return password === confirmPassword;
   }
+
+  // this call is being done without authentication atm, erick implement
+  onEmailBlur() {
+    const email = this.userRegisterForm.get('userEmail').value;
+    if (email) {
+      this.apiService.checkEmailAvailability(email).subscribe(
+        (response) => {
+          this.isEmailAvailable = response; // Update email availability status
+        },
+        (error) => {
+          // Handle error, e.g., show an error message
+        }
+      );
+    }
+  }
+
 
   register(){
     

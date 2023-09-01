@@ -8,9 +8,10 @@
     
     <div class="container"> 
         <!-- email, email validation, email warnings -->
-        <input class = "form-control" type="email" placeholder="Email Address" formControlName="userEmail"
+        <input class = "form-control" type="email" placeholder="Email Address" formControlName="userEmail" (blur)="onEmailBlur()"
         [class.error-border]="userRegisterForm.get('userEmail').hasError('required') && (userRegisterForm.get('userEmail').touched || userRegisterForm.get('userEmail').dirty)"
-        [class.invalid-border]="userRegisterForm.get('userEmail').hasError('email') && userRegisterForm.get('userEmail').touched">
+        [class.invalid-border]="userRegisterForm.get('userEmail').hasError('email') && userRegisterForm.get('userEmail').touched"
+        [class.valid-border]="isEmailAvailable && userRegisterForm.get('userEmail').valid && !userRegisterForm.get('userEmail').hasError('required') && !userRegisterForm.get('userEmail').hasError('email')">
         <div >
             <div class = "invalid-text text-warning" *ngIf="userRegisterForm.get('userEmail').hasError('email') && (userRegisterForm.get('userEmail').touched || userRegisterForm.get('userEmail').dirty)"> Invalid Email </div>
             <div class = "invalid-text text-danger" *ngIf="(userRegisterForm.get('userEmail').dirty || userRegisterForm.get('userEmail').touched) && userRegisterForm.get('userEmail').hasError('required')">Required</div>
