@@ -9,7 +9,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   checkEmailAvailability(email: string): Observable<boolean> {
-    const url = 'http://localhost:3000/logincheck';
+    const url = 'http://localhost:3200/getEmailData';
     return this.http.post<boolean>(url, { email });
   }
 }
