@@ -12,7 +12,7 @@ export class CreateAccountPageComponent {
 
   userRegisterForm: FormGroup;
   showPasswordRequirements = false;
-  isEmailAvailable = false;
+  isEmailAvailable = {};
 
   constructor(private fb: FormBuilder, private apiService: ApiService) {}
 
