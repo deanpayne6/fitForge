@@ -1,0 +1,118 @@
+<app-toolbar></app-toolbar>
+<div class="container">
+    <h4 class="headerMessage">Everything that you provide us with here will allow us to correctly create
+        currated, personal, and fun workouts for you to reach your goals. Please input
+        data that is the most accurate to your current knowledge. -FitForge Team
+    </h4>
+</div>
+
+<div class="userQuestionnaire">
+    <mat-accordion class="userQuestionnaireAccordian" multi>
+        <mat-expansion-panel class="userQuestionnaireAccordianItem">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    About You
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <h5>Weight: </h5>
+            <input  placeholder="Ex. 145 lbs">
+            <h5>Height: </h5>
+            <input placeholder="Feet">
+            <input placeholder="Inches">
+            <h5>Gender</h5>
+            <input placeholder="Male or Female">
+            <h5>Daily Activity: </h5>
+            <mat-radio-group [(ngModel)]="selectedActivityLevel">
+                <mat-radio-button *ngFor="let activityLevel of activityLevels" [value]="activityLevel">
+                    {{activityLevel}}
+            </mat-radio-button>
+            </mat-radio-group>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="userQuestionnaireAccordianItem">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Your Experience Level
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-radio-group [(ngModel)]="selectedExperience">
+                <mat-radio-button *ngFor="let experience of experiences" [value]="experience">
+                    {{experience}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="userQuestionnaireAccordianItem">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Available Equipment
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-radio-group [(ngModel)]="selectedGymEquipment">
+                <mat-radio-button *ngFor="let equipmentLevel of equipmentLevels" [value]="equipmentLevel">
+                    {{equipmentLevel}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="userQuestionnaireAccordianItem">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Personal Goals
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="stackedSelect">
+                <mat-form-field>
+                    <mat-label>Overall Goal</mat-label>
+                    <mat-select [(ngModel)]="selectedGoal" >
+                        <mat-option *ngFor="let userGoal of userGoals" [value]="userGoal">
+                            {{userGoal}}
+                        </mat-option> 
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Desired Workout Frequency</mat-label>
+                    <mat-select>
+                    <mat-option value="one">Less than 3 times a week</mat-option>
+                    <mat-option value="two">3-5 times a week</mat-option>
+                    <mat-option value="three">6-7 times a week</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Desired Level of Intensity</mat-label>
+                    <mat-select [(ngModel)]="selectedIntensity">
+                        <mat-option *ngFor="let intensity of intensities" [value]="intensity">
+                            {{intensity}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="userQuestionnaireAccordianItem">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Personal Records (PR)
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-checkbox [(ngModel)]="hasData" (checked)="toggleDataEntry()">
+                Do you currently have PR data?
+            </mat-checkbox>
+            <div *ngIf="hasData">
+                <h6>Flat Bench Press (Barbell)</h6>
+                <input matInput placeholder="Ex. 145 or N/A">
+
+                <h6>Incline Bench Press (Barbell)</h6>
+                <input matInput placeholder="Ex. 145 or N/A">
+
+                <h6>Overhead Shoulder Press (Barbell)</h6>
+                <input matInput placeholder="Ex. 145 or N/A">
+
+                <h6>Bicep Curl (E-Z Bar)</h6>
+                <input matInput placeholder="Ex. 80 or N/A">
+
+                <h6>Back Squat (Barbell)</h6>
+                <input matInput placeholder="Ex. 225 or N/A">
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>    
+</div>

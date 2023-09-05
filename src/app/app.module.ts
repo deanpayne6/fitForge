@@ -14,6 +14,19 @@ import {MatButtonModule} from '@angular/material/button';
 import { CreateAccountPageComponent } from './create-account-page/create-account-page/create-account-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutPageComponent } from './about-page/about-page.component';
+import { QuestionnairePageComponent } from './questionnaire-page/questionnaire-page.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
+import {MatListModule} from '@angular/material/list';
+import { FormsModule } from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +35,8 @@ import { AboutPageComponent } from './about-page/about-page.component';
     FitforgeLogoComponent,
     ToolbarComponent,
     CreateAccountPageComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    QuestionnairePageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +47,13 @@ import { AboutPageComponent } from './about-page/about-page.component';
     MatCardModule,
     MatButtonModule,
     HttpClientModule,
+    MatExpansionModule,
+    CdkAccordionModule,
+    MatListModule,
+    FormsModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
