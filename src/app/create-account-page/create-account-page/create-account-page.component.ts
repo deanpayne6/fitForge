@@ -59,16 +59,16 @@ export class CreateAccountPageComponent {
   // this call is being done without authentication atm, erick implement
   onEmailBlur() {
     const email = this.userRegisterForm.get('userEmail').value;
-
+  
     if (email) {
       this.apiService.checkEmailAvailability(email).subscribe(
         (response) => {
-          this.isEmailAvailable = response; // Update email availability status
-          console.log(response)
+          console.log("Email exists: ", response.exists);
+          this.isEmailAvailable = response.exists; // Update email availability status
         },
         (error) => {
           // Handle error, e.g., show an error message
-          console.log(error)
+          console.error("Error:", error);
         }
       );
     }

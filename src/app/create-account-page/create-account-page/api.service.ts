@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  checkEmailAvailability(email: string) {
-    const url = 'http://localhost:3200/getEmailData';
-    return this.http.get(url);
+  checkEmailAvailability(email: string): Observable<{ exists: boolean }> {
+    const url = `http://localhost:3200/checkEmailAvailability?email=${email}`;
+    return this.http.get<{ exists: boolean }>(url);
   }
 }
