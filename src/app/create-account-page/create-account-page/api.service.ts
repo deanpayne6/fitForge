@@ -12,4 +12,9 @@ export class ApiService {
     const url = `http://localhost:3200/checkEmailAvailability?email=${email}`;
     return this.http.get<{ exists: boolean }>(url);
   }
+
+  checkUsernameAvailability(username: string): Observable<{ exists: boolean }> {
+    const url = `http://localhost:3200/checkUsernameAvailability?username=${username}`;
+    return this.http.get<{ exists: boolean }>(url);
+  }
 }

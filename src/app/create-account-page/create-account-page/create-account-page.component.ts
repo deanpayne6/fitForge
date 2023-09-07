@@ -12,6 +12,7 @@ export class CreateAccountPageComponent {
 
   userRegisterForm: FormGroup;
   showPasswordRequirements = false;
+  isUsernameAvailable: boolean = false;
   isEmailAvailable = {};
 
   constructor(private fb: FormBuilder, private apiService: ApiService) {}
@@ -65,6 +66,23 @@ export class CreateAccountPageComponent {
         (response) => {
           console.log("Email exists: ", response.exists);
           this.isEmailAvailable = response.exists; // Update email availability status
+        },
+        (error) => {
+          // Handle error, e.g., show an error message
+          console.error("Error:", error);
+        }
+      );
+    }
+  }
+
+  onUsernameBlur() {
+    const username = this.userRegisterForm.get('username').value;
+  
+    if (username) {
+      this.apiService.checkUsernameAvailability(username).subscribe(
+        (response) => {
+          console.log("Username exists: ", response.exists);
+          this.isUsernameAvailable = response.exists; // Update username availability status
         },
         (error) => {
           // Handle error, e.g., show an error message

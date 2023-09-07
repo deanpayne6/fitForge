@@ -44,7 +44,7 @@ c
         </div>
 
         <!-- username, and validation -->
-        <input class = "form-control" type="text" placeholder="Username" formControlName="username"
+        <input class = "form-control" type="text" placeholder="Username" formControlName="username" (blur)="onUsernameBlur()"
         [class.error-border]="userRegisterForm.get('username').hasError('required') && userRegisterForm.get('username').touched">
         <div>
             <div class = "invalid-text text-danger" *ngIf="(userRegisterForm.get('username').dirty || userRegisterForm.get('username').touched) && userRegisterForm.get('username').hasError('required')">Required</div>
