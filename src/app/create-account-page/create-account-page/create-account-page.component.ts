@@ -13,7 +13,7 @@ export class CreateAccountPageComponent {
   userRegisterForm: FormGroup;
   showPasswordRequirements = false;
   isUsernameAvailable: boolean = false;
-  isEmailAvailable = {};
+  isEmailAvailable: boolean = false;
 
   constructor(private fb: FormBuilder, private apiService: ApiService) {}
 
@@ -65,7 +65,11 @@ export class CreateAccountPageComponent {
       this.apiService.checkEmailAvailability(email).subscribe(
         (response) => {
           console.log("Email exists: ", response.exists);
-          this.isEmailAvailable = response.exists; // Update email availability status
+          if (response.exists === true){
+            this.isEmailAvailable = false; // Update email availability status
+          }else{
+            this.isEmailAvailable = true;
+          }
         },
         (error) => {
           // Handle error, e.g., show an error message
@@ -75,6 +79,8 @@ export class CreateAccountPageComponent {
     }
   }
 
+  
+
   onUsernameBlur() {
     const username = this.userRegisterForm.get('username').value;
   
@@ -82,7 +88,11 @@ export class CreateAccountPageComponent {
       this.apiService.checkUsernameAvailability(username).subscribe(
         (response) => {
           console.log("Username exists: ", response.exists);
-          this.isUsernameAvailable = response.exists; // Update username availability status
+          if (response.exists){
+            this.isUsernameAvailable = false;
+          }else{
+            this.isUsernameAvailable = true;
+          }
         },
         (error) => {
           // Handle error, e.g., show an error message
