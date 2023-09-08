@@ -43,8 +43,9 @@ export class CreateAccountPageComponent {
     const isLengthValid = password.length >= 8;
     const hasSpecialCharacter = this.specialCharacterPattern.test(password);
     const hasNumber = this.numberPattern.test(password);
+    const hasCapital = this.captialLetterPattern.test(password);
 
-    return isLengthValid && hasSpecialCharacter && hasNumber;
+    return isLengthValid && hasSpecialCharacter && hasNumber && hasCapital;
   }
 
   isConfirmPasswordValid() {
@@ -79,8 +80,6 @@ export class CreateAccountPageComponent {
     }
   }
 
-  
-
   onUsernameBlur() {
     const username = this.userRegisterForm.get('username').value;
   
@@ -88,7 +87,7 @@ export class CreateAccountPageComponent {
       this.apiService.checkUsernameAvailability(username).subscribe(
         (response) => {
           console.log("Username exists: ", response.exists);
-          if (response.exists){
+          if (response.exists === true){
             this.isUsernameAvailable = false;
           }else{
             this.isUsernameAvailable = true;
@@ -103,10 +102,30 @@ export class CreateAccountPageComponent {
   }
 
 
-  register(){
-    
+  register() {
+    if (this.userRegisterForm.valid) {
+      // Form is valid, proceed with registration
+      const formData = {
+        userEmail: this.userRegisterForm.value.userEmail,
+        userFirstName: this.userRegisterForm.value.userFirstName,
+        userLastName: this.userRegisterForm.value.userLastName,
+        userAge: this.userRegisterForm.value.userAge,
+        username: this.userRegisterForm.value.username,
+        userPassword: this.userRegisterForm.value.userPassword,
+      };
+
+      this.apiService.sendPostRequest(formData).subscribe(
+        (response) => {
+          console.log("Registration response:", response);
+        },
+        (error) => {
+          console.error("Registration error:", error);
+        }
+      );
+    }
   }
 
   specialCharacterPattern = /[!@#$%^&*(),.?":{}|<>]/;
   numberPattern = /[0-9]/;
+  captialLetterPattern = /[A-Z]/
 }

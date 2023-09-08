@@ -47,15 +47,16 @@
 
         <!-- username, and validation -->
         <input class="form-control" type="text" placeholder="Username" formControlName="username" (blur)="onUsernameBlur()"
-        [class.error-border]="(!isUsernameAvailable || userRegisterForm.get('username').hasError('required')) && userRegisterForm.get('username').touched"
-        [class.valid-border]="isUsernameAvailable && userRegisterForm.get('username').valid && !userRegisterForm.get('username').hasError('required')"
-        />
+        [class.error-border]="(userRegisterForm.get('username').hasError('required') || (!isUsernameAvailable && userRegisterForm.get('username').touched && !userRegisterForm.get('username').hasError('email') && userRegisterForm.get('username').value !== '')) && userRegisterForm.get('username').dirty"
+        [class.valid-border]="isUsernameAvailable && userRegisterForm.get('username').valid && !userRegisterForm.get('username').hasError('required') && !userRegisterForm.get('username').hasError('email')"/>
         <div>
-        <div class="invalid-text text-danger"
-            *ngIf="(userRegisterForm.get('username').dirty || userRegisterForm.get('username').touched) && userRegisterForm.get('username').hasError('required')">Required</div>
-        <div class="invalid-text text-danger" *ngIf="!isUsernameAvailable && userRegisterForm.get('username').dirty">Sorry, This Username is Already in Use</div>
+            <div class="invalid-text text-danger"
+                *ngIf="userRegisterForm.get('username').hasError('required') && userRegisterForm.get('username').touched">Required</div>
+            <div class="invalid-text text-danger"
+                *ngIf="userRegisterForm.get('username').hasError('email') && userRegisterForm.get('username').touched">Invalid Email Format</div>
+            <div class="invalid-text text-danger" *ngIf="!isUsernameAvailable && userRegisterForm.get('username').dirty && userRegisterForm.get('username').touched && !userRegisterForm.get('username').hasError('required') && !userRegisterForm.get('username').hasError('email') && userRegisterForm.get('username').value !== ''">Sorry, This Username is Already in Use</div>
         </div>
-        
+            
 
         <!-- password, and validation -->
         <input class = "form-control" type="password" placeholder="Password" formControlName="userPassword"
@@ -72,6 +73,7 @@
             <div class="requirement" [class.met]="userRegisterForm.get('userPassword').value?.length >= 8">Must be 8 characters long</div>
             <div class="requirement" [class.met]="userRegisterForm.get('userPassword').value?.match(specialCharacterPattern)">Must have at least 1 special character</div>
             <div class="requirement" [class.met]="userRegisterForm.get('userPassword').value?.match(numberPattern)">Must have at least 1 number</div>
+            <div class="requirement" [class.met]="userRegisterForm.get('userPassword').value?.match(captialLetterPattern)">Atleast 1 Capital Letter</div>
         </div>
 
         <input class = "form-control" type="password" placeholder="Confirm Password" formControlName="userPasswordConfirm"
@@ -95,8 +97,16 @@
 
 
         <div class="d-grid gap-2">
-            <button class="btn btn-warning" type="button" [disabled]="!userRegisterForm.valid">Register</button>
-          </div>  
+            <button class="btn btn-warning" type="button" 
+            [disabled]="
+                !userRegisterForm.valid || 
+                userRegisterForm.get('userEmail').hasError('email') || 
+                userRegisterForm.get('userAge').hasError('min') || 
+                !isUsernameAvailable ||
+                !isEmailAvailable|| 
+                !isConfirmPasswordValid()"
+            (click)="register()">Register</button>
+          </div>
           
         <p class="text-center fs-6">Already have an account? <a href="/">Sign in</a> 
     </div>
