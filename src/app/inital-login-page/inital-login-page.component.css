@@ -1,4 +1,49 @@
-:host {
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 225px;
+    width: 40%;
+}
+
+.container {
+    max-width: 300px;
+}
+
+.valid-border{
+    border: 1px solid  #039487;
+}
+
+.error-border {
+    border: 1px solid red;
+}
+
+.invalid-border{
+    border: 1px solid #ffc107;
+}
+
+.invalid-text{
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: -8px;
+    padding-left: 3px;
+}
+
+input{
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.268)
+}
+
+button{
+    display: block;
+}
+
+.button-login-container{
+    max-width: 300px;
+    align-items: center;
+}
+/* :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 14px;
     color: #000;
@@ -7,8 +52,6 @@
 }
 
 
-/* when adding float:left it gets rid of dead space
-under the img but it will move it to the left too much */
 
 .error-message {
     color: rgb(176, 32, 32);
@@ -19,14 +62,6 @@ under the img but it will move it to the left too much */
     border: 1px solid red;
 }
 
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 225px;
-    width: 40%;
-}
-
 .img-group {
     font-size: 0;
 }
@@ -35,7 +70,6 @@ form {
     max-width: 400px;
     margin: 0 auto;
     padding: 16px 16px 24px;
-    /* stylelint-disable-next-line color-function-notation */
     box-shadow: 0 2px 32px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     background-color: #848484;
@@ -71,7 +105,6 @@ label {
 }
 
 .forgot-password-button {
-    /* stylelint-disable-next-line color-function-notation */
     background-color: #D9D9D9;
     color: black;
     margin: auto 20px;
@@ -92,7 +125,7 @@ label {
     border-radius: 4px;
     border-color: #D9D9D9;
     font-size: .65rem;
-}
+} */
 
 .left-side {
     width: 50%;

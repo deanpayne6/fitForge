@@ -6,32 +6,43 @@
 
 
     <form (ngSubmit)="login()" [formGroup]="userLoginForm">
-        <div class="form-control">
-            <label>Email</label>
-            <input type="email" placeholder="Ex. example123@testdomain.com" formControlName="userEmail"
+        <div class = "container">
+
+            <div>
+                <input class = "form-control"type="email" placeholder="Email/Username" formControlName="userEmail"
                 [class.error-border]="userLoginForm.get('userEmail').invalid && (userLoginForm.get('userEmail').dirty || userLoginForm.get('userEmail').touched)">
-            <!-- doing some validation errors messages-->
-            <div
-                *ngIf="userLoginForm.get('userEmail').invalid && (userLoginForm.get('userEmail').dirty || userLoginForm.get('userEmail').touched)">
-                <div *ngIf="userLoginForm.get('userEmail').errors.required" class="error-message">Email is required.
-                </div>
-                <div *ngIf="userLoginForm.get('userEmail').errors.email" class="error-message">Invalid email format.
+                <!-- doing some validation errors messages-->
+                <div *ngIf="userLoginForm.get('userEmail').invalid && (userLoginForm.get('userEmail').dirty || userLoginForm.get('userEmail').touched)">
+                    <div *ngIf="userLoginForm.get('userEmail').errors.required" class="error-message invalid-text text-danger">Email is required.
+                    </div>
+                    <div *ngIf="userLoginForm.get('userEmail').errors.email" class="error-message invalid-text text-danger">Invalid email format.
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class=" form-control">
-            <label>Password</label>
-            <input type="password" formControlName="userPassword" />
-        </div>
+            <div>
+                <input class = "form-control"type="password" formControlName="userPassword" placeholder="Password"
+                [class.error-border]="userLoginForm.get('userPassword').invalid && userLoginForm.get('userPassword').touched"/>
+            </div>
+            
+            <div *ngIf="userLoginForm.get('userPassword').invalid && userLoginForm.get('userPassword').touched">
+                <div *ngIf="userLoginForm.get('userPassword').errors.required" class="error-message invalid-text text-danger">Required.
+                </div>
+            </div>
 
-        <button onclick="forgotPassword()" class="forgot-password-button">Forgot Password?</button>
-        <button type="submit" class="login-button">Login</button>
-
-        <p class="register-link">Don't have one? <a
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUYbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXAg">Sign
+            <div class="d-grid gap-2 button-login-container">
+                <button type="submit" class="login-button btn btn-warning">Login</button>
+            </div>
+            
+            <p class="text-center fs-6"><a
+                href="/register">Forgot Password</a>
+            </p>
+            
+            <p class="text-center">Don't have one? <a
+                href="/register">Sign
                 up!</a>
-        </p>
-
+            </p>
+        </div>
+        
     </form>
 </div>
 

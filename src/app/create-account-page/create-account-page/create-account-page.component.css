@@ -1,0 +1,59 @@
+
+
+
+.img-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+}
+
+button{
+    display: block;
+}
+
+input{
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.268)
+}
+
+.container{
+    max-width: 350px;
+}
+
+.invalid-text{
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: -8px;
+    padding-left: 3px;
+}
+
+.error-border {
+    border: 1px solid red;
+}
+
+.invalid-border{
+    border: 1px solid #ffc107;
+}
+
+.password-requirements {
+    margin-top: 8px;
+}
+
+.requirement {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.requirement.met {
+    color: green;
+}
+
+.valid-border{
+    border: 1px solid  #039487;
+}
+
+.terms{
+    margin-left:5px;
+}
