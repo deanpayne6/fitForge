@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -36,7 +37,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ToolbarComponent,
     CreateAccountPageComponent,
     AboutPageComponent,
-    QuestionnairePageComponent
+    QuestionnairePageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
