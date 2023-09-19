@@ -7,6 +7,10 @@
 
 }
 
+/* .main{
+    background: linear-gradient(to bottom,#fff 0%,#000000 100%);
+} */
+
 *{
     box-sizing: border-box;
 }
@@ -73,4 +77,31 @@ section.gym-photo .content h1{
 section.gym-photo .content p{
     color: rgb(236, 236, 236);
     text-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5)
+}
+
+section.example-photos{
+    padding: 0 4vw;
+    margin-bottom: 4.5vw;
+}
+
+section.example-photos .box{
+    width: 42vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+section.example-photos .box picture img{
+    width: 42vw;
+   
+}
+
+section.example-photos .container .box .content{
+    background-color: white;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 4.6vw 4.6vw;
+    justify-content: center;
+    flex: 1;
 }
