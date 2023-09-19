@@ -6,12 +6,14 @@ import { InitalLoginPageComponent } from './inital-login-page/inital-login-page.
 import { CreateAccountPageComponent } from './create-account-page/create-account-page/create-account-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { QuestionnairePageComponent } from './questionnaire-page/questionnaire-page.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path: '', component: InitalLoginPageComponent},
   {path: 'register', component: CreateAccountPageComponent},
   {path: 'about', component: AboutPageComponent},
   {path: 'userquestionnaire', component: QuestionnairePageComponent},
+  {path: 'home', component: HomeComponent},
 ];
 
 @NgModule({
