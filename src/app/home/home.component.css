@@ -2,14 +2,15 @@
     display: flex;
     align-items: center;
     height: 8.4vw;
-    background: rgb(1, 1, 1);
+    background: rgb(0, 0, 0);
     justify-content: space-between;
 
 }
 
-/* .main{
-    background: linear-gradient(to bottom,#fff 0%,#000000 100%);
-} */
+.main{
+    /* background: linear-gradient(to bottom,#fff 0%,#000000 100%); */
+    background-color: #000000;
+}
 
 *{
     box-sizing: border-box;
@@ -81,18 +82,18 @@ section.gym-photo .content p{
 
 section.example-photos{
     padding: 0 4vw;
-    margin-bottom: 4.5vw;
+    /* margin-bottom: 4.5vw; */
 }
 
 section.example-photos .box{
-    width: 42vw;
+    width: 33vw;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
 }
 
-section.example-photos .box picture img{
-    width: 42vw;
+section.example-photos .box img{
+    width: 33vw;
    
 }
 
@@ -101,7 +102,17 @@ section.example-photos .container .box .content{
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    padding: 4.6vw 4.6vw;
+    padding: 2.6vw 2.6vw;
     justify-content: center;
     flex: 1;
 }
+
+section.example-photos .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* footer{
+    background-color: #7c5959;
+} */
