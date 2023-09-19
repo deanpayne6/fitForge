@@ -1,0 +1,76 @@
+.top-bar{
+    display: flex;
+    align-items: center;
+    height: 8.4vw;
+    background: rgb(1, 1, 1);
+    justify-content: space-between;
+
+}
+
+*{
+    box-sizing: border-box;
+}
+
+nav{
+    display: block;
+}
+
+div{
+    display: block;
+}
+
+.top-bar-left{
+    padding: 0 5vw;
+}
+
+.top-bar-logo{
+    display: flex;
+    align-items: center;
+    flex: 0, 0, auto;
+    padding: 0 1.34vw;
+}
+
+.top-bar-logo img{
+    margin: 0 0;
+    height: 5vw;
+}
+
+a{
+    padding: 0.5vw 0 0.5vw;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.top-bar-right{
+    padding: 0 5vw;
+
+}
+
+section.gym-photo{
+    padding: 0 4vw;
+    margin-bottom: 4.5vw;
+}
+
+section.gym-photo .container{
+    background-image: url(src/assets/blackandwhitephotooldschoolgym.jpeg);
+    background-size: 100% 100%;
+    height: 54vw;
+    position: relative;
+}
+
+section.gym-photo .content{
+    position: absolute;
+    right: 2vw;
+    width: 40vw;
+    top: 12.5vw;
+}
+
+section.gym-photo .content h1{
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5)
+}
+
+section.gym-photo .content p{
+    color: rgb(236, 236, 236);
+    text-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5)
+}
