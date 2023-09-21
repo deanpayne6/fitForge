@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-inital-login-page',
@@ -10,22 +11,38 @@ export class InitalLoginPageComponent {
 
   userLoginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { };
+  constructor(private fb: FormBuilder, private apiService: ApiService) { };
+
+  
+  userExists = false;
 
   ngOnInit(): void {
     this.userLoginForm = this.fb.group({
       userEmail: ['', [Validators.required, Validators.email]],
-      userPassword: ['', [Validators.required]]
+      userPassword: ['', [Validators.required]],
     });
   }
 
 
   login() {
-    // do api stuff here
-    // Luis code:
     const userData = {
       email: this.userLoginForm.get('userEmail').value,
       password: this.userLoginForm.get('userPassword').value
+    }
+    if (userData) {
+      this.apiService.checkLoginInfo(userData).subscribe(
+        (response) => {
+          console.log("User exists: ", response.exists);
+          if (response.exists === true){
+            this.userExists = true;
+          }else{
+            this.userExists = false;
+          }
+        },
+        (error) => {
+          console.error("Checking email availability error:", error);
+        }
+      );
     }
     console.log(userData);
   }
