@@ -36,7 +36,6 @@ a{
 }
 
 .userQuestionnaire{
-    margin: 10px;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -91,9 +90,14 @@ h4{
     color: white;
 }
 
-/* .container{
-    padding-top: 50px;
-} */
+.height-input-box{
+    width: 20vw;
+
+}
+
+.weight-input-box{
+    width: 10vw;
+}
 
 mat-radio-group{
     font-size: 1vw;

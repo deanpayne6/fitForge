@@ -30,4 +30,52 @@ export class QuestionnairePageComponent {
     this.hasData = !this.hasData;
   };
 
+  feetHeightModel = { feet: null };
+  feetInputValue: number;
+
+  validateHeightFeetInput(){
+    const min = 4;
+    const max = 7;
+
+    if(isNaN(this.feetInputValue) || this.feetInputValue < min){
+      this.feetInputValue = min;
+    } else if(this.feetInputValue > max){
+      this.feetInputValue = max;
+
+    }
+    
+  }
+
+  inchesHeightModel = { inches: null };
+  inchesInputValue: number;
+
+  validateHeightInchesInput(){
+    const min = 0;
+    const max = 11;
+
+    if(isNaN(this.inchesInputValue) || this.inchesInputValue < min){
+      this.inchesInputValue = min;
+    } else if(this.inchesInputValue > max){
+      this.inchesInputValue = max;
+
+    }
+    
+  }
+
+  poundsModel  = { weight: null };
+  poundsInputValue: number;
+
+  validateWeightInput(){
+    const min = 50;
+    const max = 700;
+
+    if(isNaN(this.poundsInputValue) || this.poundsInputValue < min){
+      this.poundsInputValue = min;
+    } else if(this.poundsInputValue > max){
+      this.poundsInputValue = max;
+
+    }
+    
+  }
+
 }

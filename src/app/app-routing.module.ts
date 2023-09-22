@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'about', component: AboutPageComponent},
   {path: 'userquestionnaire', component: QuestionnairePageComponent},
   {path: 'home', component: HomeComponent},
+  {path: "**", component: HomeComponent},
 ];
 
 @NgModule({
