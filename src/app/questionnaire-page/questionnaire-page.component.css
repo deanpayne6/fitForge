@@ -1,3 +1,40 @@
+.top-bar{
+    display: flex;
+    align-items: center;
+    height: 8.4vw;
+    background: rgb(38, 38, 38);
+    justify-content: space-between;
+
+}
+
+.top-bar-right{
+    padding: 0 5vw;
+
+}
+
+.top-bar-left{
+    padding: 0 5vw;
+}
+
+.top-bar-logo{
+    display: flex;
+    align-items: center;
+    /* flex: 0, 0, auto; */
+    padding: 0 1.34vw;
+}
+
+.top-bar-logo img{
+    margin: 0 0;
+    height: 5vw;
+}
+
+a{
+    padding: 0.5vw 0.5vw;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1.1vw;
+}
+
 .userQuestionnaire{
     margin: 10px;
     display: flex;
@@ -8,12 +45,15 @@
 
 .userQuestionnaireAccordian{
     display: block;
-    max-width: 500px;
+    width: 60vw;
 }
 
 .userQuestionnaireAccordianItem{
-    background-color: rgb(207, 212, 212);
+    background-color: rgb(255, 255, 255);
     font-size: larger;
+    border: 0.3vw solid gray;
+    border-radius: 1.5vw;
+    min-height: 3vw;
 }
 
 .stackedSelect{
@@ -26,20 +66,64 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30vh;
     text-align: center;
+    padding: 2.5vw 0.5vw 1vw 0.5vw;
 }
 
-/* .spacing-left{
-    margin-left: 10px;
-} */
+.align-left{
+    display: flex;
+    flex-direction: column;
+    margin: 0.3vw 0;
+    align-items: flex-start;
+}
+
+.align-middle{
+    display: flex;
+    flex-direction: column;
+    margin: 0.3vw 0;
+    align-items:self-start
+}
 
 h4{
     
     font-family: 'Open Sans', sans-serif;
-    font-size: 15px; /* Adjust the font size as needed */
+    font-size: 1.3vw;
+    color: white;
 }
 
-.container{
+/* .container{
     padding-top: 50px;
+} */
+
+mat-radio-group{
+    font-size: 1vw;
+}
+
+max-expansive-panel{
+    border: 0.3vw solid gray;
+    border-radius: 1.5vw;
+    margin-bottom: 3vw;
+}
+
+mat-radio-button mat-radio-label-content{
+    text-align: left;
+    padding-left: 0;
+}
+
+mat-radio-button{
+    border: 0;
+    --radio-button-size: 50vw;
+}
+
+mat-form-field{
+    margin: 2.5vw 0;
+}
+
+.main{
+    /* background: linear-gradient(to bottom,#fff 0%,#000000 100%); */
+    background-color: black;
+}
+
+h5{
+    padding: 1vw 0 1vw 0;
 }

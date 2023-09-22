@@ -21,6 +21,9 @@ export class QuestionnairePageComponent {
   selectedIntensity: string = '';
   intensities: string[] = ['Light', 'Moderate', 'Intense'];
 
+  selectedFrequency: string = '';
+  userFrequencies: string[] = ['Less than 3 times a week', '3-5 times a week', '6-7 times a week'];
+
   hasData: boolean = false;
 
   toggleDataEntry(){
