@@ -23,6 +23,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HomeComponent } from './home/home.component';
+import { WorkoutCreatePageComponent } from './workout-create-page/workout-create-page.component';
 
 
 
@@ -38,7 +39,8 @@ import { HomeComponent } from './home/home.component';
     CreateAccountPageComponent,
     AboutPageComponent,
     QuestionnairePageComponent,
-    HomeComponent
+    HomeComponent,
+    WorkoutCreatePageComponent
   ],
   imports: [
     BrowserModule,
