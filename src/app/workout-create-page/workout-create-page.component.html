@@ -16,8 +16,6 @@
     </div>
   </div>
   
-  <!-- Centered container for the muscle group containers -->
- <!-- Centered container for the muscle group containers -->
 <div class="container mt-3">
     <div class="row justify-content-center">
       <div *ngFor="let container of muscleGroupContainers" class="main-muscle-group-container col-md-4">
@@ -30,9 +28,46 @@
           <button class="btn btn-danger" (click)="removeExercise(container)">Remove</button>
         </div>
   
-        <!-- Individual workout containers -->
-        <div *ngFor="let workout of container.individualWorkouts" class="individual-workout-container">
-          <!-- Add content for individual workout container here -->
+       <!-- Individual workout containers -->
+        <div *ngFor="let workout of container.individualWorkouts" class="individual-workout-container custom-dropdown mt-3 row">
+          <!-- Dropdown menu with options -->
+          <div class="dropdown col-12">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select an option
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" *ngFor="let option of dropdownOptions">{{ option }}</a>
+            </div>
+          </div>
+
+          <!-- Separate row for the columns -->
+          <div class="row mt-3 text-center">
+            <div class="col-sm-4 workout-info-container">
+              One of three columns
+            </div>
+            <div class="col-sm-4 workout-info-container">
+              One of three columns
+            </div>
+            <div class="col-sm-4 workout-info-container">
+              One of three columns
+            </div>
+          </div>
+
+
+          <div class="row mt-3 text-center ">
+            <div class="col-sm-4 workout-info-container">
+              One of three columns
+            </div>
+            <div class="col-sm-8 workout-info-container">
+              One of three columns
+            </div>
+          </div>
+
+          <div class="row mt-3 text-center">
+            <div class="col-sm-12 workout-info-container">
+              One of three columns
+            </div>
+          </div>
         </div>
       </div>
     </div>
