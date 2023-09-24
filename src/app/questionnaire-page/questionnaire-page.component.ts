@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-questionnaire-page',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./questionnaire-page.component.css']
 })
 export class QuestionnairePageComponent {
+  constructor (private apiService: ApiService) {};
+
   selectedActivityLevel: string = '';
   activityLevels: string[] = ['Sedentary (Little to No Exercise)', 'Lightly Active (Light Exercise or Sports 1-3 Days a Week)', 'Moderately Active (Moderate Exercise or Sports 3-5 Days a Week)', 'Very Active (Hard Exercise or Sports 6-7 Days a Week)', 'Extremely Active (Very Strenuous Exercise, Physical Job, or Training Twice a Day)'];
 
@@ -78,4 +81,18 @@ export class QuestionnairePageComponent {
     
   }
 
+  submit() {
+    this.apiService.sendPostRequest(formData).subscribe(
+      (response) => {
+        if (response.status === 200) {
+          console.log("Registration successful.");
+          console.log("Response data:", response.body);
+        } else {
+          console.error("Registration failed with status code:", response.status);
+        }
+      },
+      (error) => {
+        console.error("Registration error:", error);
+      }
+    );
 }
