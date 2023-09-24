@@ -18,8 +18,9 @@ export class ApiService {
     return this.http.get<{ exists: boolean }>(url);
   }
 
+  // Dean copy this one
   sendPostRequest(formData: any): Observable<any> {
-    const url = 'http://localhost:3200/registerInfo'; // Replace with your actual POST endpoint
+    const url = 'http://localhost:3200/registerInfo';
     return this.http.post(url, formData);
   }
 }

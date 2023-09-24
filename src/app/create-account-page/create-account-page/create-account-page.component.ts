@@ -119,7 +119,7 @@ export class CreateAccountPageComponent {
         first_name: this.userRegisterForm.value.userFirstName,
         last_name: this.userRegisterForm.value.userLastName,
         email: this.userRegisterForm.value.userEmail,
-        Password: this.userRegisterForm.value.userPassword,
+        password: this.userRegisterForm.value.userPassword,
         // userAge: this.userRegisterForm.value.userAge, //this does not exist on db yet
         // username: this.userRegisterForm.value.username, //does not exist on db yet
       };

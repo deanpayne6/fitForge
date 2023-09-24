@@ -10,10 +10,20 @@ import { WorkoutService } from './workout.service'
 
 
 export class WorkoutCreatePageComponent {
-  workoutOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
+  workoutOptions: string[] = ['Bicep','Tricep','Chest','Back','Shoulders','Abs','Legs'];
   muscleGroupContainers: { option: string, individualWorkouts: any[] }[] = [];
   selectedOption: string = '';
   dropdownOptions: string[] = [];
+  selectedIndividualWorkoutOption: string = ""
+  individualExerciseOptions: string[] = [];
+  individualExerciseOptionsString: string = ""
+
+  numOfSets: string = '';
+  numOfReps: string = '';
+  restTime: string = '';
+  weight: string = '';
+  target: string = '';
+  vidLink: string = '';
 
   constructor(private workoutService: WorkoutService) {}
 
