@@ -9,12 +9,19 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
 
 
 export class WorkoutCreatePageComponent {
-  workoutOptions: string[] = ['Option 1', 'Option 2', 'Option 3']; // Add your dynamic options here
-  muscleGroupContainers: string[] = [];
-
-  selectedOption: string = ''; // Variable to store the selected option
+  workoutOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
+  muscleGroupContainers: { option: string, individualWorkouts: any[] }[] = [];
+  selectedOption: string = '';
 
   createMuscleGroupContainer() {
-    this.muscleGroupContainers.push(this.selectedOption);
+    this.muscleGroupContainers.push({ option: this.selectedOption, individualWorkouts: [] });
+  }
+
+  addExercise(mainContainer: any) {
+    mainContainer.individualWorkouts.push({});
+  }
+
+  removeExercise(mainContainer: any, index: number) {
+    mainContainer.individualWorkouts.splice(index, 1);
   }
 }

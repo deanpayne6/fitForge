@@ -17,16 +17,23 @@
   </div>
   
   <!-- Centered container for the muscle group containers -->
-  <div class="container mt-3">
+ <!-- Centered container for the muscle group containers -->
+<div class="container mt-3">
     <div class="row justify-content-center">
       <div *ngFor="let container of muscleGroupContainers" class="main-muscle-group-container col-md-4">
         <!-- Display the selected option inside each container -->
-        <p class="text-center">{{ container }}</p>
-
+        <p class="text-center">{{ container.option }}</p>
+  
+        <!-- Add and Remove buttons -->
         <div class="text-center">
-            <button class="btn btn-success" (click)="addExercise(container)">Add</button>
-            <button class="btn btn-danger" (click)="removeExercise(container)">Remove</button>
-          </div>
+          <button class="btn btn-success" (click)="addExercise(container)">Add</button>
+          <button class="btn btn-danger" (click)="removeExercise(container)">Remove</button>
+        </div>
+  
+        <!-- Individual workout containers -->
+        <div *ngFor="let workout of container.individualWorkouts" class="individual-workout-container">
+          <!-- Add content for individual workout container here -->
+        </div>
       </div>
     </div>
   </div>

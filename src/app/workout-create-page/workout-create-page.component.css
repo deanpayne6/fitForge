@@ -5,3 +5,11 @@
     margin: 10px;
     width: 75%;
   }
+
+  .individual-workout-container {
+    /* Add your styles for the container here */
+    background-color: red;
+    padding: 10px;
+    margin: 10px;
+    width: 75%;
+  }
