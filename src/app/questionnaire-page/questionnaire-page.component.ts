@@ -83,18 +83,31 @@ export class QuestionnairePageComponent {
     
   }
 
-  submit() {
-    this.apiService.sendPostRequest(formData).subscribe(
-      (response) => {
-        if (response.status === 200) {
-          console.log("Registration successful.");
-          console.log("Response data:", response.body);
-        } else {
-          console.error("Registration failed with status code:", response.status);
-        }
-      },
-      (error) => {
-        console.error("Registration error:", error);
+    submit() {
+
+
+
+      const formData = {
+        activity: this.selectedActivityLevel,
+        experience: this.selectedExperience,
+        gym: this.selectedGymEquipment,
+        goal: this.selectedGoal,
+        intensity: this.selectedIntensity,
+        frequency: this.selectedFrequency,
       }
-    );
+
+      this.apiService.sendPostRequest(formData).subscribe(
+        (response) => {
+          if (response.status === 200) {
+            console.log("Registration successful.");
+            console.log("Response data:", response.body);
+          } else {
+            console.error("Registration failed with status code:", response.status);
+          }
+        },
+        (error) => {
+          console.error("Registration error:", error);
+        }
+      );
+    }
 }
