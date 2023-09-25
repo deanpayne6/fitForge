@@ -16,7 +16,9 @@ export class QuestionnairePageComponent {
   experiences: string[] = ['Beginner', 'Intermediate', 'Expert'];
 
   selectedGymEquipment: string = '';
-  equipmentLevels: string[] = ['Home Gym (Body Weight)', 'Home Gym (Free Weights)', 'Home Gym (Mixed Equipment)', 'Community or Outdoor Gym', 'Commercial Gym'];
+  // equipmentLevels: string[] = ['Home Gym (Body Weight)', 'Home Gym (Free Weights)', 'Home Gym (Mixed Equipment)', 'Community or Outdoor Gym', 'Commercial Gym'];
+  equipmentLevels: string[] = ['No Gym', 'Limited Gym', 'Commercial Gym'];
+
 
   selectedGoal: string = '';
   userGoals: string[] = ['Weight Loss', 'Muscle Building (Hypertrophy)', 'Strength and Power'];
