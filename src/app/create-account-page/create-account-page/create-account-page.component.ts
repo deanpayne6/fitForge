@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-account-page',
@@ -21,7 +22,7 @@ export class CreateAccountPageComponent {
   numberPattern = /[0-9]/;
   captialLetterPattern = /[A-Z]/
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {}
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.userRegisterForm = this.fb.group({
@@ -127,9 +128,11 @@ export class CreateAccountPageComponent {
     // this is the part that is doing the post request, still not sure if it works, waiting for backend
     this.apiService.sendPostRequest(formData).subscribe(
       (response) => {
-        if (response.status === 200) {
+        console.log(response)
+        if (response.success === true) {
           console.log("Registration successful.");
           console.log("Response data:", response.body);
+          this.router.navigate(['/userquestionnaire'])
         } else {
           console.error("Registration failed with status code:", response.status);
         }

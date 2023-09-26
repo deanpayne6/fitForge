@@ -42,7 +42,7 @@ export class InitalLoginPageComponent {
           if (response.authenticated === true){
             this.router.navigate(['/home'])
           } else {
-            
+            // user should see something like 'email does not exist'
           }
         },
         (error) => {
