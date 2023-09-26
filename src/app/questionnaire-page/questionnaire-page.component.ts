@@ -84,9 +84,6 @@ export class QuestionnairePageComponent {
   }
 
     submit() {
-
-
-
       const formData = {
         activity: this.selectedActivityLevel,
         experience: this.selectedExperience,

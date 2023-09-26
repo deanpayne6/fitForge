@@ -20,7 +20,7 @@ export class ApiService {
 
   // Dean copy this one
   sendPostRequest(formData: any): Observable<any> {
-    const url = 'http://localhost:3200/registerInfo';
+    const url = 'http://localhost:3200/register';
     return this.http.post(url, formData);
   }
 }

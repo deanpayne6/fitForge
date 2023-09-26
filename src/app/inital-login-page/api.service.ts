@@ -8,8 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  checkLoginInfo(formData: any): Observable<any> {
-    const url = `http://localhost:3200/login`;
+  checkLoginInfo(url: any, formData: any): Observable<any> {
     return this.http.get(url, formData)
   }
 

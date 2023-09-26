@@ -114,31 +114,29 @@ export class CreateAccountPageComponent {
   // this is a post request for to populate the db with new user
   // still unsure if it works, waiting on backend to implement function on backend to properly add to db
   register() {
-    if (this.userRegisterForm.valid) {
-      const formData = {
-        first_name: this.userRegisterForm.value.userFirstName,
-        last_name: this.userRegisterForm.value.userLastName,
-        email: this.userRegisterForm.value.userEmail,
-        password: this.userRegisterForm.value.userPassword,
-        // userAge: this.userRegisterForm.value.userAge, //this does not exist on db yet
-        // username: this.userRegisterForm.value.username, //does not exist on db yet
-      };
-      
+    const formData = {
+      first_name: this.userRegisterForm.value.userFirstName,
+      last_name: this.userRegisterForm.value.userLastName,
+      email: this.userRegisterForm.value.userEmail,
+      password: this.userRegisterForm.value.userPassword,
+      userAge: this.userRegisterForm.value.userAge, //this does not exist on db yet
+      username: this.userRegisterForm.value.username, //does not exist on db yet
+    };
+    
 
-      // this is the part that is doing the post request, still not sure if it works, waiting for backend
-      this.apiService.sendPostRequest(formData).subscribe(
-        (response) => {
-          if (response.status === 200) {
-            console.log("Registration successful.");
-            console.log("Response data:", response.body);
-          } else {
-            console.error("Registration failed with status code:", response.status);
-          }
-        },
-        (error) => {
-          console.error("Registration error:", error);
+    // this is the part that is doing the post request, still not sure if it works, waiting for backend
+    this.apiService.sendPostRequest(formData).subscribe(
+      (response) => {
+        if (response.status === 200) {
+          console.log("Registration successful.");
+          console.log("Response data:", response.body);
+        } else {
+          console.error("Registration failed with status code:", response.status);
         }
-      );
-    }
+      },
+      (error) => {
+        console.error("Registration error:", error);
+      }
+    );
   }
 }

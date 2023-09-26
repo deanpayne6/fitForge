@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inital-login-page',
@@ -11,7 +12,7 @@ export class InitalLoginPageComponent {
 
   userLoginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) { };
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) { };
 
   
   userExists = false;
@@ -25,18 +26,23 @@ export class InitalLoginPageComponent {
 
 
   login() {
+
     const userData = {
       email: this.userLoginForm.get('userEmail').value,
       password: this.userLoginForm.get('userPassword').value
     }
+
+    let url = "http://localhost:3200/login?email=" + userData.email + "&password=" + userData.password;
+    console.log(url);
     if (userData) {
-      this.apiService.checkLoginInfo(userData).subscribe(
+      this.apiService.checkLoginInfo(url, userData).subscribe(
         (response) => {
-          console.log("User exists: ", response.exists);
-          if (response.exists === true){
-            this.userExists = true;
-          }else{
-            this.userExists = false;
+          console.log(response)
+          console.log("User exists: ", response.authenticated);
+          if (response.authenticated === true){
+            this.router.navigate(['/home'])
+          } else {
+            
           }
         },
         (error) => {
