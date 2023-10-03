@@ -24,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HomeComponent } from './home/home.component';
 import { WorkoutCreatePageComponent } from './workout-create-page/workout-create-page.component';
+import { UserService } from './user.service';
 
 
 
@@ -59,7 +60,7 @@ import { WorkoutCreatePageComponent } from './workout-create-page/workout-create
     MatSelectModule,
     MatCheckboxModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

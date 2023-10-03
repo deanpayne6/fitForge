@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-inital-login-page',
@@ -12,7 +13,7 @@ export class InitalLoginPageComponent {
 
   userLoginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) { };
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, public userService: UserService) { };
 
   
   userExists = false;
@@ -32,8 +33,11 @@ export class InitalLoginPageComponent {
       password: this.userLoginForm.get('userPassword').value
     }
 
+    // set user email
+    this.userService.setUser(this.userLoginForm.get('userEmail').value);
+
     let url = "http://localhost:3200/login?email=" + userData.email + "&password=" + userData.password;
-    console.log(url);
+
     if (userData) {
       this.apiService.checkLoginInfo(url, userData).subscribe(
         (response) => {
