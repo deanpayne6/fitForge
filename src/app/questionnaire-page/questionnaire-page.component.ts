@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-questionnaire-page',
@@ -7,7 +8,9 @@ import { ApiService } from './api.service';
   styleUrls: ['./questionnaire-page.component.css']
 })
 export class QuestionnairePageComponent {
-  constructor (private apiService: ApiService) {};
+  constructor (private apiService: ApiService, public userService: UserService) {};
+
+  current_user = this.userService.getUser();
 
   selectedActivityLevel: string = '';
   activityLevels: string[] = ['Sedentary (Little to No Exercise)', 'Lightly Active (Light Exercise or Sports 1-3 Days a Week)', 'Moderately Active (Moderate Exercise or Sports 3-5 Days a Week)', 'Very Active (Hard Exercise or Sports 6-7 Days a Week)', 'Extremely Active (Very Strenuous Exercise, Physical Job, or Training Twice a Day)'];

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-inital-login-page',
