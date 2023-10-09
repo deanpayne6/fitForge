@@ -25,6 +25,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HomeComponent } from './home/home.component';
 import { WorkoutCreatePageComponent } from './workout-create-page/workout-create-page.component';
 import { UserService } from './user.service';
+import { WorkoutRatingComponent } from './workout-rating/workout-rating.component';
 
 
 
@@ -41,7 +42,8 @@ import { UserService } from './user.service';
     AboutPageComponent,
     QuestionnairePageComponent,
     HomeComponent,
-    WorkoutCreatePageComponent
+    WorkoutCreatePageComponent,
+    WorkoutRatingComponent
   ],
   imports: [
     BrowserModule,
