@@ -11,6 +11,33 @@
     background-color: gray;
 }
 
+.fit-forge-logo{
+    max-width: 50vw;
+}
+
 .header-message{
-    max-width: 25vw;
+    max-width: 50vw;
+}
+
+.workout-rating-container{
+    display: flex;
+    /* Maybe delete line below*/
+    /* justify-content: space-between; */
+    background-color: lightgrey;
+    margin-top: 1vh;
+}
+
+.workout-rating-image{
+    max-width: 10vw;
+    margin: 1vw;
+    border: 2px solid black;
+    flex: 0; /*  makes it so that it doesn't grow or shrink */
+}
+
+.stacked-name-and-stars{
+    display: flex;
+    flex: 1; /* has the item take up the rest of the space */
+    flex-direction: column;
+    align-items: center;
+    margin: 1vw;
 }
