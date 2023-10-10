@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./workout-rating.component.css']
 })
 export class WorkoutRatingComponent {
+  currentDate = new Date();
 
 }

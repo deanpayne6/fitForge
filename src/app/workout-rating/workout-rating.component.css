@@ -1,0 +1,16 @@
+.main{
+    background-color: black;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5vw;
+    background-color: gray;
+}
+
+.header-message{
+    max-width: 25vw;
+}
