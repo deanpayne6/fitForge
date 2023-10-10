@@ -17,11 +17,12 @@
 
 .header-message{
     max-width: 50vw;
+    text-align: center;
 }
 
 .workout-rating-container{
     display: flex;
-    /* Maybe delete line below*/
+    /* Maybe delete line below */
     /* justify-content: space-between; */
     background-color: lightgrey;
     margin-top: 1vh;
