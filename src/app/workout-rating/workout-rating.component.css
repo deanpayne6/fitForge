@@ -1,5 +1,7 @@
 .main{
     background-color: black;
+    height: 100%;
+    min-height: 100vh;
 }
 
 .content{
@@ -25,7 +27,7 @@
     /* Maybe delete line below */
     /* justify-content: space-between; */
     background-color: lightgrey;
-    margin-top: 1vh;
+    margin: 1vh 0;
 }
 
 .workout-rating-image{
@@ -41,4 +43,8 @@
     flex-direction: column;
     align-items: center;
     margin: 1vw;
+}
+
+.rating-button{
+    color: white;
 }
