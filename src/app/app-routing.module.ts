@@ -8,6 +8,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { QuestionnairePageComponent } from './questionnaire-page/questionnaire-page.component';
 import { HomeComponent } from './home/home.component';
 import { WorkoutCreatePageComponent } from './workout-create-page/workout-create-page.component';
+import { WorkoutRatingComponent } from './workout-rating/workout-rating.component';
 
 const routes: Routes = [
   {path: '', component: InitalLoginPageComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'userquestionnaire', component: QuestionnairePageComponent},
   {path: 'home', component: HomeComponent},
   {path: 'createWorkout', component:WorkoutCreatePageComponent},
+  {path: 'workoutrating', component:WorkoutRatingComponent},
   {path: "**", component: HomeComponent},
 ];
 

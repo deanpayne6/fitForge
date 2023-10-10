@@ -11,6 +11,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { CreateAccountPageComponent } from './create-account-page/create-account-page/create-account-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutPageComponent } from './about-page/about-page.component';
@@ -61,6 +63,8 @@ import { WorkoutRatingComponent } from './workout-rating/workout-rating.componen
     MatRadioModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatIconModule,
+    MatToolbarModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
