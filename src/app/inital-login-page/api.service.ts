@@ -14,7 +14,7 @@ export class ApiService {
 
 
   sendPostRequest(formData: any): Observable<any> {
-    const url = 'http://localhost:3200/registerInfo'; // Replace with your actual POST endpoint
+    const url = 'http://3.101.142.184:3200/registerInfo'; // Replace with your actual POST endpoint
     return this.http.post(url, formData);
   }
 }
