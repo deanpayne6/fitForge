@@ -25,6 +25,9 @@ export class InitalLoginPageComponent {
     });
   }
 
+  ip = "http://3.101.142.184:3200/"
+
+  test = "http://localhost:3200/"
 
   login() {
 
@@ -36,7 +39,7 @@ export class InitalLoginPageComponent {
     // set user email
     this.userService.setUser(this.userLoginForm.get('userEmail').value);
 
-    let url = "http://localhost:3200/login?email=" + userData.email + "&password=" + userData.password;
+    let url = this.ip + "login?email=" + userData.email + "&password=" + userData.password;
 
     if (userData) {
       this.apiService.checkLoginInfo(url, userData).subscribe(
