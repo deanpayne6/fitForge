@@ -35,13 +35,15 @@ export class InitalLoginPageComponent {
     }
 
     // production IP and localhost test variables
-    const prod = "http://3.101.142.184:3200/"
-    const test = "http://localhost:3200/"
+    let prod = "http://3.101.142.184:3200/"
+    let test = "http://localhost:3200/"
 
     // set user email
     this.userService.setUser(this.userLoginForm.get('userEmail').value);
 
     let url = prod + "login?email=" + userData.email + "&password=" + userData.password;
+
+    console.log(url)
 
     if (userData) {
       this.apiService.checkLoginInfo(url, userData).subscribe(
