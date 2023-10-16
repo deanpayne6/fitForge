@@ -27,13 +27,18 @@ export class WorkoutCreatePageComponent {
 
   constructor(private workoutService: WorkoutService) {}
 
-  ngOnInit() {
-    this.workoutService.getDropdownOptions().subscribe((options) => {
-      this.dropdownOptions = options;
+  ngOnInit() {}
+
+  getWorkout() {
+    // Example usage
+    this.workoutService.getGenerateWorkout ("Tricep", "short", 'andrew').subscribe(response => {
+      // Handle the response here
+      console.log(response);
+    }, error => {
+      // Handle errors
+      console.error(error);
     });
   }
-
-
 
   createMuscleGroupContainer() {
     this.muscleGroupContainers.push({ option: this.selectedOption, individualWorkouts: [] });
