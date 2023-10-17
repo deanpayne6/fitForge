@@ -35,7 +35,7 @@ export class InitalLoginPageComponent {
     }
 
     // production IP and localhost test variables
-    let prod = "http://3.101.142.184:3200/"
+    let prod = "https://api.fitforgebackend.com:3200/"
     let test = "http://localhost:3200/"
 
     // set user email
