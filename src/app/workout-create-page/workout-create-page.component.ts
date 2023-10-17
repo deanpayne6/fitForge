@@ -25,17 +25,25 @@ export class WorkoutCreatePageComponent {
   target: string = '';
   vidLink: string = '';
 
+  selectedOption1: string = '';
+  selectedOption2: string = '';
+  selectedOption3: string = '';
+  selectedWorkoutLength: string = 'short';
+  selectedWorkoutArray: string[] = [];
+
   constructor(private workoutService: WorkoutService) {}
 
   ngOnInit() {}
 
   getWorkout() {
+
+    
+
+
     // Example usage
-    this.workoutService.getGenerateWorkout ("Tricep", "short", 'andrew').subscribe(response => {
-      // Handle the response here
+    this.workoutService.getGenerateWorkout (["Abs", "Tricep"], "medium", 'andrew').subscribe(response => {
       console.log(response);
     }, error => {
-      // Handle errors
       console.error(error);
     });
   }
