@@ -17,22 +17,22 @@
 
         <!-- <label for="workoutDropdown1">Click</label> -->
         <div *ngIf="selectedWorkoutLength === 'short'">
-          <select class="form-control" id="workoutDropdown1" [(ngModel)]="selectedOptions1">
+          <select class="form-control" id="workoutDropdown1" [(ngModel)]="selectedOption1">
             <option *ngFor="let option of workoutOptions">{{ option }}</option>
           </select>
-          <select class="form-control" id="workoutDropdown1" [(ngModel)]="selectedOptions2">
+          <select class="form-control" id="workoutDropdown1" [(ngModel)]="selectedOption2">
             <option *ngFor="let option of workoutOptions">{{ option }}</option>
           </select>
         </div>
   
         <div *ngIf="selectedWorkoutLength === 'medium' || selectedWorkoutLength === 'long'">
-          <select class="form-control" id="workoutDropdown1" [(ngModel)]="selectedOptions1">
+          <select class="form-control" id="workoutDropdown1" [(ngModel)]="selectedOption1">
             <option *ngFor="let option of workoutOptions">{{ option }}</option>
           </select>
-          <select class="form-control" id="workoutDropdown2" [(ngModel)]="selectedOptions2">
+          <select class="form-control" id="workoutDropdown2" [(ngModel)]="selectedOption2">
             <option *ngFor="let option of workoutOptions">{{ option }}</option>
           </select>
-          <select class="form-control" id="workoutDropdown2" [(ngModel)]="selectedOptions3">
+          <select class="form-control" id="workoutDropdown2" [(ngModel)]="selectedOption3">
             <option *ngFor="let option of workoutOptions">{{ option }}</option>
           </select>
         </div>

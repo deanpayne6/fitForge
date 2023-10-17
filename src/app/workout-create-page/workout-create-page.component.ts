@@ -10,7 +10,7 @@ import { WorkoutService } from './workout.service'
 
 
 export class WorkoutCreatePageComponent {
-  workoutOptions: string[] = ['Bicep','Tricep','Chest','Back','Shoulders','Abs','Legs'];
+  workoutOptions: string[] = ['Bicep','Tricep','Chest','Back','Shoulder','Abs','Legs'];
   muscleGroupContainers: { option: string, individualWorkouts: any[] }[] = [];
   selectedOption: string = '';
   dropdownOptions: string[] = [];
@@ -37,11 +37,33 @@ export class WorkoutCreatePageComponent {
 
   getWorkout() {
 
+    console.log(this.selectedOption1)
+    console.log(this.selectedOption2)
+    console.log(this.selectedOption3)
+    if (this.selectedWorkoutLength === 'short'){
+      if (this.selectedOption1 !== ''){
+        this.selectedWorkoutArray.push(this.selectedOption1);
+      }
+      if (this.selectedOption2 !== ''){
+        this.selectedWorkoutArray.push(this.selectedOption2)
+      }
+    } else {
+      if (this.selectedOption1 !== ''){
+        this.selectedWorkoutArray.push(this.selectedOption1);
+      }
+      if (this.selectedOption2 !== ''){
+        this.selectedWorkoutArray.push(this.selectedOption2)
+      }
+      if (this.selectedOption3 !== ''){
+        this.selectedWorkoutArray.push(this.selectedOption3)
+      }
+    }
+
+    console.log(this.selectedWorkoutArray)
     
 
-
     // Example usage
-    this.workoutService.getGenerateWorkout (["Abs", "Tricep"], "medium", 'andrew').subscribe(response => {
+    this.workoutService.getGenerateWorkout (this.selectedWorkoutArray, this.selectedWorkoutLength, 'andrew').subscribe(response => {
       console.log(response);
     }, error => {
       console.error(error);
