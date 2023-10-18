@@ -47,9 +47,9 @@
         </div> -->
       </div>
       <div class="col-md-4">
-        <button class="btn btn-primary btn-block" (click)="createMuscleGroupContainer()">Create Workout</button>
+        <!-- <button class="btn btn-primary btn-block" (click)="createMuscleGroupContainer()">Create Workout</button> -->
         <div class="col-md-4">
-          <button class="btn btn-success btn-block" (click)="getWorkout()">Get Workout</button>
+          <button class="btn btn-success btn-block" (click)="generateWorkout()">Generate Workout</button>
         </div>
       </div>
     </div>
@@ -58,28 +58,23 @@
 <div class="container mt-3">
     <div class="row justify-content-center">
   
-      <div *ngFor="let container of muscleGroupContainers" class="main-muscle-group-container row justify-content-center">
+      <div *ngFor="let container of muscleGroupContainers; let i = index" class="main-muscle-group-container row justify-content-center">
         <p class="text-center fw-bolder h3">{{""}}</p>
   
         <!-- Add and Remove buttons -->
         <div class="text-center">
-          <button class="btn btn-outline-dark" (click)="addExercise(container)">Add</button>
-          <button class="btn btn-outline-dark" (click)="removeExercise(container)">Remove</button>
+          <button class="btn btn-outline-dark" (click)="addExercise(container, i)">Add</button>
+          <button class="btn btn-outline-dark" (click)="removeExercise(container, i )">Remove</button>
         </div>
   
        <!-- Individual workout containers -->
-        <div *ngFor="let workout of container.individualWorkouts" class="individual-workout-container mt-3 row">
-          <!-- Dropdown menu with options -->
-          <div class="dropdown col-12">
-            <select class="form-control" [(ngModel)]="individualExerciseOptionsString">
-              <option *ngFor="let option of individualExerciseOptions">{{ option }}</option>
-            </select>
+        <div *ngFor="let workout of container.individualWorkouts; let j = index" class="individual-workout-container mt-3 row">
 
-            <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Select a Workout
-            </button> -->
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" *ngFor="let option of dropdownOptions">{{ option }}</a>
+          <div class="row mt-3 text-center">
+            <div class="col-sm-12 workout-info-container">
+              <label for="exerciseName" class = "fw-bold">Exercise</label>
+              <br>
+              <input class = "form-control" type="text" id="exerciseName" [(ngModel)]="container.individualExerciseOptionsStringArray[j]" placeholder="">
             </div>
           </div>
 
@@ -88,17 +83,17 @@
             <div class="col-sm-4 workout-info-container">
               <label for="numOfSets" class = "fw-bolder">Sets</label>
               <br>
-              <input class = "form-control" type="text" id="numOfSets" [(ngModel)]="numOfSets" placeholder="">
+              <input class = "form-control" type="text" id="numOfSets" [(ngModel)]="container.numOfSetsArray[j]" placeholder="">
             </div>
             <div class="col-sm-4 workout-info-container">
               <label for="numOfReps" class = "fw-bolder">Reps</label>
               <br>
-              <input class = "form-control" type="text" id="numOfReps" [(ngModel)]="numOfReps" placeholder="">
+              <input class = "form-control" type="text" id="numOfReps" [(ngModel)]="container.numOfRepsArray[j]" placeholder="">
             </div>
             <div class="col-sm-4 workout-info-container">  
               <label for="restTime" class = "fw-bolder">Rest</label>
               <br>
-              <input class = "form-control" type="text" id="restTime" [(ngModel)]="restTime" placeholder="">
+              <input class = "form-control" type="text" id="restTime" [(ngModel)]="container.restTimeArray[j]" placeholder="">
             </div>
           </div>
 
@@ -107,12 +102,12 @@
             <div class="col-sm-4 workout-info-container">
               <label for="weight" class = "fw-bolder">Weight</label>
               <br>
-              <input class = "form-control" type="text" id="weight" [(ngModel)]="weight" placeholder="">
+              <input class = "form-control" type="text" id="weight" [(ngModel)]="container.weightArray[j]" placeholder="">
             </div>
             <div class="col-sm-8 workout-info-container" >
               <label for="target" class = "fw-bolder">Target</label>
               <br>
-              <input class = "form-control" type="text" id="target" [(ngModel)]="target" placeholder="">
+              <input class = "form-control" type="text" id="target" [(ngModel)]="container.targetArray[j]" placeholder="">
             </div>
           </div>
 
@@ -120,7 +115,7 @@
             <div class="col-sm-12 workout-info-container">
               <label for="vidLink" class = "fw-bold">Link</label>
               <br>
-              <input class = "form-control" type="text" id="vidLink" [(ngModel)]="vidLink" placeholder="">
+              <input class = "form-control" type="text" id="vidLink" [(ngModel)]="container.vidLinkArray[j]" placeholder="">
             </div>
           </div>
         </div>

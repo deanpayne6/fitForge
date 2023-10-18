@@ -15,7 +15,6 @@ export class WorkoutCreatePageComponent {
   selectedOption: string = '';
   dropdownOptions: string[] = [];
   selectedIndividualWorkoutOption: string = ""
-  individualExerciseOptions: string[] = [];
   individualExerciseOptionsString: string = ""
 
   numOfSets: string = '';
@@ -31,40 +30,49 @@ export class WorkoutCreatePageComponent {
   selectedWorkoutLength: string = 'short';
   selectedWorkoutArray: string[] = [];
 
+  numOfSetsArray: string[] = [];
+  numOfRepsArray: string[] = [];
+  restTimeArray: string[] = [];
+  weightArray: string[] = [];
+  targetArray: string[] = [];
+  vidLinkArray: string[] = [];
+  individualExerciseOptionsStringArray: string[] = [];
+
+
   constructor(private workoutService: WorkoutService) {}
 
   ngOnInit() {}
 
-  getWorkout() {
+  generateWorkout() {
 
-    console.log(this.selectedOption1)
-    console.log(this.selectedOption2)
-    console.log(this.selectedOption3)
-    if (this.selectedWorkoutLength === 'short'){
-      if (this.selectedOption1 !== ''){
-        this.selectedWorkoutArray.push(this.selectedOption1);
-      }
-      if (this.selectedOption2 !== ''){
-        this.selectedWorkoutArray.push(this.selectedOption2)
-      }
-    } else {
-      if (this.selectedOption1 !== ''){
-        this.selectedWorkoutArray.push(this.selectedOption1);
-      }
-      if (this.selectedOption2 !== ''){
-        this.selectedWorkoutArray.push(this.selectedOption2)
-      }
+    if (this.selectedOption1 !== ''){
+      this.selectedWorkoutArray.push(this.selectedOption1)
+    }
+    if (this.selectedOption2 !== ''){
+      this.selectedWorkoutArray.push(this.selectedOption2)
+    }
+    if (this.selectedWorkoutLength !== 'short'){
       if (this.selectedOption3 !== ''){
-        this.selectedWorkoutArray.push(this.selectedOption3)
+        this.selectedWorkoutArray.push(this.selectedOption3);
       }
     }
 
-    console.log(this.selectedWorkoutArray)
-    
-
-    // Example usage
-    this.workoutService.getGenerateWorkout (this.selectedWorkoutArray, this.selectedWorkoutLength, 'andrew').subscribe(response => {
+    this.workoutService.getGenerateWorkout(this.selectedWorkoutArray, this.selectedWorkoutLength, 'andrew').subscribe(response => {
       console.log(response);
+  
+      this.createMuscleGroupContainer();
+  
+      response.forEach((data, index) => {
+        this.addExercise(this.muscleGroupContainers[0], index);
+        const i = index * 8;
+        this.individualExerciseOptionsStringArray[i] = data[1];
+        this.numOfSetsArray[i] = data[2];
+        this.numOfRepsArray[i] = data[3];
+        this.restTimeArray[i] = data[4];
+        this.weightArray[i] = data[5];
+        this.targetArray[i] = data[6];
+        this.vidLinkArray[i] = data[7];
+      });
     }, error => {
       console.error(error);
     });
@@ -74,11 +82,25 @@ export class WorkoutCreatePageComponent {
     this.muscleGroupContainers.push({ option: this.selectedOption, individualWorkouts: [] });
   }
 
-  addExercise(mainContainer: any) {
+  addExercise(mainContainer: any, index: number) {
+    // const index = this.muscleGroupContainers.findIndex(container => container === mainContainer);
     mainContainer.individualWorkouts.push({});
+    this.individualExerciseOptionsStringArray[index] = '';
+    this.numOfSetsArray[index] = '';
+    this.numOfRepsArray[index] = '';
+    this.restTimeArray[index] = '';
+    this.weightArray[index] = '';
+    this.targetArray[index] = '';
+    this.vidLinkArray[index] = '';
   }
 
   removeExercise(mainContainer: any, index: number) {
     mainContainer.individualWorkouts.splice(index, 1);
+    this.numOfSetsArray.splice(index, 1);
+    this.numOfRepsArray.splice(index, 1);
+    this.restTimeArray.splice(index, 1);
+    this.weightArray.splice(index, 1);
+    this.targetArray.splice(index, 1);
+    this.vidLinkArray.splice(index, 1);
   }
 }
