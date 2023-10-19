@@ -21,7 +21,7 @@ box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 
 .individual-workout-container {
 padding: 10px;
-width: 90%; 
+width: 60%; 
 height: 350px;
 }
 
@@ -33,5 +33,3 @@ align-items: center;
 justify-content: center;
 text-align: center;
 }
-
-
