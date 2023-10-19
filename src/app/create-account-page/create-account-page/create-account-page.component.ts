@@ -3,6 +3,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 
+// weird why its pathing like that idk
+import { User } from '../../models/user';
+import { first } from 'rxjs';
+import { UserService } from 'src/app/user.service';
+
 @Component({
   selector: 'app-create-account-page',
   templateUrl: './create-account-page.component.html',
@@ -22,7 +27,7 @@ export class CreateAccountPageComponent {
   numberPattern = /[0-9]/;
   captialLetterPattern = /[A-Z]/
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {}
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, public userService: UserService) {}
 
   ngOnInit(): void {
     this.userRegisterForm = this.fb.group({
@@ -115,24 +120,25 @@ export class CreateAccountPageComponent {
   // this is a post request for to populate the db with new user
   // still unsure if it works, waiting on backend to implement function on backend to properly add to db
   register() {
-    const formData = {
-      first_name: this.userRegisterForm.value.userFirstName,
-      last_name: this.userRegisterForm.value.userLastName,
-      email: this.userRegisterForm.value.userEmail,
-      password: this.userRegisterForm.value.userPassword,
-      userAge: this.userRegisterForm.value.userAge, //this does not exist on db yet
-      username: this.userRegisterForm.value.username, //does not exist on db yet
-    };
-    
 
+    const first_name =  this.userRegisterForm.value.userFirstName;
+    const last_name = this.userRegisterForm.value.userLastName;
+    const email = this.userRegisterForm.value.userEmail;
+    const password =  this.userRegisterForm.value.userPassword;
+    const age = this.userRegisterForm.value.userAge; //this does not exist on db yet
+    const username_value = this.userRegisterForm.value.username;
+    const newUser = new User (email, username_value, first_name, last_name, age)
+    newUser.password = password;
+    console.log(newUser);
     // this is the part that is doing the post request, still not sure if it works, waiting for backend
-    this.apiService.sendPostRequest(formData).subscribe(
+    this.apiService.sendPostRequest(newUser).subscribe(
       (response) => {
         console.log(response)
         if (response.success === true) {
           console.log("Registration successful.");
           console.log("Response data:", response.body);
-          this.router.navigate(['/userquestionnaire'])
+          this.userService.setUser(newUser);
+          this.router.navigate(['/userquestionnaire']);
         } else {
           console.error("Registration failed with status code:", response.status);
         }
