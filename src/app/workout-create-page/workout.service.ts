@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
@@ -7,10 +7,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WorkoutService {
-
   constructor(private http: HttpClient) {}
-  getDropdownOptions(): Observable<string[]> {
-    return this.http.get<string[]>('https://api.example.com/options');
-  }
+  
+  private apiUrl = "http://localhost:3200";
 
+  getGenerateWorkout(workoutInput: any, workoutLength: string, username: string): Observable<any> {
+    const body = {
+      workoutInput,
+      workoutLength,
+      username
+    };
+
+    return this.http.post<{ data: any }>(`${this.apiUrl}/generateWorkout`, body);
+  }
 }
