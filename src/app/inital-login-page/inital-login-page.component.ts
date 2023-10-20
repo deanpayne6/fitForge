@@ -37,25 +37,25 @@ export class InitalLoginPageComponent {
     // set user email
     this.userService.setUser(this.userLoginForm.get('userEmail').value);
 
-    let url = "http://localhost:3200/login?email=" + userData.email + "&password=" + userData.password;
+    let url = "http://localhost:3200/auth/login";
 
     if (userData) {
       this.apiService.checkLoginInfo(url, userData).subscribe(
         (response) => {
-          console.log(response)
-          console.log("User exists: ", response.authenticated);
-          if (response.authenticated === true){
+          console.log("Response: " + response)
+          if (response.token){
+            localStorage.setItem("login_token", response.token)
             this.router.navigate(['/home'])
           } else {
-            // user should see something like 'email does not exist'
+            alert("Invalid email or password!")
           }
         },
         (error) => {
           console.error("Checking email availability error:", error);
+          alert("Invalid data.")
         }
       );
     }
-    console.log(userData);
   }
 
   forgotPassword() {

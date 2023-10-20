@@ -134,13 +134,14 @@ export class CreateAccountPageComponent {
     this.apiService.sendPostRequest(newUser).subscribe(
       (response) => {
         console.log(response)
-        if (response.success === true) {
+        if (response.status === "201") {
           console.log("Registration successful.");
           console.log("Response data:", response.body);
           this.userService.setUser(newUser);
           this.router.navigate(['/userquestionnaire']);
-        } else {
+        } else if (response.status === "400") {
           console.error("Registration failed with status code:", response.status);
+          alert("Invalid username and / or email!")
         }
       },
       (error) => {

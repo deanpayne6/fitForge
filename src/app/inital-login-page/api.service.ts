@@ -9,7 +9,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   checkLoginInfo(url: any, formData: any): Observable<any> {
-    return this.http.get(url, formData)
+    return this.http.post(url, formData)
   }
 
 
