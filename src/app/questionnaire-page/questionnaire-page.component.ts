@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 import { UserService } from '../user.service';
+import { questionnaire } from '../models/questionnaire';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-questionnaire-page',
@@ -8,19 +10,25 @@ import { UserService } from '../user.service';
   styleUrls: ['./questionnaire-page.component.css']
 })
 export class QuestionnairePageComponent {
-  constructor (private apiService: ApiService, public userService: UserService) {};
+  constructor (private apiService: ApiService, public userService: UserService, private router: Router) {};
 
   current_user = this.userService.getUser();
 
   selectedActivityLevel: string = '';
-  activityLevels: string[] = ['Sedentary (Little to No Exercise)', 'Lightly Active (Light Exercise or Sports 1-3 Days a Week)', 'Moderately Active (Moderate Exercise or Sports 3-5 Days a Week)', 'Very Active (Hard Exercise or Sports 6-7 Days a Week)', 'Extremely Active (Very Strenuous Exercise, Physical Job, or Training Twice a Day)'];
+  activityLevels: string[] = [
+    'Sedentary', 
+    'Lightly Active', 
+    'Moderately Active', 
+    'Very Active', 
+    'Extremely Active'
+  ];
 
   selectedExperience: string = '';
   experiences: string[] = ['Beginner', 'Intermediate', 'Expert'];
 
   selectedGymEquipment: string = '';
   // equipmentLevels: string[] = ['Home Gym (Body Weight)', 'Home Gym (Free Weights)', 'Home Gym (Mixed Equipment)', 'Community or Outdoor Gym', 'Commercial Gym'];
-  equipmentLevels: string[] = ['No Gym', 'Limited Gym', 'Commercial Gym'];
+  equipmentLevels: string[] = ['No Gym', 'Home Gym or Limited Equipment', 'Commercial Gym'];
 
 
   selectedGoal: string = '';
@@ -86,28 +94,36 @@ export class QuestionnairePageComponent {
     
   }
 
-    submit() {
-      const formData = {
-        activity: this.selectedActivityLevel,
-        experience: this.selectedExperience,
-        gym: this.selectedGymEquipment,
-        goal: this.selectedGoal,
-        intensity: this.selectedIntensity,
-        frequency: this.selectedFrequency,
-      }
+  submit() {
 
-      this.apiService.sendPostRequest(formData).subscribe(
-        (response) => {
-          if (response.status === 200) {
-            console.log("Registration successful.");
-            console.log("Response data:", response.body);
-          } else {
-            console.error("Registration failed with status code:", response.status);
-          }
-        },
-        (error) => {
-          console.error("Registration error:", error);
-        }
-      );
+    const height_inches = (this.feetInputValue * 12) + this.inchesInputValue;
+
+    const formData = {
+      activity: this.selectedActivityLevel,
+      experience: this.selectedExperience,
+      gym: this.selectedGymEquipment,
+      goal: this.selectedGoal,
+      intensity: this.selectedIntensity,
+      frequency: this.selectedFrequency,
+      gender: 'NB',
+      height: height_inches,
+      weight: this.poundsInputValue,
+      emailaddress: this.current_user.email
     }
+
+    this.apiService.sendPostRequest(formData).subscribe(
+      (response) => {
+        if (response.status === "201") {
+          console.log("Registration successful.");
+          console.log("Response data:", response.body);
+          this.router.navigate(['/home']);
+        } else {
+          console.error("Registration failed with status code:", response.status);
+        }
+      },
+      (error) => {
+        console.error("Registration error:", error);
+      }
+    );
+  }
 }
