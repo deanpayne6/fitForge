@@ -34,9 +34,9 @@
   width: 50%;
   max-width: 600px; 
   z-index: 1;
-  background: #f9f9f9;
+  background: #f0eeee;
   padding: 20px;
-  height: 350px;
+  height: 200px;
 }
 
 .centered-div.active {

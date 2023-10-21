@@ -1,4 +1,4 @@
-  <!-- dropdown menu for the length of the workout -->
+<!-- section for the length of the workout, disappears after workout is generated -->
 <div class="container mt-5" *ngIf = "!generateButtonClicked">
   <div class="row justify-content-center">
     <div class="col-md-4 text-center">
@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<!-- dropdown menus for the workouts -->
+<!-- dropdown menus for the workouts, also disappears after workout is generated -->
 <div class="container mt-5"*ngIf = "!generateButtonClicked">
   <div class="row justify-content-center text-center">
     <div class="col-md-4 text-center">
@@ -22,7 +22,7 @@
       <select class="form-control text-center" id="workoutDropdown2" [(ngModel)]="selectedOption2">
         <option *ngFor="let option of workoutOptions">{{ option }}</option>
       </select>
-      
+      <!-- extra div for workout selection is needed -->
       <div *ngIf="selectedWorkoutLength !== 'short'">
         <select class="form-control text-center" id="workoutDropdown3" [(ngModel)]="selectedOption3">
           <option *ngFor="let option of workoutOptions">{{ option }}</option>
@@ -43,8 +43,10 @@
 <!-- Displaying the individual workouts -->
 <div class="container mt-3">
   <div class="row justify-content-center">
+    <!-- this section div becomes blurred out after the edit button is clicked -->
       <div class = "individual-workout-container row justify-content-center" *ngFor="let muscle of individualMuscleContainer; let i = index" [class.blur]="editDivVisible">
-          <button class="btn btn-primary" (click)="showEditDiv(i)">Edit</button>
+          <!-- this is the edit button -->
+        <button class="btn btn-primary" (click)="showEditDiv(i)">Edit</button>
           <div class="row mt-3 text-center">
             <div class="col-sm-12 workout-info-container">
                 <label for="workoutName{{ i }}"><strong>Name:</strong></label>
@@ -52,7 +54,8 @@
                 <input class = "form-control text-center" type="text" id="workoutName{{ i }}" [(ngModel)]="muscle[0]" readonly>
               </div>
             </div>
-            
+          
+            <!-- div contains the sets, reps and rest -->
           <div class="row mt-3 text-center">
             <div class="col-sm-4 workout-info-container">
               <label for="workoutSets{{ i }}"><strong>Sets:</strong></label>
@@ -71,6 +74,7 @@
             </div>
           </div>
 
+          <!-- div contains the weight and target of the workout -->
           <div class="row mt-3 text-center">
             <div class="col-sm-4 workout-info-container">
               <label for="workoutTarget{{ i }}"><strong>Weight:</strong></label>
@@ -84,6 +88,7 @@
             </div>
           </div>
             
+          <!-- contains the link of the workout -->
           <div class="row mt-3 text-center">
             <div class="col-sm-12 workout-info-container">
               <label for="workoutLink{{ i }}"><strong>Link:</strong></label>
@@ -93,6 +98,7 @@
           </div>
         </div>
         
+        <!-- div for the editing of the workout -->
         <div class="centered-div justify-content-center text-center" [class.active]="editDivVisible">
           <div class="edit-content">
             <h2>Edit Workout</h2>
