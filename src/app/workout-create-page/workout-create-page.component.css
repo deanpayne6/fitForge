@@ -9,7 +9,8 @@
   background-color: #f7f7f7; 
   border: 1px solid #ccc; 
   padding: 10px;
-  margin-top: 10px; 
+  margin-top: 10px;
+  margin-bottom: 10px; 
   width: 55%;
 }
 
@@ -45,4 +46,32 @@
 
 .blur {
   filter: blur(10px);
+}
+
+.btn-edit{
+  margin-top: 10px;
+  max-width: 15%;
+}
+
+.btn-inside-edit{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.swapping-div{
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 600px; 
+  z-index: 1;
+  background: #f0eeee;
+  padding: 20px;
+  max-height: 600px;
+}
+
+.swapping-div.active {
+  display: block;
 }
