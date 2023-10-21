@@ -9,6 +9,7 @@ import { QuestionnairePageComponent } from './questionnaire-page/questionnaire-p
 import { HomeComponent } from './home/home.component';
 import { WorkoutCreatePageComponent } from './workout-create-page/workout-create-page.component';
 import { WorkoutRatingComponent } from './workout-rating/workout-rating.component';
+import { WorkoutLogComponent } from './workout-log/workout-log.component';
 
 const routes: Routes = [
   {path: '', component: InitalLoginPageComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'createWorkout', component:WorkoutCreatePageComponent},
   {path: 'workoutrating', component:WorkoutRatingComponent},
+  {path: 'workoutlog', component:WorkoutLogComponent},
   {path: "**", component: HomeComponent},
 ];
 

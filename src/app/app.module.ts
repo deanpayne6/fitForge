@@ -28,6 +28,7 @@ import { HomeComponent } from './home/home.component';
 import { WorkoutCreatePageComponent } from './workout-create-page/workout-create-page.component';
 import { UserService } from './user.service';
 import { WorkoutRatingComponent } from './workout-rating/workout-rating.component';
+import { WorkoutLogComponent } from './workout-log/workout-log.component';
 
 
 
@@ -46,7 +47,8 @@ import { WorkoutRatingComponent } from './workout-rating/workout-rating.componen
     QuestionnairePageComponent,
     HomeComponent,
     WorkoutCreatePageComponent,
-    WorkoutRatingComponent
+    WorkoutRatingComponent,
+    WorkoutLogComponent
   ],
   imports: [
     BrowserModule,
