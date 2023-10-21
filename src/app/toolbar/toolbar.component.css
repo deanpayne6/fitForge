@@ -35,3 +35,7 @@ h1{
     height: 50px;
     justify-content: left;
 }
+
+.container-logo{
+    margin-bottom: 35px;
+  }
