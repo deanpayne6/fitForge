@@ -1,1 +1,135 @@
-<p>workout-log works!</p>
+<header>
+    <div class="top-bar">
+        <div class="top-bar-left col-5 d-flex justify-content-between">
+                <a routerLink="/userquestionnaire" routerLinkActive="active">Questionnaire</a>
+                <a href="">Generate Workout</a>                        
+                <a href="">Workout Log</a>                   
+        </div>
+
+        <div class="top-bar-logo col-2">
+            <a href="">
+                <img src="assets/fitforge-logo.png">
+            </a>
+        </div>
+
+        <div class="top-bar-right col-5 d-flex justify-content-between">
+            <a href="">Profile</a>
+            <a href="">Logout/Sign in</a>                        
+        </div>
+    </div>
+</header>
+
+<div class="main container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="title-message container">
+                <h1>Workout Log</h1>
+            </div>
+        
+            <div class="date-muscles-header container">
+                <p class="date fw-bold">{{getCurrentDayOfWeek()}} ({{currentDate | date:'MM/dd/yyyy'}})</p>
+                <p>Major Muscles Targeted</p>
+                <div class="muscle-groups">
+                    <div class="muscle-group">
+                        <p>Chest</p>
+                    </div>
+        
+                    <div class="muscle-group">
+                        <p>Triceps</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workout-log-content container">
+                <p class="date fw-bold">{{getCurrentDayOfWeek()}} ({{currentDate | date:'MM/dd/yyyy'}})</p>
+                
+                <div class="exercise">
+                    <h6>Incline Dumbell Press</h6>
+                    <p class="muscle-emphasis"><i>Upper Chest</i></p>
+                    
+                    <div class="exercise-info-list">
+                        <div class="exercise-info">
+                            <p class="fw-bold">Sets</p>
+                            <p>4</p>
+                        </div>
+    
+                        <div class="exercise-info">
+                            <p class="fw-bold">Reps</p>
+                            <p>6-8</p>
+                        </div>
+    
+                        <div class="exercise-info">
+                            <p class="fw-bold">Weight</p>
+                            <p>80's</p>
+                        </div>
+    
+                        <div class="exercise-info">
+                            <p class="fw-bold">RPE</p>
+                            <p>10</p>
+                        </div>
+                    </div>
+                    
+                </div>
+        
+                <div class="exercise">
+                    <h6>Shoulder Press</h6>
+                    <p class="muscle-emphasis"><i>Front Delts</i></p>
+                    
+                    <div class="exercise-info-list">
+                        <div class="exercise-info">
+                            <p class="fw-bold">Sets</p>
+                            <p>3</p>
+                        </div>
+    
+                        <div class="exercise-info">
+                            <p class="fw-bold">Reps</p>
+                            <p>6-8</p>
+                        </div>
+    
+                        <div class="exercise-info">
+                            <p class="fw-bold">Weight</p>
+                            <p>50's</p>
+                        </div>
+    
+                        <div class="exercise-info">
+                            <p class="fw-bold">RPE</p>
+                            <p>-</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="exercise">
+                    <h6>E-Z Bar Skull Crushers</h6>
+                    <p class="muscle-emphasis"><i>Triceps</i></p>
+                    
+                    <div class="exercise-info-list">
+                        <div class="exercise-info">
+                            <p class="fw-bold">Sets</p>
+                            <p>3</p>
+                        </div>
+    
+                        <div class="exercise-info">
+                            <p class="fw-bold">Reps</p>
+                            <p>6-8</p>
+                        </div>
+    
+                        <div class="exercise-info">
+                            <p class="fw-bold">Weight</p>
+                            <p>80</p>
+                        </div>
+    
+                        <div class="exercise-info">
+                            <p class="fw-bold">RPE</p>
+                            <p>10</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>    
+
+</div>

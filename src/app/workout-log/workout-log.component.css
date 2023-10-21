@@ -1,0 +1,149 @@
+.top-bar{
+    display: flex;
+    align-items: center;
+    height: 8.4vw;
+    background: rgb(38, 38, 38);
+    justify-content: space-between;
+
+}
+
+.top-bar-right{
+    padding: 0 5vw;
+
+}
+
+.top-bar-left{
+    padding: 0 5vw;
+}
+
+.top-bar-logo{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.34vw;
+}
+
+.top-bar-logo img{
+    margin: 0 0;
+    height: 5vw;
+}
+
+a{
+    padding: 0.5vw 0.5vw;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1.1vw;
+}
+
+.main{
+    background-color: black;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.title-message{
+    text-align: center;
+    padding-top: 3vh;
+    color: white;
+}
+
+.date-muscles-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 5vw;
+    border: 2px solid rgb(124, 124, 124);
+    border-radius: 15px;
+    background-color: rgb(237, 237, 237);
+    min-width: 80vw;
+    max-width: 80vw;
+
+}
+
+.muscle-groups{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.muscle-group{
+    margin: 0 1vw 1vw 1vw;
+    padding: 0 2vw;
+    background-color: gray;
+    border: 1.5px solid black;
+    border-radius: 15px;
+}
+
+.muscle-group p{
+    margin: 0;
+}
+
+.workout-log-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 7vw 0;
+    border: 2px solid rgb(124, 124, 124);
+    border-radius: 15px;
+    background-color: rgb(237, 237, 237);
+    min-width: 80vw;
+    max-width: 80vw;
+}
+
+.muscle-emphasis{
+    font-size: 1vw;
+    transform: skewX(-15deg);
+    color: rgb(83, 83, 83);
+}
+
+.exercise{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(173, 171, 171);
+    border: 1.5px solid white;
+    border-radius: 15px;
+    width: 75vw;
+    margin-bottom: 2vw;
+}
+
+.exercise h6{
+    margin-top: 2vw;
+}
+
+.exercise-info-list{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    margin-bottom: 3vw;
+}
+
+.exercise-info{
+    border: 1.5px solid rgb(126, 126, 126);
+    border-radius: 15px;
+    background-color: rgb(126, 126, 126);
+    padding: 0 1vw;
+    margin: 0 1vw;
+}
+
+.exercise-info p{
+    margin: 0;
+}
+
+/* smaller screen size*/
+@media (max-width: 767px){
+    .muscle-emphasis{
+        font-size: 2.5vw;
+    }
+}
+
+/* medium to large screen size*/
+@media (min-width: 767.1px){
+    .muscle-emphasis{
+        font-size: 1vw;
+    }
+}
