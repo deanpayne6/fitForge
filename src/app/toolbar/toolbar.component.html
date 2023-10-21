@@ -1,12 +1,20 @@
-<div>
-    <header>
-        <div class="header-logo">
-            <a href="#">
-                <img src="assets/fitforge-logo.png"/>
+<header>
+    <div class="top-bar">
+        <div class="top-bar-left col-5 d-flex justify-content-between">
+                <a routerLink="/userquestionnaire">Questionnaire</a>
+                <a routerLink="/createWorkout">Generate Workout</a>                        
+                <a routerLink="/workoutlog">Workout Log</a>                   
+        </div>
+
+        <div class="top-bar-logo col-2">
+            <a routerLink="/home">
+                <img src="assets/fitforge-logo.png">
             </a>
         </div>
-        <nav class="navigation">
-            <a href="about">What is FitForge?</a>
-        </nav>
-    </header>
-</div>
+
+        <div class="top-bar-right col-5 d-flex justify-content-between">
+            <a href="">Profile</a>
+            <a routerLink="/login">Logout/Sign in</a>                        
+        </div>
+    </div>
+</header>

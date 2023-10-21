@@ -1,24 +1,4 @@
-<header>
-    <div class="top-bar">
-        <div class="top-bar-left col-5 d-flex justify-content-between">
-                <a routerLink="/userquestionnaire" routerLinkActive="active">Questionnaire</a>
-                <a href="">Generate Workout</a>                        
-                <a href="">Workout Log</a>                   
-        </div>
-
-        <div class="top-bar-logo col-2">
-            <a href="">
-                <img src="assets/fitforge-logo.png">
-            </a>
-        </div>
-
-        <div class="top-bar-right col-5 d-flex justify-content-between">
-            <a href="">Profile</a>
-            <a href="">Logout/Sign in</a>                        
-        </div>
-    </div>
-</header>
-
+<app-toolbar></app-toolbar>
 <div class="main container-fluid">
 
     <div class="row">
@@ -133,3 +113,4 @@
     </div>    
 
 </div>
+<router-outlet></router-outlet>
