@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { CreateAccountPageComponent } from './create-account-page/create-account-page/create-account-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutPageComponent } from './about-page/about-page.component';
@@ -25,6 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HomeComponent } from './home/home.component';
 import { WorkoutCreatePageComponent } from './workout-create-page/workout-create-page.component';
 import { UserService } from './user.service';
+import { WorkoutRatingComponent } from './workout-rating/workout-rating.component';
 
 
 
@@ -32,6 +35,7 @@ import { UserService } from './user.service';
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
     InitalLoginPageComponent,
@@ -41,7 +45,8 @@ import { UserService } from './user.service';
     AboutPageComponent,
     QuestionnairePageComponent,
     HomeComponent,
-    WorkoutCreatePageComponent
+    WorkoutCreatePageComponent,
+    WorkoutRatingComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +64,8 @@ import { UserService } from './user.service';
     MatRadioModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatIconModule,
+    MatToolbarModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -24,6 +24,7 @@
     "bootstrap": "^5.3.1",
     "bootstrap-4-grid": "^3.4.0",
     "bootstrap-icons": "^1.10.5",
+    "igniteui-webcomponents": "^4.5.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.6.2",
     "zone.js": "~0.12.0"
