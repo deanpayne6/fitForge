@@ -1,29 +1,34 @@
-<app-toolbar></app-toolbar>
-<!-- dropdown menu for the length of the workout -->
+<!-- using bootstrap for styling -->
+<app-toolbar class = "container app-container"></app-toolbar>
+
+<!-- section for the length of the workout, disappears after workout is generated -->
 <div class="container mt-5" *ngIf = "!generateButtonClicked">
   <div class="row justify-content-center">
     <div class="col-md-4 text-center">
       <label for=" workoutLength" class="fw-bold">Select your preferred workout length</label>
+      <!-- two way bidning using angular for the selected length of the workout -->
       <select class="form-control text-center" id="workoutLength" [(ngModel)]="selectedWorkoutLength">
+        <!-- displaying the options in the array on ts file -->
         <option *ngFor="let option of workoutLengthOptions">{{ option }}</option>
       </select>
     </div>
   </div>
 </div>
 
-<!-- dropdown menus for the workouts -->
+<!-- dropdown menus for the workouts, also disappears after workout is generated -->
 <div class="container mt-5"*ngIf = "!generateButtonClicked">
   <div class="row justify-content-center text-center">
     <div class="col-md-4 text-center">
-      <label for="workoutDropdown1" class="fw-bold">Select at least 1 workout</label>
+      <label for="workoutDropdown1" class="fw-bold">Select your workouts</label>
       <!--by default two dropdowns are always visible and only an extra one appears if needed. -->
       <select class="form-control text-center" id="workoutDropdown1" [(ngModel)]="selectedOption1">
+        <!-- workoutOptions are predefined on the ts file -->
         <option *ngFor="let option of workoutOptions">{{ option }}</option>
       </select>
       <select class="form-control text-center" id="workoutDropdown2" [(ngModel)]="selectedOption2">
         <option *ngFor="let option of workoutOptions">{{ option }}</option>
       </select>
-
+      <!-- extra div for workout selection is needed -->
       <div *ngIf="selectedWorkoutLength !== 'short'">
         <select class="form-control text-center" id="workoutDropdown3" [(ngModel)]="selectedOption3">
           <option *ngFor="let option of workoutOptions">{{ option }}</option>
@@ -36,6 +41,7 @@
 <!-- button to generate workout -->
 <div class="container mt-5" *ngIf = "!generateButtonClicked">
   <div class="justify-content-center text-center">
+    <!-- button binded to the generateWorkout function, look at ts file for the function implementation -->
     <button class="btn btn-success btn-block" (click)="generateWorkout()">Generate Workout</button>
   </div>
 </div>
@@ -44,58 +50,101 @@
 <!-- Displaying the individual workouts -->
 <div class="container mt-3">
   <div class="row justify-content-center">
-      <div class = "individual-workout-container row justify-content-center" *ngFor="let muscle of individualMuscleContainer; let i = index">
-        <div class="individualWorkoutContainer">
-          <div class="row mt-3 text-center">
-            <div class="col-sm-12 workout-info-container">
-                <label for="workoutName{{ i }}"><strong>Name:</strong></label>
-                <br>
-                <input class = "form-control text-center" type="text" id="workoutName{{ i }}" [(ngModel)]="muscle[0]" readonly>
-              </div>
-            </div>
-
-          <div class="row mt-3 text-center">
-            <div class="col-sm-4 workout-info-container">
-              <label for="workoutSets{{ i }}"><strong>Sets:</strong></label>
-              <br>
-              <input class = "form-control text-center" type="text" id="workoutSets{{ i }}" [(ngModel)]="muscle[1]" readonly>
-            </div>
-            <div class="col-sm-4 workout-info-container">
-              <label for="workoutReps{{ i }}"><strong>Reps:</strong></label>
-              <br>
-              <input class = "form-control text-center" type="text" id="workoutReps{{ i }}" [(ngModel)]="muscle[2]" readonly>
-            </div>
-            <div class="col-sm-4 workout-info-container">
-              <label for="workoutRest{{ i }}"><strong>Rest:</strong></label>
-              <br>
-              <input class = "form-control text-center" type="text" id="workoutRest{{ i }}" [(ngModel)]="muscle[3]" readonly>
-            </div>
-          </div>
-
-          <div class="row mt-3 text-center">
-            <div class="col-sm-4 workout-info-container">
-              <label for="workoutTarget{{ i }}"><strong>Weight:</strong></label>
-              <br>
-              <input class = "form-control text-center" readonly>
-            </div>
-            <div class="col-sm-8 workout-info-container">
-              <label for="workoutTarget{{ i }}"><strong>Target:</strong></label>
-              <br>
-              <input class = "form-control text-center" type="text" id="workoutTarget{{ i }}" [(ngModel)]="muscle[4]" readonly>
-            </div>
-          </div>
-            
-          <div class="row mt-3 text-center">
-            <div class="col-sm-12 workout-info-container">
-              <label for="workoutLink{{ i }}"><strong>Link:</strong></label>
-              <br>
-              <a class = "form-control text-center" [href]="muscle[5]" id="workoutLink{{ i }}">Video Link</a>
-            </div>
-          </div>
+    <!-- this section div becomes blurred out after the edit button is clicked and/or swap button-->
+    <div class = "individual-workout-container row justify-content-center" *ngFor="let muscle of individualMuscleContainer; let i = index" [class.blur]="editDivVisible || newWorkoutDivVisible">
+      <!-- this section is for the name element of the returned array -->
+      <div class="row mt-3 text-center">
+        <div class="col-sm-12 workout-info-container">
+          <label for="workoutName{{ i }}"><strong>Name:</strong></label>
+          <br>
+          <input class = "form-control text-center" type="text" id="workoutName{{ i }}" [(ngModel)]="muscle.workoutName" readonly>
         </div>
+      </div>
+
+      <!-- div contains the sets, reps and rest -->
+      <div class="row mt-3 text-center">
+        <div class="col-sm-4 workout-info-container">
+          <label for="workoutSets{{ i}}"><strong>Sets:</strong></label>
+          <br>
+          <input class = "form-control text-center" type="text" id="workoutSets{{ i }}" [(ngModel)]="muscle.workoutSets" readonly>
+        </div>
+        <div class="col-sm-4 workout-info-container">
+        <label for="workoutReps{{ i}}"><strong>Reps:</strong></label>
+          <br>
+          <input class = "form-control text-center" type="text" id="workoutReps{{ i }}" [(ngModel)]="muscle.workoutReps" readonly>
+        </div>
+        <div class="col-sm-4 workout-info-container">
+          <label for="workoutRest{{ i}}"><strong>Rest:</strong></label>
+          <br>
+          <input class = "form-control text-center" type="text" id="workoutRest{{ i }}" [(ngModel)]="muscle.workoutRest" readonly>
+        </div>
+      </div>
+
+      <!-- div contains the weight and target of the workout -->
+      <div class="row mt-3 text-center">
+        <div class="col-sm-4 workout-info-container">
+          <label for="workoutTarget{{ i}}"><strong>Weight:</strong></label>
+          <br>
+          <input class = "form-control text-center" readonly>
+        </div>
+        <div class="col-sm-8 workout-info-container">
+          <label for="workoutTarget{{ i}}"><strong>Target:</strong></label>
+          <br>
+          <input class = "form-control text-center" type="text" id="workoutTarget{{ i }}" [(ngModel)]="muscle.workoutTarget" readonly>
+        </div>
+      </div>
+            
+        <!-- contains the link of the workout -->
+      <div class="row mt-3 text-center">
+        <div class="col-sm-12 workout-info-container">
+          <label for="workoutLink{{ i}}"><strong>Link:</strong></label>
+          <br>
+          <a class = "form-control text-center" [href]="muscle.workoutLink" id="workoutLink{{ i }}" target="_blank">Video Link</a>
+        </div>
+      </div>  
+
+      <!-- edit button -->
+      <button class="btn btn-secondary btn-edit" (click)="showEditDiv(i)">Edit</button>
+    </div>
+        
+    <!-- div for the editing of the workout, makes a div at center of screen, blurs out background -->
+    <div class="centered-div justify-content-center text-center" [class.active]="editDivVisible">
+      <div class="edit-content">
+        <h2>Edit Workout</h2>
+        <input class = "form-control text-center" [(ngModel)]="workoutNameDisplay" readonly/>
+        <br>
+        <!-- buttons for canceling, deleting workout, and swapping workout -->
+        <button class = "btn btn-warning btn-inside-edit" (click)="cancelEditWorkout()">Cancel</button>
+        <button class = "btn btn-danger btn-inside-edit" (click)="deleteWorkout()" >Delete</button>
+        <button class = "btn btn-success btn-inside-edit" (click)="getNewWorkouts()" >Swap</button>
+      </div>
+    </div>
+
+    <!-- this div section is for the swapping of the workout -->
+    <div class="swapping-div justify-content-center text-center" [class.active]="newWorkoutDivVisible">
+      <div class="edit-content">
+        <h3>Swapping</h3>
+        <input class = "form-control text-center" [(ngModel)]="workoutNameDisplay" readonly/>
+        <h3>For</h3>
+        <label for="swapWorkoutOptions" class="fw-bold">Select new workout</label>
+        <select class="form-control text-center" id="swapWorkoutOptions" [(ngModel)]="newSelectedWorkoutName">
+          <option *ngFor="let option of newWorkoutsReturnedArray">{{ option }}</option>
+        </select>
+        <br>
+        <button class = "btn btn-warning btn-inside-edit" (click)="cancelEditWorkout()">Cancel</button>
+        <button class = "btn btn-success btn-inside-edit" (click)="confirmNewWorkout()" >Confirm</button>
       </div>
     </div>
   </div>
+</div>
+
+<br>
+
+<!-- this section is for the restarting workout/accepting workout -->
+<div class = "justify-content-center text-center"  *ngIf = "generateButtonClicked">
+  <button class = "btn btn-warning btn-inside-edit" (click)="regenerateWorkout()">Regenerate Workout</button>
+  <button class = "btn btn-success btn-inside-edit" (click)="acceptWorkout()" >Accept</button>
+</div>
 
   <br>
   <br>
