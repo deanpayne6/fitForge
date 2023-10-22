@@ -14,6 +14,9 @@ export class WorkoutCreatePageComponent {
   constructor(private workoutService: WorkoutService, public userService: UserService) {};
   ngOnInit() {};
 
+  // saving the username
+  username: string = this.userService.getUser().username;
+
   // display options for workouts, lengths
   workoutOptions: string[] = ['Chest','Shoulders','Back','Biceps','Triceps','Abs','Legs'];
   workoutLengthOptions: string[] = ['short', 'medium', 'long'];
@@ -91,11 +94,12 @@ export class WorkoutCreatePageComponent {
   // ----------> MAIN FUNCTIONS <----------
   // this is the function actually generating the workouts
   generateWorkout(){
+    console.log(this.username);
     console.log("generate workout button clicked!");
     // calling the validating function
     this.validateSelection();
     // calling the workout service to make a call to the backend, pushed the data onto the individualMuscleContainer div, with neccesary info
-    this.workoutService.getGenerateWorkout(this.selectedOptionArray, this.selectedWorkoutLength, 'andrew').subscribe(response => {
+    this.workoutService.getGenerateWorkout(this.selectedOptionArray, this.selectedWorkoutLength, this.username).subscribe(response => {
       response.forEach((data, index) => {
         this.createWorkouts(data);
       })
@@ -136,7 +140,7 @@ export class WorkoutCreatePageComponent {
     this.editDivVisible = false;
     this.newWorkoutDivVisible = true;
 
-    this.workoutService.getNewWorkoutNames(this.workoutNameDisplay, 'andrew').subscribe(response => {
+    this.workoutService.getNewWorkoutNames(this.workoutNameDisplay, this.username).subscribe(response => {
       this.newWorkoutsReturnedArray = response.slice();
       this.newSelectedWorkoutName = this.newWorkoutsReturnedArray[0];
       }, error => {
@@ -146,7 +150,7 @@ export class WorkoutCreatePageComponent {
 
   // function for the confirming of swapping workout, sends new workoutList to the end backend
   confirmNewWorkout(){
-    this.workoutService.getUpdatedWorkout(this.individualMuscleContainer, this.newSelectedWorkoutName, this.selectedDivIndex, 'andrew').subscribe(response => {
+    this.workoutService.getUpdatedWorkout(this.individualMuscleContainer, this.newSelectedWorkoutName, this.selectedDivIndex, this.username).subscribe(response => {
       this.individualMuscleContainer = [];
       response.forEach((data, index) => {
         this.createWorkouts(data);
@@ -157,27 +161,28 @@ export class WorkoutCreatePageComponent {
     });
   };
 
-  // function for accepting workout, going to send info to the backend
-  acceptWorkout(){
-    console.log("Accept workout button clicked!");
-    let rpeArray = [];
-
-    for (let i = 0; i < this.individualMuscleContainer.length; i ++){
-      rpeArray.push(0);
-    }
-
-    this.workoutService.sendWorkoutInformation(this.individualMuscleContainer, rpeArray, 'andrew').subscribe(response => {
-      
-      }, error => {
-      console.error(error);
-    });
-  };
-
+  
   // function for the regenerate button
   regenerateWorkout(){
     console.log("regenerate workout button clicked!")
     this.generateButtonClicked = false;
     this.individualMuscleContainer =[];
     this.isWorkoutListEmpty();
+  };
+
+  // function for accepting workout, going to send info to the backend
+  acceptWorkout(){
+    console.log("Accept workout button clicked!");
+    let rpeArray = [];
+  
+    for (let i = 0; i < this.individualMuscleContainer.length; i ++){
+      rpeArray.push(0);
+    }
+  
+    this.workoutService.sendWorkoutInformation(this.individualMuscleContainer, rpeArray, this.username).subscribe(response => {
+      console.log(response);
+      }, error => {
+      console.error(error);
+    });
   };
 }

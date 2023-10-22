@@ -45,9 +45,10 @@ export class WorkoutService {
     return this.http.post<{data: any}>(`${this.apiUrl}/updateWorkout`, body);
   }
 
-  sendWorkoutInformation(workoutList:any, rpe:any, username: string){
+  sendWorkoutInformation(workoutList:any, rpe:any, username: string): Observable <any>{
     const body = {
       workoutList,
+      rpe,
       username,
     }
 
