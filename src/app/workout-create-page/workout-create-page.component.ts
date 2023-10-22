@@ -136,7 +136,7 @@ export class WorkoutCreatePageComponent {
     this.editDivVisible = false;
     this.newWorkoutDivVisible = true;
 
-    this.workoutService.getNewWorkoutNames(this.workoutNameDisplay, 'andrew', this.individualMuscleContainer).subscribe(response => {
+    this.workoutService.getNewWorkoutNames(this.workoutNameDisplay, 'andrew').subscribe(response => {
       this.newWorkoutsReturnedArray = response.slice();
       this.newSelectedWorkoutName = this.newWorkoutsReturnedArray[0];
       }, error => {
@@ -160,6 +160,17 @@ export class WorkoutCreatePageComponent {
   // function for accepting workout, going to send info to the backend
   acceptWorkout(){
     console.log("Accept workout button clicked!");
+    let rpeArray = [];
+
+    for (let i = 0; i < this.individualMuscleContainer.length; i ++){
+      rpeArray.push(0);
+    }
+
+    this.workoutService.sendWorkoutInformation(this.individualMuscleContainer, rpeArray, 'andrew').subscribe(response => {
+      
+      }, error => {
+      console.error(error);
+    });
   };
 
   // function for the regenerate button

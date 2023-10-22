@@ -24,7 +24,7 @@ export class WorkoutService {
   // http://localhost:3200/sendMuscleSwap
 
 
-  getNewWorkoutNames(workoutName: string, username: string, workoutList: any): Observable<any>{
+  getNewWorkoutNames(workoutName: string, username: string): Observable<any>{
     const body = {
       workoutName,
       username,
@@ -43,5 +43,14 @@ export class WorkoutService {
     }
 
     return this.http.post<{data: any}>(`${this.apiUrl}/updateWorkout`, body);
+  }
+
+  sendWorkoutInformation(workoutList:any, rpe:any, username: string){
+    const body = {
+      workoutList,
+      username,
+    }
+
+    return this.http.post<{data: any}>(`${this.apiUrl}/submitWorkout`, body)
   }
 }
