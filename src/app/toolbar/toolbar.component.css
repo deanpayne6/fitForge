@@ -1,37 +1,36 @@
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 100px;
-    background: black;
+.top-bar{
     display: flex;
-    z-index: 80;
+    align-items: center;
+    height: 8.4vw;
+    background: rgb(38, 38, 38);
+    justify-content: space-between;
+
 }
 
-.navigation{
+.top-bar-right{
+    padding: 0 5vw;
+
+}
+
+.top-bar-left{
+    padding: 0 5vw;
+}
+
+.top-bar-logo{
     display: flex;
-    justify-self: right;
-    margin-left: 900px;
-    margin-top: 17px;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.34vw;
 }
 
-.navigation a{
-    position: relative;
-    font-size: 1.1em;
-    color: aliceblue;
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-h1{
-    color: white;
-}
-
-.header-logo img {
+.top-bar-logo img{
     margin: 0 0;
-    height: 50px;
-    justify-content: left;
+    height: 5vw;
+}
+
+a{
+    padding: 0.5vw 0.5vw;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1.1vw;
 }

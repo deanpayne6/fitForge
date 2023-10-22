@@ -12,7 +12,8 @@ import { WorkoutRatingComponent } from './workout-rating/workout-rating.componen
 import { WorkoutLogComponent } from './workout-log/workout-log.component';
 
 const routes: Routes = [
-  {path: '', component: InitalLoginPageComponent},
+  {path: '', component: HomeComponent},
+  {path: 'login', component: InitalLoginPageComponent},
   {path: 'register', component: CreateAccountPageComponent},
   {path: 'about', component: AboutPageComponent},
   {path: 'userquestionnaire', component: QuestionnairePageComponent},
