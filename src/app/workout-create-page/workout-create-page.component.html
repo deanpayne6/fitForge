@@ -57,7 +57,7 @@
         <div class="col-sm-12 workout-info-container">
           <label for="workoutName{{ i }}"><strong>Name:</strong></label>
           <br>
-          <input class = "form-control text-center" type="text" id="workoutName{{ i }}" [(ngModel)]="muscle[1]" readonly>
+          <input class = "form-control text-center" type="text" id="workoutName{{ i }}" [(ngModel)]="muscle.workoutName" readonly>
         </div>
       </div>
 
@@ -66,17 +66,17 @@
         <div class="col-sm-4 workout-info-container">
           <label for="workoutSets{{ i}}"><strong>Sets:</strong></label>
           <br>
-          <input class = "form-control text-center" type="text" id="workoutSets{{ i }}" [(ngModel)]="muscle[2]" readonly>
+          <input class = "form-control text-center" type="text" id="workoutSets{{ i }}" [(ngModel)]="muscle.workoutSets" readonly>
         </div>
         <div class="col-sm-4 workout-info-container">
         <label for="workoutReps{{ i}}"><strong>Reps:</strong></label>
           <br>
-          <input class = "form-control text-center" type="text" id="workoutReps{{ i }}" [(ngModel)]="muscle[3]" readonly>
+          <input class = "form-control text-center" type="text" id="workoutReps{{ i }}" [(ngModel)]="muscle.workoutReps" readonly>
         </div>
         <div class="col-sm-4 workout-info-container">
           <label for="workoutRest{{ i}}"><strong>Rest:</strong></label>
           <br>
-          <input class = "form-control text-center" type="text" id="workoutRest{{ i }}" [(ngModel)]="muscle[4]" readonly>
+          <input class = "form-control text-center" type="text" id="workoutRest{{ i }}" [(ngModel)]="muscle.workoutRest" readonly>
         </div>
       </div>
 
@@ -90,7 +90,7 @@
         <div class="col-sm-8 workout-info-container">
           <label for="workoutTarget{{ i}}"><strong>Target:</strong></label>
           <br>
-          <input class = "form-control text-center" type="text" id="workoutTarget{{ i }}" [(ngModel)]="muscle[5]" readonly>
+          <input class = "form-control text-center" type="text" id="workoutTarget{{ i }}" [(ngModel)]="muscle.workoutTarget" readonly>
         </div>
       </div>
             
@@ -99,7 +99,7 @@
         <div class="col-sm-12 workout-info-container">
           <label for="workoutLink{{ i}}"><strong>Link:</strong></label>
           <br>
-          <a class = "form-control text-center" [href]="muscle[6]" id="workoutLink{{ i }}" target="_blank">Video Link</a>
+          <a class = "form-control text-center" [href]="muscle.workoutLink" id="workoutLink{{ i }}" target="_blank">Video Link</a>
         </div>
       </div>  
 
