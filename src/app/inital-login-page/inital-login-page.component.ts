@@ -36,13 +36,13 @@ export class InitalLoginPageComponent {
     }
 
     // production IP and localhost test variables
-    let prod = "https://api.fitforgebackend.com:3200/"
+    let prod = "https://api.fitforgebackend.com:3200/auth/login"
     let test = "http://localhost:3200/"
 
     // set user email
     this.userService.setUser(this.userLoginForm.get('userEmail').value);
 
-    let url = prod + "login?email=" + userData.email + "&password=" + userData.password;
+    let url = prod;
 
     console.log(url)
 

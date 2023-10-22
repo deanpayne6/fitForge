@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class WorkoutService {
   constructor(private http: HttpClient) {}
   
-  private apiUrl = "http://localhost:3200";
+  private apiUrl = "https://api.fitforgebackend.com:3200";
 
   getGenerateWorkout(workoutInput: any, workoutLength: string, username: string): Observable<any> {
     const body = {

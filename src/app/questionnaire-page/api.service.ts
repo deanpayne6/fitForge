@@ -9,7 +9,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   sendPostRequest(formData: any): Observable<any> {
-    const url = 'http://localhost:3200/questionnaire/submission'; // Replace with your actual POST endpoint
+    const url = 'https://api.fitforgebackend.com:3200/questionnaire/submission'; // Replace with your actual POST endpoint
     return this.http.post(url, formData);
   }
 }
