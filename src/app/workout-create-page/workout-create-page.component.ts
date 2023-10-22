@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { WorkoutService } from './workout.service'
 import { UserService } from '../user.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-workout-create-page',
@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 
 
 export class WorkoutCreatePageComponent {
-  constructor(private workoutService: WorkoutService, public userService: UserService) {};
+  constructor(private workoutService: WorkoutService, public userService: UserService, private router: Router) {};
   ngOnInit() {};
 
   // saving the username
@@ -184,5 +184,8 @@ export class WorkoutCreatePageComponent {
       }, error => {
       console.error(error);
     });
+
+    this.router.navigate(['/workoutrating'])
+
   };
 }

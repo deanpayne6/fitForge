@@ -42,9 +42,10 @@ export class InitalLoginPageComponent {
     if (userData) {
       this.apiService.checkLoginInfo(url, userData).subscribe(
         (response) => {
-          console.log("Response: " + response)
           if (response.token){
-            localStorage.setItem("login_token", response.token)
+            localStorage.setItem("login_token", response.token);
+            this.userService.setUser(response.user_data)
+            console.log(this.userService.getUser())
             this.router.navigate(['/home'])
           } else {
             alert("Invalid email or password!")
