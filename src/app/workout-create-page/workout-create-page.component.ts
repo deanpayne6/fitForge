@@ -66,13 +66,13 @@ export class WorkoutCreatePageComponent {
   // creating workout array with the use of an object
   createWorkouts(data){
     const object = {
-      workoutMuscleGroup: data[0],
-      workoutName: data[1],
-      workoutSets: data[2],
-      workoutReps: data[3],
-      workoutRest: data[4],
-      workoutTarget: data[5],
-      workoutLink: data[6],
+      workoutMuscleGroup: data.workoutMuscleGroup,
+      workoutName: data.workoutName,
+      workoutSets: data.workoutSets,
+      workoutReps: data.workoutReps,
+      workoutRest: data.workoutRest,
+      workoutTarget: data.workoutTarget,
+      workoutLink: data.workoutLink,
     };
     this.individualMuscleContainer.push(object);
   };
@@ -136,7 +136,7 @@ export class WorkoutCreatePageComponent {
     this.editDivVisible = false;
     this.newWorkoutDivVisible = true;
 
-    this.workoutService.getNewWorkoutNames(this.workoutNameDisplay, 'andrew').subscribe(response => {
+    this.workoutService.getNewWorkoutNames(this.workoutNameDisplay, 'andrew', this.individualMuscleContainer).subscribe(response => {
       this.newWorkoutsReturnedArray = response.slice();
       this.newSelectedWorkoutName = this.newWorkoutsReturnedArray[0];
       }, error => {
