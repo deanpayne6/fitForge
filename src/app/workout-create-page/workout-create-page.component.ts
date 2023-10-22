@@ -1,4 +1,4 @@
-import { Component, Renderer2, ElementRef } from '@angular/core';
+import { Component} from '@angular/core';
 import { WorkoutService } from './workout.service'
 import { UserService } from '../user.service';
 
@@ -13,12 +13,11 @@ import { UserService } from '../user.service';
 export class WorkoutCreatePageComponent {
   constructor(private workoutService: WorkoutService, public userService: UserService) {};
   ngOnInit() {}
-  
-  // Variables
 
   // display options for workouts, lengths
   workoutOptions: string[] = ['Chest','Shoulders','Back','Biceps','Triceps','Abs','Legs'];
   workoutLengthOptions: string[] = ['short', 'medium', 'long'];
+
   // default options so the user can not accidentally click generate without inputs, other inputs can be empty
   selectedWorkoutLength: string = 'short';
   selectedOption1: string = "Chest";
