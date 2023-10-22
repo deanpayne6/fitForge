@@ -51,6 +51,8 @@
 .btn-edit{
   margin-top: 10px;
   max-width: 15%;
+  justify-content: right;
+  align-items: right;
 }
 
 .btn-inside-edit{
