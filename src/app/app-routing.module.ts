@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'createWorkout', component:WorkoutCreatePageComponent},
   {path: 'workoutrating', component:WorkoutRatingComponent},
   {path: 'workoutlog', component:WorkoutLogComponent},
-  {path: "**", component: HomeComponent},
+  {path: '**', component: HomeComponent},
 ];
 
 @NgModule({
