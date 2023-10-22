@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-inital-login-page',
@@ -48,20 +49,21 @@ export class InitalLoginPageComponent {
     if (userData) {
       this.apiService.checkLoginInfo(url, userData).subscribe(
         (response) => {
-          console.log(response)
-          console.log("User exists: ", response.authenticated);
-          if (response.authenticated === true){
+          if (response.token){
+            localStorage.setItem("login_token", response.token);
+            this.userService.setUser(response.user_data)
+            console.log(this.userService.getUser())
             this.router.navigate(['/home'])
           } else {
-            // user should see something like 'email does not exist'
+            alert("Invalid email or password!")
           }
         },
         (error) => {
           console.error("Checking email availability error:", error);
+          alert("Invalid data.")
         }
       );
     }
-    console.log(userData);
   }
 
   forgotPassword() {

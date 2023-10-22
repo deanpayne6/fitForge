@@ -1,2 +1,57 @@
-<p>workout-rating works!</p>
-<mat-icon color="yellow">star</mat-icon>
+<div class="main container-fluid">
+    <div class="content container">
+        <a routerLink="/home">
+            <img class="fit-forge-logo" src="assets/fitforge-logo.png"/>
+        </a>
+        <div class="header-message">
+            <p>HOORAY! You finished your daily workout! Please take a moment to generally rate each exercise so that we may provide better recommendations for your next workout.</p>
+        </div>
+        <p class="fw-bold">{{getCurrentDayOfWeek()}} {{currentDate | date:'MM-dd-yyyy'}}</p>
+
+        <!-- Will have to change later to populate the page with the data from the user workout log -->
+        <div class="row">
+            <div class="col-12">
+                <div class="workout-rating-container container">
+                    <img class="workout-rating-image" src="assets/bench-press.png">
+                    <div class="stacked-name-and-stars">
+                        <h3 class="fw-bold"> Bench Press </h3>
+                        <igc-rating value="ratingVal" min="1" max="5"></igc-rating>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="workout-rating-container container">
+                    <img class="workout-rating-image" src="assets/incline-bench-press.png">
+                    <div class="stacked-name-and-stars">
+                        <h3 class="fw-bold"> Incline Bench Press </h3>
+                        <igc-rating value="ratingVal" min="1" max="5"></igc-rating>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="workout-rating-container container">
+                    <img class="workout-rating-image" src="assets/incline-bench-press.png">
+                    <div class="stacked-name-and-stars">
+                        <h3 class="fw-bold"> Incline Bench Press </h3>
+                        <igc-rating value="ratingVal" min="1" max="5"></igc-rating>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rating-button">
+            <!-- change later to redirect to workout log when the page is finished -->
+            <button 
+            mat-button 
+            color="accent"
+            routerLink="/workoutlog"> 
+            <mat-icon class="back-icon">arrow_back</mat-icon>
+            Back to Work Out Log 
+            </button>
+        </div>
+
+    </div>
+</div>

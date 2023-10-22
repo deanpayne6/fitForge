@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-
+import { User } from '../app/models/user'
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -7,10 +8,10 @@ import { Injectable } from '@angular/core';
 export class UserService {
   
   // our current user
-  current_user: String;
+  current_user: User;
 
   // setters and getters
-  setUser(user: String){
+  setUser(user: User){
     this.current_user = user;
   }
 
@@ -20,7 +21,7 @@ export class UserService {
 
   // clear user
   clearUser(){
-    this.current_user = "";
+    this.current_user = null;
   }
 
 }
