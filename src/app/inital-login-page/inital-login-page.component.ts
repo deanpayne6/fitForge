@@ -4,6 +4,7 @@ import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../models/user';
+import { UrlService } from '../url.service';
 
 @Component({
   selector: 'app-inital-login-page',
@@ -14,7 +15,11 @@ export class InitalLoginPageComponent {
 
   userLoginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, public userService: UserService) { };
+  constructor(private fb: FormBuilder, 
+              private apiService: ApiService, 
+              private router: Router, 
+              public userService: UserService,
+              public urlService: UrlService) { };
 
   
   userExists = false;
@@ -42,7 +47,7 @@ export class InitalLoginPageComponent {
     // set user email
     this.userService.setUser(this.userLoginForm.get('userEmail').value);
 
-    let url = prod;
+    let url = this.urlService.getUrl() + '/auth/login';
 
     console.log(url)
 
