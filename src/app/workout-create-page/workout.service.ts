@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { UrlService } from '../url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkoutService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public urlService: UrlService) {}
   
-  private apiUrl = "https://api.fitforgebackend.com:3200";
+  private apiUrl = this.urlService.getUrl();
 
   getGenerateWorkout(workoutInput: any, workoutLength: string, username: string): Observable<any> {
     const body = {

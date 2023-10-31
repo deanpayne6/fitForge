@@ -9,8 +9,10 @@ export class UrlService {
 
   current_url = 'http://localhost'
 
+  current_port = '3200'
+
   getUrl() {
-    return this.current_url
+    return this.current_url + ':' + this.current_port
   }
 
 }
