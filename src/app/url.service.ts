@@ -7,7 +7,7 @@ export class UrlService {
 
   constructor() { }
 
-  current_url = 'https://localhost'
+  current_url = 'http://localhost'
 
   current_port = '3200'
 

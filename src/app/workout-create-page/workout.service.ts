@@ -18,7 +18,7 @@ export class WorkoutService {
       username
     };
 
-    return this.http.post<{ data: any }>(`${this.apiUrl}/generateWorkout`, body);
+    return this.http.post<{ data: any }>(`${this.apiUrl}/workout/generateWorkout`, body);
   }
 
   // http://localhost:3200/sendMuscleSwap
@@ -30,7 +30,7 @@ export class WorkoutService {
       username,
     };
 
-    return this.http.post<{data: any}>(`${this.apiUrl}/sendMuscleSwap`, body);
+    return this.http.post<{data: any}>(`${this.apiUrl}/workout/sendMuscleSwap`, body);
   }
 
   // updateWorkout
@@ -42,7 +42,7 @@ export class WorkoutService {
       username
     }
 
-    return this.http.post<{data: any}>(`${this.apiUrl}/updateWorkout`, body);
+    return this.http.post<{data: any}>(`${this.apiUrl}/workout/updateWorkout`, body);
   }
 
   sendWorkoutInformation(workoutList:any, rpe:any, username: string): Observable <any>{
@@ -52,6 +52,6 @@ export class WorkoutService {
       username,
     }
 
-    return this.http.post<{data: any}>(`${this.apiUrl}/submitWorkout`, body)
+    return this.http.post<{data: any}>(`${this.apiUrl}/workout/submitWorkout`, body)
   }
 }
