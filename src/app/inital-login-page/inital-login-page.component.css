@@ -2,17 +2,17 @@ header{
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     padding: 20px 100px;
     background: black;
     display: flex;
     z-index: 80;
+    justify-content: space-between;
 }
 
 .navigation{
     display: flex;
     justify-self: right;
-    margin-left: 900px;
     margin-top: 17px;
 }
 
@@ -22,7 +22,6 @@ header{
     color: aliceblue;
     text-decoration: none;
     font-weight: 500;
-    margin-left: 10px;
     cursor: pointer;
 }
 
@@ -41,7 +40,7 @@ h1{
     margin-left: auto;
     margin-right: auto;
     margin-top: 225px;
-    width: 40%;
+    width: 40vw;
 }
 
 .container {
@@ -165,10 +164,10 @@ label {
 } */
 
 .left-side {
-    width: 50%;
+    width: 50vw;
     position: absolute;
     left: 0px;
-    height: 100%;
+    height: 100vh;
     background-color: #454545;
     justify-content: center;
 }
@@ -177,8 +176,37 @@ label {
     background: url('~src/assets/gigachad.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    width: 50%;
+    width: 50vw;
     position: absolute;
-    right: 0px;
-    height: 100%;
+    right: 0;
+    height: 100vh;
+}
+
+@media (max-width: 500px){
+    .header-logo{
+        display: none;
+    }
+}
+
+/* smaller screen size*/
+@media (max-width: 767px){
+    .right-side{
+        width: 0vw;
+    }
+    .left-side{
+        width: 100vw;
+    }
+    .logo-img{
+        width: 70vw;
+    }
+}
+
+/* medium to large screen size*/
+@media (min-width: 767.1px){
+    .right-side{
+        width: 50vw;
+    }
+    .logo-img{
+        width: 40vw;
+    }
 }
