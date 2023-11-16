@@ -140,7 +140,7 @@ export class WorkoutCreatePageComponent {
     this.editDivVisible = false;
     this.newWorkoutDivVisible = true;
 
-    this.workoutService.getNewWorkoutNames(this.workoutNameDisplay, this.username).subscribe(response => {
+    this.workoutService.getNewWorkoutNames(this.individualMuscleContainer, this.workoutNameDisplay, this.username).subscribe(response => {
       this.newWorkoutsReturnedArray = response.slice();
       this.newSelectedWorkoutName = this.newWorkoutsReturnedArray[0];
       }, error => {
