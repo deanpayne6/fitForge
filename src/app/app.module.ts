@@ -29,6 +29,7 @@ import { WorkoutCreatePageComponent } from './workout-create-page/workout-create
 import { UserService } from './user.service';
 import { WorkoutRatingComponent } from './workout-rating/workout-rating.component';
 import { WorkoutLogComponent } from './workout-log/workout-log.component';
+import { DailyWorkoutCreationComponent } from './daily-workout-creation/daily-workout-creation.component';
 
 
 
@@ -48,7 +49,8 @@ import { WorkoutLogComponent } from './workout-log/workout-log.component';
     HomeComponent,
     WorkoutCreatePageComponent,
     WorkoutRatingComponent,
-    WorkoutLogComponent
+    WorkoutLogComponent,
+    DailyWorkoutCreationComponent
   ],
   imports: [
     BrowserModule,
