@@ -48,6 +48,40 @@ export class WorkoutCreatePageComponent {
   // this is being used to keep track of the index of the selected edited div
   selectedDivIndex:number;
 
+  // this is for finding out how many workouts the user wants and for generating tabs for number of days wanted
+  selectedNumberOfWorkouts:number = 1;
+  numberOfWorkoutsOptions:number[] = [1,2,3,4,5,6,7];
+  startButtonClicked: boolean = false;
+  workoutDays: number[] = [];
+
+
+  startWorkouts() {
+    this.startButtonClicked = true;
+    this.generateWorkoutDays();
+  }
+
+  generateWorkoutDays() {
+    this.workoutDays = Array.from({ length: this.selectedNumberOfWorkouts }, (_, i) => i + 1);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // ----------> HELPER FUNCTIONS <----------
   // this function is meant to see what options to push onto the backend for workouts

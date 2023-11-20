@@ -1,5 +1,42 @@
 <app-toolbar></app-toolbar>
 
+<!-- selection of the number of workouts the user wants to do per week -->
+<div class="container mt-5" *ngIf="!startButtonClicked">
+  <div class="row justify-content-center">
+    <div class="col-md-4 text-center">
+      <label for="numberOfWorkouts" class="fw-bold">Select the number of workouts:</label>
+      <select class="form-control text-center" id="numberOfWorkouts" [(ngModel)]="selectedNumberOfWorkouts">
+        <option *ngFor="let option of numberOfWorkoutsOptions">{{ option }}</option>
+      </select>
+    </div>
+    <div class="col-md-4 text-center">
+      <button class="btn btn-primary" (click)="startWorkouts()">Start</button>
+    </div>
+  </div>
+</div>
+
+<!-- tabs hopefully -->
+<div *ngIf="startButtonClicked">
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <ul class="nav nav-tabs nav-fill">
+          <li *ngFor="let day of workoutDays; let i = index" class="nav-item">
+            <a class="nav-link" id="day{{ i }}" data-bs-toggle="tab" href="#tab{{ i }}">{{ 'Day ' + day }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-12 mt-3">
+        <div class="tab-content">
+          <div *ngFor="let day of workoutDays; let i = index" class="tab-pane fade" id="tab{{ i }}">
+            <p>{{ 'Workout content for Day ' + day }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- section for the length of the workout, disappears after workout is generated -->
 <div class="container mt-5" *ngIf = "!generateButtonClicked">
   <div class="row justify-content-center">
