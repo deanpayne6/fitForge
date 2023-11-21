@@ -1,7 +1,7 @@
 <app-toolbar></app-toolbar>
 
 <!-- selection of the number of workouts the user wants to do per week -->
-<div class="container mt-5">
+<!-- <div class="container mt-5" *ngIf="!startButtonClicked">
   <div class="row justify-content-center">
     <div class="col-md-4 text-center">
       <label for="numberOfWorkouts" class="fw-bold">Select the number of workouts:</label>
@@ -13,10 +13,10 @@
       <button class="btn btn-primary" (click)="startWorkouts()">Start</button>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- tabs hopefully -->
-<div *ngIf="startButtonClicked">
+<div>
   <div class="container mt-3">
     <div class="row justify-content-center">
       <div class="col-md-12">
@@ -29,12 +29,15 @@
       <div class="col-md-12 mt-3">
         <div class="tab-content">
           <div *ngFor="let day of workoutDays; let i = index" class="tab-pane fade" id="tab{{ i }}">
-            <p>{{ 'Workout content for Day ' + day }}</p>
-            <app-daily-workout-creation></app-daily-workout-creation>
+            <!-- <p>{{ 'Workout content for Day ' + day }}</p> -->
+            <app-daily-workout-creation (dataUpdated)="updateWorkoutDaysData(i, $event)"></app-daily-workout-creation>
           </div>
         </div>
       </div>
+      <button class = "btn btn-success btn-inside-edit" (click)="acceptWorkout()" >ACCEPT WORKOUT</button>
+      <button class = "btn btn-danger btn-inside-edit" (click)="showContainer()" >SHOW ARRAY</button>
     </div>
   </div>
 </div>
+
 <router-outlet></router-outlet>

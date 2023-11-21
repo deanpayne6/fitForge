@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output} from '@angular/core';
 import { DailyWorkoutService } from './daily-workout.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./daily-workout-creation.component.css']
 })
 export class DailyWorkoutCreationComponent {
+  @Output() dataUpdated: EventEmitter<any> = new EventEmitter();
   constructor(private workoutService: DailyWorkoutService, public userService: UserService, private router: Router) {};
   ngOnInit() {};
 
@@ -101,6 +102,7 @@ export class DailyWorkoutCreationComponent {
       response.forEach((data, index) => {
         this.createWorkouts(data);
       })
+      this.dataUpdated.emit(this.individualMuscleContainer);
       this.generateButtonClicked = true;
       }, error => {
       console.error(error);
@@ -138,7 +140,7 @@ export class DailyWorkoutCreationComponent {
     this.editDivVisible = false;
     this.newWorkoutDivVisible = true;
 
-    this.workoutService.getNewWorkoutNames(this.workoutNameDisplay, this.username).subscribe(response => {
+    this.workoutService.getNewWorkoutNames(this.individualMuscleContainer, this.workoutNameDisplay, this.username).subscribe(response => {
       this.newWorkoutsReturnedArray = response.slice();
       this.newSelectedWorkoutName = this.newWorkoutsReturnedArray[0];
       }, error => {
@@ -147,18 +149,18 @@ export class DailyWorkoutCreationComponent {
   };
 
   // function for the confirming of swapping workout, sends new workoutList to the end backend
-  confirmNewWorkout(){
+  confirmNewWorkout() {
     this.workoutService.getUpdatedWorkout(this.individualMuscleContainer, this.newSelectedWorkoutName, this.selectedDivIndex, this.username).subscribe(response => {
       this.individualMuscleContainer = [];
       response.forEach((data, index) => {
         this.createWorkouts(data);
-      })
+      });
+      this.dataUpdated.emit(this.individualMuscleContainer);
       this.cancelEditWorkout();
-      }, error => {
+    }, error => {
       console.error(error);
     });
-  };
-
+  }
   
   // function for the regenerate button
   regenerateWorkout(){
@@ -171,18 +173,18 @@ export class DailyWorkoutCreationComponent {
   // function for accepting workout, going to send info to the backend
   acceptWorkout(){
     console.log("Accept workout button clicked!");
-    let rpeArray = [];
+    // let rpeArray = [];
   
-    for (let i = 0; i < this.individualMuscleContainer.length; i ++){
-      rpeArray.push(0);
-    }
+    // for (let i = 0; i < this.individualMuscleContainer.length; i ++){
+    //   rpeArray.push(0);
+    // }
   
-    this.workoutService.sendWorkoutInformation(this.individualMuscleContainer, rpeArray, this.username).subscribe(response => {
-      console.log(response);
-      }, error => {
-      console.error(error);
-    });
+    // this.workoutService.sendWorkoutInformation(this.individualMuscleContainer, rpeArray, this.username).subscribe(response => {
+    //   console.log(response);
+    //   }, error => {
+    //   console.error(error);
+    // });
 
-    this.router.navigate(['/workoutrating'])
+    // this.router.navigate(['/workoutrating'])
   };
 }
