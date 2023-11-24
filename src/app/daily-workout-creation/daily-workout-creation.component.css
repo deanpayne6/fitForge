@@ -77,3 +77,7 @@
   .swapping-div.active {
     display: block;
   }
+
+  .container-all{
+    background-color: grey;
+  }

@@ -1,7 +1,8 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { WorkoutService } from './workout.service'
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-workout-create-page',
@@ -11,30 +12,28 @@ import { Router } from '@angular/router';
 
 
 export class WorkoutCreatePageComponent {
-  constructor(private workoutService: WorkoutService, public userService: UserService, private router: Router) {};
-  ngOnInit() {};
+  constructor(private workoutService: WorkoutService, public userService: UserService, private router: Router) {
+    this.generateFormattedDates();
+  };
+ 
+  formattedDates: string[] = [];
+
+  getDayName(dateString: string): string {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const date = new Date(dateString);
+    return days[date.getDay()];
+  }
+
+  ngOnInit() {}
 
   // saving the username
   username: string = this.userService.getUser().username;
 
   
   // this is for finding out how many workouts the user wants and for generating tabs for number of days wanted
-  selectedNumberOfWorkouts:number = 1;
-  // numberOfWorkoutsOptions:number[] = [1,2,3,4,5,6,7];
   startButtonClicked: boolean = false;
   workoutDays: number[] = [1,2,3,4,5,6,7];
-  workoutDaysData: any[] = [];
-
-
-  startWorkouts() {
-    this.startButtonClicked = true;
-    this.generateWorkoutDays();
-    this.workoutDaysData = Array.from({ length: this.selectedNumberOfWorkouts }, () => []);
-  }
-
-  generateWorkoutDays() {
-    this.workoutDays = Array.from({ length: this.selectedNumberOfWorkouts }, (_, i) => i + 1);
-  }
+  workoutDaysData: any[] = [[],[],[],[],[],[],[]];
 
   updateWorkoutDaysData(index: number, data: any) {
     this.workoutDaysData[index] = data;
@@ -55,4 +54,15 @@ export class WorkoutCreatePageComponent {
 
     this.router.navigate(['/home'])
   };
+
+  private generateFormattedDates() {
+    const currentDate = new Date();
+
+    this.formattedDates = this.workoutDays.map((_, index) => {
+      const date = new Date(currentDate);
+      date.setDate(currentDate.getDate() + index);
+      return formatDate(date, 'MM-dd-yy', 'en-US');
+    });
+  };
+
 }

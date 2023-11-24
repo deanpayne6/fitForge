@@ -168,6 +168,7 @@ export class DailyWorkoutCreationComponent {
     this.generateButtonClicked = false;
     this.individualMuscleContainer =[];
     this.isWorkoutListEmpty();
+    this.dataUpdated.emit(this.individualMuscleContainer);
   };
 
   // function for accepting workout, going to send info to the backend

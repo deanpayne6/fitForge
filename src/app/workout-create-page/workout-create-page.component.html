@@ -21,9 +21,15 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
         <ul class="nav nav-tabs nav-fill">
-          <li *ngFor="let day of workoutDays; let i = index" class="nav-item">
-            <a class="nav-link" id="day{{ i }}" data-bs-toggle="tab" href="#tab{{ i }}">{{ 'Day ' + day }}</a>
-          </li>
+          <ng-container *ngFor="let day of workoutDays; let i = index">
+            <li class="nav-item">
+              <ng-container *ngIf="formattedDates[i] as formattedDate">
+                <a class="nav-link" id="day{{ i }}" data-bs-toggle="tab" href="#tab{{ i }}">
+                  Day {{ day }}<br>{{ getDayName(formattedDate) }}<br>{{ formattedDate | date:'MM-dd-yyyy' }}
+                </a>
+              </ng-container>
+            </li>
+          </ng-container>
         </ul>
       </div>
       <div class="col-md-12 mt-3">
@@ -34,8 +40,8 @@
           </div>
         </div>
       </div>
-      <button class = "btn btn-success btn-inside-edit" (click)="acceptWorkout()" >ACCEPT WORKOUT</button>
-      <button class = "btn btn-danger btn-inside-edit" (click)="showContainer()" >SHOW ARRAY</button>
+      <button class="btn btn-success btn-edit" (click)="acceptWorkout()">ACCEPT WORKOUT</button>
+      <!-- <button class="btn btn-danger btn-inside-edit" (click)="showContainer()">SHOW ARRAY</button> -->
     </div>
   </div>
 </div>
