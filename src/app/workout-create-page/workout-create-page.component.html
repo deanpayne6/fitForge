@@ -36,12 +36,14 @@
         <div class="tab-content">
           <div *ngFor="let day of workoutDays; let i = index" class="tab-pane fade" id="tab{{ i }}">
             <!-- <p>{{ 'Workout content for Day ' + day }}</p> -->
-            <app-daily-workout-creation (dataUpdated)="updateWorkoutDaysData(i, $event)"></app-daily-workout-creation>
+            <app-daily-workout-creation
+            (dataUpdated)="updateWorkoutDaysData(i, $event)"
+            ></app-daily-workout-creation>
           </div>
         </div>
       </div>
       <button class="btn btn-success btn-edit" (click)="acceptWorkout()">ACCEPT WORKOUT</button>
-      <!-- <button class="btn btn-danger btn-inside-edit" (click)="showContainer()">SHOW ARRAY</button> -->
+      <button class="btn btn-danger btn-inside-edit" (click)="checkForPrexistingWeeklyWorkouts()">SHOW ARRAY</button>
     </div>
   </div>
 </div>

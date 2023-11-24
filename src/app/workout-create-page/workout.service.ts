@@ -54,4 +54,12 @@ export class WorkoutService {
 
     return this.http.post<{data: any}>(`${this.apiUrl}/workout/storeDailyWorkouts`, body)
   }
+
+  getExistingWeeklyWorkoutInfomation(username:string): Observable <any>{
+    const body = {
+      username,
+    }
+
+    return this.http.post<{data: any}>(`${this.apiUrl}/workout/checkWorkout`, body)
+  }
 }

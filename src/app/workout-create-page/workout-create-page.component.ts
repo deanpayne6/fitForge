@@ -12,6 +12,10 @@ import { formatDate } from '@angular/common';
 
 
 export class WorkoutCreatePageComponent {
+  ngOnInit() {
+    this.checkForPrexistingWeeklyWorkouts();
+  }
+
   constructor(private workoutService: WorkoutService, public userService: UserService, private router: Router) {
     this.generateFormattedDates();
   };
@@ -24,7 +28,6 @@ export class WorkoutCreatePageComponent {
     return days[date.getDay()];
   }
 
-  ngOnInit() {}
 
   // saving the username
   username: string = this.userService.getUser().username;
@@ -34,6 +37,21 @@ export class WorkoutCreatePageComponent {
   startButtonClicked: boolean = false;
   workoutDays: number[] = [1,2,3,4,5,6,7];
   workoutDaysData: any[] = [[],[],[],[],[],[],[]];
+
+  checkForPrexistingWeeklyWorkouts(){
+    this.workoutService.getExistingWeeklyWorkoutInfomation(this.username).subscribe(response => {
+      response.forEach((data, index) => {
+        if (index != 0){
+        this.workoutDaysData[index - 1] = (data);
+        }
+      })
+
+      console.log("This is the exisiting workout data: ",this.workoutDaysData);
+      // console.log(response);
+      }, error => {
+      console.error(error);
+    });
+  }
 
   updateWorkoutDaysData(index: number, data: any) {
     this.workoutDaysData[index] = data;

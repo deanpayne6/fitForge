@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output} from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit} from '@angular/core';
 import { DailyWorkoutService } from './daily-workout.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
@@ -9,9 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./daily-workout-creation.component.css']
 })
 export class DailyWorkoutCreationComponent {
+  @Input() initialWorkoutArray: any[] = [];
   @Output() dataUpdated: EventEmitter<any> = new EventEmitter();
   constructor(private workoutService: DailyWorkoutService, public userService: UserService, private router: Router) {};
-  ngOnInit() {};
+  ngOnInit() {
+    // console.log("incoming data:", this.initialWorkoutArray)
+    // if (this.initialWorkoutArray && this.initialWorkoutArray.length > 0){
+    //   this.setUpComponentWithArray(this.initialWorkoutArray);
+    // }
+  };
 
   // saving the username
   username: string = this.userService.getUser().username;
@@ -91,6 +97,19 @@ export class DailyWorkoutCreationComponent {
   };
 
   // ----------> MAIN FUNCTIONS <----------
+  // this function fills the individualWorkout with given array
+  setUpComponentWithArray(initialWorkoutArray:any[]){
+    this.individualMuscleContainer = [];
+    initialWorkoutArray.forEach((data, index) => {
+      this.createWorkouts(data);
+    });
+
+    console.log("the following is the passed data ", this.individualMuscleContainer);
+    this.dataUpdated.emit(this.individualMuscleContainer);
+    this.generateButtonClicked = true;
+  }
+
+
   // this is the function actually generating the workouts
   generateWorkout(){
     console.log(this.username);
