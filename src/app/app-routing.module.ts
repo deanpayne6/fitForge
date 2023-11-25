@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { WorkoutCreatePageComponent } from './workout-create-page/workout-create-page.component';
 import { WorkoutRatingComponent } from './workout-rating/workout-rating.component';
 import { WorkoutLogComponent } from './workout-log/workout-log.component';
+import { StartDailyWorkoutComponent } from './start-daily-workout/start-daily-workout.component';
 
 const routes: Routes = [
   {path: '', component: InitalLoginPageComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'createWorkout', component:WorkoutCreatePageComponent},
   {path: 'workoutrating', component:WorkoutRatingComponent},
   {path: 'workoutlog', component:WorkoutLogComponent},
+  {path: 'startWorkout', component:StartDailyWorkoutComponent},
   {path: '**', component: HomeComponent},
 ];
 

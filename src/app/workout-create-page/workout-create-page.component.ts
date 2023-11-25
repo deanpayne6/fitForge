@@ -39,30 +39,11 @@ export class WorkoutCreatePageComponent {
   startButtonClicked: boolean = false;
   workoutDays: number[] = [1,2,3,4,5,6,7];
   workoutDaysData: any[] = [[],[],[],[],[],[],[]];
-
-  // checkForPrexistingWeeklyWorkouts(){
-  //   this.workoutService.getExistingWeeklyWorkoutInfomation(this.username).subscribe(response => {
-  //     response.forEach((data, index) => {
-  //       if (index != 0){
-  //       this.workoutDaysData[index - 1] = (data);
-  //       }
-  //     })
-
-  //     console.log("This is the exisiting workout data: ",this.workoutDaysData);
-  //     }, error => {
-  //     console.error(error);
-  //   });
-
-  //   for (let i = 0; i < 7; i++){
-  //     DailyWorkoutCreationComponent[i].individualMuscleContainer = this.workoutDaysData[i - 1]
-  //   }
-  // }
+  
   checkForPrexistingWeeklyWorkouts() {
     this.workoutService.getExistingWeeklyWorkoutInfomation(this.username).subscribe(response => {
       response.forEach((data, index) => {
-        if (index != 0) {
-          this.workoutDaysData[index - 1] = (data);
-        }
+          this.workoutDaysData[index] = (data);
       });
 
       console.log("This is the existing workout data: ", this.workoutDaysData);

@@ -30,6 +30,7 @@ import { UserService } from './user.service';
 import { WorkoutRatingComponent } from './workout-rating/workout-rating.component';
 import { WorkoutLogComponent } from './workout-log/workout-log.component';
 import { DailyWorkoutCreationComponent } from './daily-workout-creation/daily-workout-creation.component';
+import { StartDailyWorkoutComponent } from './start-daily-workout/start-daily-workout.component';
 
 
 
@@ -50,7 +51,8 @@ import { DailyWorkoutCreationComponent } from './daily-workout-creation/daily-wo
     WorkoutCreatePageComponent,
     WorkoutRatingComponent,
     WorkoutLogComponent,
-    DailyWorkoutCreationComponent
+    DailyWorkoutCreationComponent,
+    StartDailyWorkoutComponent
   ],
   imports: [
     BrowserModule,

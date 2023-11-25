@@ -60,6 +60,6 @@ export class WorkoutService {
       username,
     }
 
-    return this.http.post<{data: any}>(`${this.apiUrl}/workout/checkWorkout`, body)
+    return this.http.post<{data: any}>(`${this.apiUrl}/workout/getWeeklyworkout`, body)
   }
 }
