@@ -1,8 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, EventEmitter} from '@angular/core';
 import { WorkoutService } from './workout.service'
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
+import { DailyWorkoutCreationComponent } from '../daily-workout-creation/daily-workout-creation.component';
 
 @Component({
   selector: 'app-workout-create-page',
@@ -12,6 +13,7 @@ import { formatDate } from '@angular/common';
 
 
 export class WorkoutCreatePageComponent {
+  workoutDataUpdated: EventEmitter<any[]> = new EventEmitter<any[]>();
   ngOnInit() {
     this.checkForPrexistingWeeklyWorkouts();
   }
@@ -38,17 +40,36 @@ export class WorkoutCreatePageComponent {
   workoutDays: number[] = [1,2,3,4,5,6,7];
   workoutDaysData: any[] = [[],[],[],[],[],[],[]];
 
-  checkForPrexistingWeeklyWorkouts(){
+  // checkForPrexistingWeeklyWorkouts(){
+  //   this.workoutService.getExistingWeeklyWorkoutInfomation(this.username).subscribe(response => {
+  //     response.forEach((data, index) => {
+  //       if (index != 0){
+  //       this.workoutDaysData[index - 1] = (data);
+  //       }
+  //     })
+
+  //     console.log("This is the exisiting workout data: ",this.workoutDaysData);
+  //     }, error => {
+  //     console.error(error);
+  //   });
+
+  //   for (let i = 0; i < 7; i++){
+  //     DailyWorkoutCreationComponent[i].individualMuscleContainer = this.workoutDaysData[i - 1]
+  //   }
+  // }
+  checkForPrexistingWeeklyWorkouts() {
     this.workoutService.getExistingWeeklyWorkoutInfomation(this.username).subscribe(response => {
       response.forEach((data, index) => {
-        if (index != 0){
-        this.workoutDaysData[index - 1] = (data);
+        if (index != 0) {
+          this.workoutDaysData[index - 1] = (data);
         }
-      })
+      });
 
-      console.log("This is the exisiting workout data: ",this.workoutDaysData);
-      // console.log(response);
-      }, error => {
+      console.log("This is the existing workout data: ", this.workoutDaysData);
+
+      // Emit the updated data to notify the child components
+      this.workoutDataUpdated.emit(this.workoutDaysData);
+    }, error => {
       console.error(error);
     });
   }
@@ -63,6 +84,8 @@ export class WorkoutCreatePageComponent {
 
   acceptWorkout(){
     console.log("Accept workout button clicked!");
+
+    
   
     this.workoutService.sendWorkoutInformation(this.workoutDaysData, this.username).subscribe(response => {
       console.log(response);

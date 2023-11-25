@@ -12,12 +12,11 @@ export class DailyWorkoutCreationComponent {
   @Input() initialWorkoutArray: any[] = [];
   @Output() dataUpdated: EventEmitter<any> = new EventEmitter();
   constructor(private workoutService: DailyWorkoutService, public userService: UserService, private router: Router) {};
-  ngOnInit() {
-    // console.log("incoming data:", this.initialWorkoutArray)
-    // if (this.initialWorkoutArray && this.initialWorkoutArray.length > 0){
-    //   this.setUpComponentWithArray(this.initialWorkoutArray);
-    // }
-  };
+  ngOnInit() {};
+
+  showList(){
+    console.log(this.individualMuscleContainer);
+  }
 
   // saving the username
   username: string = this.userService.getUser().username;
@@ -190,21 +189,11 @@ export class DailyWorkoutCreationComponent {
     this.dataUpdated.emit(this.individualMuscleContainer);
   };
 
-  // function for accepting workout, going to send info to the backend
-  acceptWorkout(){
-    console.log("Accept workout button clicked!");
-    // let rpeArray = [];
-  
-    // for (let i = 0; i < this.individualMuscleContainer.length; i ++){
-    //   rpeArray.push(0);
-    // }
-  
-    // this.workoutService.sendWorkoutInformation(this.individualMuscleContainer, rpeArray, this.username).subscribe(response => {
-    //   console.log(response);
-    //   }, error => {
-    //   console.error(error);
-    // });
-
-    // this.router.navigate(['/workoutrating'])
-  };
+  // Listen for the event from the parent component
+  @Input() set workoutData(data: any[]) {
+    if (data && data.length > 0) {
+      this.individualMuscleContainer = data;
+      this.generateButtonClicked = true;
+    };
+  }
 }
