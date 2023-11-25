@@ -1,1 +1,13 @@
-<p>start-daily-workout works!</p>
+<app-toolbar></app-toolbar>
+
+
+<!-- Display message with Bootstrap styling -->
+<div *ngIf="!displayDailyWorkout" class="d-flex justify-content-center align-items-center box">
+    <div class="alert alert-danger text-center">
+      <strong>{{ message }}</strong>
+    </div>
+</div>
+
+
+<div *ngIf="displayDailyWorkout">
+</div>
