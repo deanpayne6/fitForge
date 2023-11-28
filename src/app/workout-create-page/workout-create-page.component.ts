@@ -48,7 +48,7 @@ export class WorkoutCreatePageComponent {
 
       console.log("This is the existing workout data: ", this.workoutDaysData);
 
-      // Emit the updated data to notify the child components
+      // emit the updated data to notify the child components
       this.workoutDataUpdated.emit(this.workoutDaysData);
     }, error => {
       console.error(error);

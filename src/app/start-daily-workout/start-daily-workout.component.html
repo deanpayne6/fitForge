@@ -1,7 +1,7 @@
 <app-toolbar></app-toolbar>
 
 
-<!-- Display message with Bootstrap styling -->
+<!-- displaying already did workout for the day -->
 <div *ngIf="displayMessage" class="d-flex justify-content-center align-items-center box">
     <div class="alert alert-danger text-center">
       <strong>{{ message }}</strong>
@@ -51,12 +51,12 @@
 
       <!-- div contains the weight and target of the workout -->
       <div class="row mt-3 text-center">
-        <div class="col-sm-4 workout-info-container">
+        <!-- <div class="col-sm-4 workout-info-container">
           <label for="workoutTarget"><strong>Weight:</strong></label>
           <br>
           <input class = "form-control text-center" readonly>
-        </div>
-        <div class="col-sm-8 workout-info-container">
+        </div> -->
+        <div class="col-sm-12 workout-info-container">
           <label for="workoutTarget"><strong>Target:</strong></label>
           <br>
           <input class = "form-control text-center" type="text" id="workoutTarget" [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutTarget" readonly>
@@ -75,12 +75,12 @@
       <button class="btn btn-secondary btn-edit" (click)="showPreviousWorkout()">Previous</button>
       <button class="btn btn-secondary btn-edit" (click)="finishWorkout()">Finish</button>
       <button class="btn btn-secondary btn-edit" (click)="showNextWorkout()">Next</button>
-
+      
       <div class="row mt-3 text-center">
         <div class="col-sm-12 workout-info-container">
           <p> {{ currentWorkoutIndex + 1}} / {{totalWorkouts}}</p>
         </div>
-
+        
       </div>
     </div>
   </div>

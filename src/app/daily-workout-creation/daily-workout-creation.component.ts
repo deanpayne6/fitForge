@@ -189,7 +189,7 @@ export class DailyWorkoutCreationComponent {
     this.dataUpdated.emit(this.individualMuscleContainer);
   };
 
-  // Listen for the event from the parent component
+  // listen for the event from the parent component
   @Input() set workoutData(data: any[]) {
     if (data && data.length > 0) {
       this.individualMuscleContainer = data;

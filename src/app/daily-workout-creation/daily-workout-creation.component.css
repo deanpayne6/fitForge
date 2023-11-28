@@ -15,7 +15,7 @@
   }
   
   .individual-workout-container:hover {
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px rgba(224, 224, 224, 0.875);
   }
   
   .dropdown {
@@ -81,3 +81,14 @@
   /* .container-all{
     background-color: grey;
   } */
+
+  .tc{
+    color: black;
+  }
+  
+
+ .border-container{
+    background-color: white;
+    /* border: white 5px solid; */
+    color: black;
+  } 

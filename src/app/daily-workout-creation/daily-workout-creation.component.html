@@ -1,10 +1,10 @@
-<div class = "container-all" *ngIf = "!generateButtonClicked">
+<div class = "container-all border-container" *ngIf = "!generateButtonClicked">
 
   <!-- section for the length of the workout, disappears after workout is generated -->
   <div class="container mt-5" *ngIf = "!generateButtonClicked">
     <div class="row justify-content-center">
       <div class="col-md-4 text-center">
-        <label for=" workoutLength" class="fw-bold">Select your preferred workout length</label>
+        <label for=" workoutLength" class="fw-bold tc">Select your preferred workout length</label>
         <!-- two way bidning using angular for the selected length of the workout -->
         <select class="form-control text-center" id="workoutLength" [(ngModel)]="selectedWorkoutLength">
           <!-- displaying the options in the array on ts file -->
@@ -18,7 +18,7 @@
   <div class="container mt-5"*ngIf = "!generateButtonClicked">
     <div class="row justify-content-center text-center">
       <div class="col-md-4 text-center">
-        <label for="workoutDropdown1" class="fw-bold">Select your workouts</label>
+        <label for="workoutDropdown1" class="fw-bold tc">Select your workouts</label>
         <!--by default two dropdowns are always visible and only an extra one appears if needed. -->
         <select class="form-control text-center" id="workoutDropdown1" [(ngModel)]="selectedOption1">
           <!-- workoutOptions are predefined on the ts file -->
@@ -83,12 +83,12 @@
   
         <!-- div contains the weight and target of the workout -->
         <div class="row mt-3 text-center">
-          <div class="col-sm-4 workout-info-container">
+          <!-- <div class="col-sm-4 workout-info-container">
             <label for="workoutTarget{{ i}}"><strong>Weight:</strong></label>
             <br>
             <input class = "form-control text-center" readonly>
-          </div>
-          <div class="col-sm-8 workout-info-container">
+          </div> -->
+          <div class="col-sm-12 workout-info-container">
             <label for="workoutTarget{{ i}}"><strong>Target:</strong></label>
             <br>
             <input class = "form-control text-center" type="text" id="workoutTarget{{ i }}" [(ngModel)]="muscle.workoutTarget" readonly>
@@ -146,11 +146,6 @@
     <button class = "btn btn-warning btn-inside-edit" (click)="regenerateWorkout()">Regenerate Workout</button>
     <!-- <button class = "btn btn-success btn-inside-edit" (click)="acceptWorkout()" >Accept</button> -->
   </div>
-  
-    <br>
-    <br>
-    <br>
-    <br>
 
   
   <router-outlet></router-outlet>
