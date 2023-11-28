@@ -1,4 +1,4 @@
-<div class = "container-all border-container" *ngIf = "!generateButtonClicked">
+<div class = "container container-all border-container mt-5" *ngIf = "!generateButtonClicked">
 
   <!-- section for the length of the workout, disappears after workout is generated -->
   <div class="container mt-5" *ngIf = "!generateButtonClicked">
@@ -44,7 +44,6 @@
       <button class="btn btn-success btn-block" (click)="generateWorkout()">Generate Workout</button>
     </div>
   </div>
-  <!-- <button (click)="showList()">CLICK ME</button> -->
 </div>
   
   
@@ -109,7 +108,7 @@
       </div>
           
       <!-- div for the editing of the workout, makes a div at center of screen, blurs out background -->
-      <div class="centered-div justify-content-center text-center" [class.active]="editDivVisible">
+      <div class="centered-div justify-content-center text-center edit-content" [class.active]="editDivVisible">
         <div class="edit-content">
           <h2>Edit Workout</h2>
           <input class = "form-control text-center" [(ngModel)]="workoutNameDisplay" readonly/>

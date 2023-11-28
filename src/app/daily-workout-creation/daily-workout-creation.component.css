@@ -6,16 +6,17 @@
   }
   
   .individual-workout-container {
-    background-color: #f7f7f7; 
+    background-color: #E4E6EB;
     border: 1px solid #ccc; 
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px; 
     width: 55%;
+    border-radius: 5%;
   }
   
   .individual-workout-container:hover {
-    box-shadow: 2px 2px 5px rgba(224, 224, 224, 0.875);
+    box-shadow: 2px 2px 5px #E4E6EB;
   }
   
   .dropdown {
@@ -35,7 +36,7 @@
     width: 50%;
     max-width: 600px; 
     z-index: 1;
-    background: #f0eeee;
+    background: #E4E6EB;
     padding: 20px;
     height: 200px;
   }
@@ -69,26 +70,32 @@
     width: 50%;
     max-width: 600px; 
     z-index: 1;
-    background: #f0eeee;
+    background: #E4E6EB;
     padding: 20px;
     max-height: 600px;
+    border-radius: 5%;
   }
   
   .swapping-div.active {
     display: block;
+    border-radius: 5%;
   }
-
-  /* .container-all{
-    background-color: grey;
-  } */
 
   .tc{
     color: black;
   }
   
+  .edit-content{
+    border-radius: 5%;
+  }
 
  .border-container{
-    background-color: white;
-    /* border: white 5px solid; */
     color: black;
+    background-color: #E4E6EB;
+    border: 1px solid #ccc; 
+    padding-bottom: 2.5%;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    width: 50%;
+    border-radius: 5%;
   } 

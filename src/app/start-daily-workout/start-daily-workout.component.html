@@ -1,19 +1,22 @@
 <app-toolbar></app-toolbar>
 
+<body>
+  
+  <div class = "start-container">
 
-<!-- displaying already did workout for the day -->
-<div *ngIf="displayMessage" class="d-flex justify-content-center align-items-center box">
-    <div class="alert alert-danger text-center">
-      <strong>{{ message }}</strong>
-    </div>
-</div>
-
-
-<div *ngIf="displayDailyWorkoutButton" class="d-flex justify-content-center align-items-center box">
-  <div>
+    <!-- displaying already did workout for the day -->
+    <div *ngIf="displayMessage" class="d-flex justify-content-center align-items-center">
+      <div class="alert alert-danger text-center">
+        <strong>{{ message }}</strong>
+      </div>
+    </div>  
+    
+    <div *ngIf="displayDailyWorkoutButton" class="d-flex justify-content-center align-items-center">
+      <div>
     <button class = "btn btn-success" (click)="startDailyWorkout()">Start Workout</button>
     <!-- <button class = "btn btn-success" (click)="finishWorkout()">FINISH BISH</button> -->
   </div>
+</div>
 </div>
 
 
@@ -29,7 +32,7 @@
           <input class = "form-control text-center" type="text" id="workoutName" [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutName" readonly>
         </div>
       </div>
-
+      
       <!-- div contains the sets, reps and rest -->
       <div class="row mt-3 text-center">
         <div class="col-sm-4 workout-info-container">
@@ -48,7 +51,7 @@
           <input class = "form-control text-center" type="text" id="workoutRest" [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutRest" readonly>
         </div>
       </div>
-
+      
       <!-- div contains the weight and target of the workout -->
       <div class="row mt-3 text-center">
         <!-- <div class="col-sm-4 workout-info-container">
@@ -62,8 +65,8 @@
           <input class = "form-control text-center" type="text" id="workoutTarget" [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutTarget" readonly>
         </div>
       </div>
-            
-        <!-- contains the link of the workout -->
+      
+      <!-- contains the link of the workout -->
       <div class="row mt-3 text-center">
         <div class="col-sm-12 workout-info-container">
           <label for="workoutLink"><strong>Link:</strong></label>
@@ -85,3 +88,5 @@
     </div>
   </div>
 </div>
+
+</body>
