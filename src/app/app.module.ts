@@ -29,6 +29,9 @@ import { WorkoutCreatePageComponent } from './workout-create-page/workout-create
 import { UserService } from './user.service';
 import { WorkoutRatingComponent } from './workout-rating/workout-rating.component';
 import { WorkoutLogComponent } from './workout-log/workout-log.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+
 
 
 
@@ -48,7 +51,8 @@ import { WorkoutLogComponent } from './workout-log/workout-log.component';
     HomeComponent,
     WorkoutCreatePageComponent,
     WorkoutRatingComponent,
-    WorkoutLogComponent
+    WorkoutLogComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,7 @@ import { WorkoutLogComponent } from './workout-log/workout-log.component';
     MatCheckboxModule,
     MatIconModule,
     MatToolbarModule,
+    MatTooltipModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -18,6 +18,6 @@ export class ApiService {
       dateRequested
     }
 
-    return this.http.post<{ data: any }>(`${this.apiUrl}/workoutLog`, body);
+    return this.http.post<{ data: any }>(`${this.apiUrl}/workout/workoutLog`, body);
   }
 }

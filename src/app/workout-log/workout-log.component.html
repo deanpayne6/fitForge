@@ -1,6 +1,5 @@
 <app-toolbar></app-toolbar>
 <div class="main container-fluid">
-
     <div class="row">
         <div class="col-12">
             <div class="title-message container">
@@ -8,104 +7,62 @@
             </div>
         
             <div class="date-muscles-header container">
-                <p class="date fw-bold">{{getCurrentDayOfWeek()}} ({{currentDate | date:'MM/dd/yyyy'}})</p>
+                <div class="date-navigation">
+                    <button mat-button color="accent" (click)="precedingDayLog()" matTooltip="View the Previous Day's Workout Log"> 
+                        <mat-icon class="back-icon">arrow_back</mat-icon>
+                    </button>
+                    <p class="date fw-bold">{{getCurrentDayOfWeek()}} ({{formatDate(currentDate)}})</p>
+                    <button mat-button color="accent" (click)="succeedingDayLog()" matTooltip="View the Next Day's Workout Log"> 
+                        <mat-icon class="back-icon">arrow_forward</mat-icon>
+                    </button>
+                </div>
                 <p>Major Muscles Targeted</p>
                 <div class="muscle-groups">
                     <div class="muscle-group">
-                        <p>Chest</p>
-                    </div>
-        
-                    <div class="muscle-group">
-                        <p>Triceps</p>
+                        <p *ngFor="let group of focusedMuscleGroups" >
+                            {{ group }}
+                        </p>
                     </div>
                 </div>
             </div>
 
             <div class="workout-log-content container">
-                <p class="date fw-bold">{{getCurrentDayOfWeek()}} ({{currentDate | date:'MM/dd/yyyy'}})</p>
-                
-                <div class="exercise">
-                    <h6>Incline Dumbell Press</h6>
-                    <p class="muscle-emphasis"><i>Upper Chest</i></p>
-                    
-                    <div class="exercise-info-list">
-                        <div class="exercise-info">
-                            <p class="fw-bold">Sets</p>
-                            <p>4</p>
-                        </div>
-    
-                        <div class="exercise-info">
-                            <p class="fw-bold">Reps</p>
-                            <p>6-8</p>
-                        </div>
-    
-                        <div class="exercise-info">
-                            <p class="fw-bold">Weight</p>
-                            <p>80's</p>
-                        </div>
-    
-                        <div class="exercise-info">
-                            <p class="fw-bold">RPE</p>
-                            <p>10</p>
-                        </div>
-                    </div>
-                    
-                </div>
+                <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+                <!-- <p class="date fw-bold">{{getCurrentDayOfWeek()}} ({{formatDate(currentDate)}})</p> -->
+                <div *ngIf="!isEmptyLog">
+                    <div *ngFor="let workout of workoutLogItem" class="exercise">
+                        <h6>{{ workout.workoutName }}</h6>
+                        <p class="muscle-emphasis"><i>{{ workout.workoutMuscleGroup }}</i></p>
+                        
+                        <div class="exercise-info-list">
+                            <div class="exercise-info">
+                                <p class="fw-bold">Sets</p>
+                                <p> {{ workout.workoutSets }} </p>
+                            </div>
         
-                <div class="exercise">
-                    <h6>Shoulder Press</h6>
-                    <p class="muscle-emphasis"><i>Front Delts</i></p>
-                    
-                    <div class="exercise-info-list">
-                        <div class="exercise-info">
-                            <p class="fw-bold">Sets</p>
-                            <p>3</p>
-                        </div>
-    
-                        <div class="exercise-info">
-                            <p class="fw-bold">Reps</p>
-                            <p>6-8</p>
-                        </div>
-    
-                        <div class="exercise-info">
-                            <p class="fw-bold">Weight</p>
-                            <p>50's</p>
-                        </div>
-    
-                        <div class="exercise-info">
-                            <p class="fw-bold">RPE</p>
-                            <p>-</p>
+                            <div class="exercise-info">
+                                <p class="fw-bold">Reps</p>
+                                <p> {{ workout.workoutReps }}</p>
+                            </div>
+        
+                            <div class="exercise-info">
+                                <p class="fw-bold">Rest</p>
+                                <p> {{ workout.workoutRest }} </p>
+                            </div>
+        
+                            <div class="exercise-info">
+                                <p class="fw-bold">RPE</p>
+                                <p> {{ workout.workoutRpe }} </p>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
 
-                <div class="exercise">
-                    <h6>E-Z Bar Skull Crushers</h6>
-                    <p class="muscle-emphasis"><i>Triceps</i></p>
-                    
-                    <div class="exercise-info-list">
-                        <div class="exercise-info">
-                            <p class="fw-bold">Sets</p>
-                            <p>3</p>
-                        </div>
-    
-                        <div class="exercise-info">
-                            <p class="fw-bold">Reps</p>
-                            <p>6-8</p>
-                        </div>
-    
-                        <div class="exercise-info">
-                            <p class="fw-bold">Weight</p>
-                            <p>80</p>
-                        </div>
-    
-                        <div class="exercise-info">
-                            <p class="fw-bold">RPE</p>
-                            <p>10</p>
-                        </div>
-                    </div>
-                    
+                <div *ngIf="isFutureDate || isEmptyLog" class="log-message container">
+                    <p *ngIf="isFutureDate"> No workout logged yet! <br> <a routerLink="/createWorkout">Generate a workout</a> if you haven't already!</p>
+                    <p *ngIf="isEmptyLog"> No workouts recorded on this day! </p>
+
                 </div>
             </div>
 
