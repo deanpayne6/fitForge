@@ -38,3 +38,7 @@ a{
 .container-logo{
     margin-bottom: 35px;
   }
+
+.top-bar{
+    background: rgb(38, 38, 38);
+}

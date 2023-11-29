@@ -6,7 +6,7 @@ import { UrlService } from '../url.service';
 @Injectable({
   providedIn: 'root'
 })
-export class WorkoutService {
+export class DailyWorkoutService {
   constructor(private http: HttpClient, public urlService: UrlService) {}
   
   private apiUrl = this.urlService.getUrl();
@@ -46,20 +46,13 @@ export class WorkoutService {
     return this.http.post<{data: any}>(`${this.apiUrl}/workout/updateWorkout`, body);
   }
 
-  sendWorkoutInformation(multipleWorkoutList:any, username: string): Observable <any>{
+  sendWorkoutInformation(workoutList:any, rpe:any, username: string): Observable <any>{
     const body = {
-      multipleWorkoutList,
+      workoutList,
+      rpe,
       username,
     }
 
-    return this.http.post<{data: any}>(`${this.apiUrl}/workout/storeDailyWorkouts`, body)
-  }
-
-  getExistingWeeklyWorkoutInfomation(username:string): Observable <any>{
-    const body = {
-      username,
-    }
-
-    return this.http.post<{data: any}>(`${this.apiUrl}/workout/getWeeklyworkout`, body)
+    return this.http.post<{data: any}>(`${this.apiUrl}/workout/submitWorkout`, body)
   }
 }

@@ -1,0 +1,37 @@
+body{
+  background-color: #18191A;
+}
+
+button{
+  margin-top: 1%;
+  max-width: 20%;
+  margin: 1%;
+}
+
+.individual-workout-container, .choosing-workouts {
+  background-color: #E4E6EB;
+  border-radius: 4.5%;
+  margin-bottom: 2.5%;
+  width: 52.5%;
+}
+
+.individual-workout-container:hover {
+  box-shadow: 2px 2px 5px #E4E6EB;
+}
+
+.edit-workout, .swapping{
+  background: #B0B3B8;
+  display: none;
+  position: fixed;
+  width: 25%;
+  padding-bottom: 1%;
+}
+
+.blur {
+  filter: blur(15px);
+}
+
+.swapping.active, .edit-workout.active{
+  display: block;
+  border-radius: 5%;
+}
