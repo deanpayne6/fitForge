@@ -50,7 +50,7 @@ import { StartDailyWorkoutComponent } from './start-daily-workout/start-daily-wo
     WorkoutCreatePageComponent,
     WorkoutRatingComponent,
     WorkoutLogComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
     DailyWorkoutCreationComponent,
     StartDailyWorkoutComponent
   ],
