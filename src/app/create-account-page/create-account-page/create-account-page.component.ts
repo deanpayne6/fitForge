@@ -2,8 +2,6 @@ import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
-
-// weird why its pathing like that idk
 import { User } from '../../models/user';
 import { first } from 'rxjs';
 import { UserService } from 'src/app/user.service';
