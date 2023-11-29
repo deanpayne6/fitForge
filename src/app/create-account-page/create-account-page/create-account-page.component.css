@@ -9,6 +9,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: auto;
 }
 
 .container {
@@ -62,11 +63,20 @@ body{
         max-width: 55%;
         color: white;;
     }
+
+    .img-logo{
+        width: 100px;
+    }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 445px) {
     .container {
         max-width: 65%;
         color: white;
     }
+
+    .img-logo{
+        width: 50px;
+    }
+
 }

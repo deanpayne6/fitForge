@@ -1,101 +1,37 @@
-.main-muscle-group-container {
-    border: 1px solid #ccc;
-    margin: 10px;
-    padding: 15px;
-    width: 75%;
-  }
-  
-  .individual-workout-container {
-    background-color: #E4E6EB;
-    border: 1px solid #ccc; 
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px; 
-    width: 55%;
-    border-radius: 5%;
-  }
-  
-  .individual-workout-container:hover {
-    box-shadow: 2px 2px 5px #E4E6EB;
-  }
-  
-  .dropdown {
-    margin: 0;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .centered-div {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    max-width: 600px; 
-    z-index: 1;
-    background: #E4E6EB;
-    padding: 20px;
-    height: 200px;
-  }
-  
-  .centered-div.active {
-    display: block;
-  }
-  
-  .blur {
-    filter: blur(10px);
-  }
-  
-  .btn-edit{
-    margin-top: 10px;
-    max-width: 15%;
-    justify-content: right;
-    align-items: right;
-  }
-  
-  .btn-inside-edit{
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  
-  .swapping-div{
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    max-width: 600px; 
-    z-index: 1;
-    background: #E4E6EB;
-    padding: 20px;
-    max-height: 600px;
-    border-radius: 5%;
-  }
-  
-  .swapping-div.active {
-    display: block;
-    border-radius: 5%;
-  }
+body{
+  background-color: #18191A;
+}
 
-  .tc{
-    color: black;
-  }
-  
-  .edit-content{
-    border-radius: 5%;
-  }
+button{
+  margin-top: 1%;
+  max-width: 20%;
+  margin: 1%;
+}
 
- .border-container{
-    color: black;
-    background-color: #E4E6EB;
-    border: 1px solid #ccc; 
-    padding-bottom: 2.5%;
-    margin-top: 10px;
-    margin-bottom: 10px; 
-    width: 50%;
-    border-radius: 5%;
-  } 
+.individual-workout-container, .choosing-workouts {
+  background-color: #E4E6EB;
+  border-radius: 4.5%;
+  margin-bottom: 2.5%;
+  width: 52.5%;
+}
+
+.individual-workout-container:hover {
+  box-shadow: 2px 2px 5px #E4E6EB;
+}
+
+.edit-workout, .swapping{
+  background: #B0B3B8;
+  display: none;
+  position: fixed;
+  width: 25%;
+  padding-bottom: 1%;
+}
+
+.blur {
+  filter: blur(15px);
+}
+
+.swapping.active, .edit-workout.active{
+  display: block;
+  border-radius: 5%;
+}

@@ -14,10 +14,6 @@ export class DailyWorkoutCreationComponent {
   constructor(private workoutService: DailyWorkoutService, public userService: UserService, private router: Router) {};
   ngOnInit() {};
 
-  showList(){
-    console.log(this.individualMuscleContainer);
-  }
-
   // saving the username
   username: string = this.userService.getUser().username;
 

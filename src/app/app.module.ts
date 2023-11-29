@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InitalLoginPageComponent } from './inital-login-page/inital-login-page.component';
-import { FitforgeLogoComponent } from './fitforge-logo/fitforge-logo.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,7 +40,6 @@ import { StartDailyWorkoutComponent } from './start-daily-workout/start-daily-wo
   declarations: [
     AppComponent,
     InitalLoginPageComponent,
-    FitforgeLogoComponent,
     ToolbarComponent,
     CreateAccountPageComponent,
     QuestionnairePageComponent,
