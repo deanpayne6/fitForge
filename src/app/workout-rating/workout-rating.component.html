@@ -9,39 +9,24 @@
         <p class="fw-bold">{{getCurrentDayOfWeek()}} {{currentDate | date:'MM-dd-yyyy'}}</p>
 
         <!-- Will have to change later to populate the page with the data from the user workout log -->
-        <div class="row">
+        <div *ngIf="isLoading" class="row">
             <div class="col-12">
-                <div class="workout-rating-container container">
-                    <img class="workout-rating-image" src="assets/bench-press.png">
-                    <div class="stacked-name-and-stars">
-                        <h3 class="fw-bold"> Bench Press </h3>
-                        <igc-rating value="ratingVal" min="1" max="5"></igc-rating>
-
-                    </div>
-                </div>
+                <app-loading-spinner></app-loading-spinner>
             </div>
+        </div>
 
+
+        <div *ngFor="let workout of dailyWorkoutListItem" class="row">
             <div class="col-12">
                 <div class="workout-rating-container container">
-                    <img class="workout-rating-image" src="assets/incline-bench-press.png">
                     <div class="stacked-name-and-stars">
-                        <h3 class="fw-bold"> Incline Bench Press </h3>
-                        <igc-rating value="ratingVal" min="1" max="5"></igc-rating>
-                    </div>
-                </div>
-            </div>
+                        <h3 class="fw-bold"> {{ workout.workoutName }} </h3>
+                        <igc-rating [value]="workout.workoutRating" min="1" max="5"></igc-rating>
 
-            <div class="col-12">
-                <div class="workout-rating-container container">
-                    <img class="workout-rating-image" src="assets/incline-bench-press.png">
-                    <div class="stacked-name-and-stars">
-                        <h3 class="fw-bold"> Incline Bench Press </h3>
-                        <igc-rating value="ratingVal" min="1" max="5"></igc-rating>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="rating-button">
             <!-- change later to redirect to workout log when the page is finished -->
             <button 

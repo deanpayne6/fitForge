@@ -33,13 +33,8 @@ export class WorkoutRatingComponent {
   // creating workout log array using an object
   createDailyWorkoutList(data){
     const object = {
-      workoutMuscleGroup: data.workoutMuscleGroup,
       workoutName: data.workoutName,
-      workoutSets: data.workoutSets,
-      workoutReps: data.workoutReps,
-      workoutRest: data.workoutRest,
-      workoutTarget: data.workoutTarget,
-      workoutLink: data.workoutLink,
+      workoutRating: 0
     };
     this.dailyWorkoutListItem.push(object);
   }
