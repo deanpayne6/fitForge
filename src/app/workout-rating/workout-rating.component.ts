@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { ApiService } from './api.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { IgcRatingComponent, defineComponents } from 'igniteui-webcomponents';
+
+defineComponents(IgcRatingComponent)
 
 @Component({
   selector: 'app-workout-rating',
@@ -8,6 +12,7 @@ import { ApiService } from './api.service';
   styleUrls: ['./workout-rating.component.css']
 })
 export class WorkoutRatingComponent {
+
   currentDate = new Date();
 
   getCurrentDayOfWeek(): string {
@@ -17,7 +22,7 @@ export class WorkoutRatingComponent {
     return daysOfTheWeek[dayOfTheWeek];
   }
 
-  constructor(private apiService: ApiService, public userService: UserService) {};
+  constructor(private apiService: ApiService, public userService: UserService, private fb: FormBuilder) {};
 
   // getting username
   username: string = this.userService.getUser().username;
@@ -52,6 +57,7 @@ export class WorkoutRatingComponent {
   }
 
   isLoading = false;
+  isLoadingOnSubmit = false;
 
   ngOnInit(){
     this.isLoading = true;
@@ -59,7 +65,25 @@ export class WorkoutRatingComponent {
     setTimeout(() =>{
       this.isLoading = false;
       this.getWorkoutLog();
-      console.log(this.dailyWorkoutListItem.length);
     }, delayMS);
+  }
+
+  userRatingsArray = [];
+
+  public ratingChanged(event: CustomEvent, workoutName: string) {
+    for(let workout of this.dailyWorkoutListItem){
+      if(workout.workoutName == workoutName){
+        workout.workoutRating = event.detail;
+        this.userRatingsArray.push(workout.workoutRating);
+      }
+    }
+  }
+  submitValues(): void{
+    this.apiService.submitDailyWorkoutRatings(this.userRatingsArray, this.username).subscribe(response => {
+      console.log(response);
+    }), error => {
+      console.log("There was an error sending the data to the database:\n", error)
+    };
+
   }
 }

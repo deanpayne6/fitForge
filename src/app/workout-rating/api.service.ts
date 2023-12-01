@@ -17,4 +17,14 @@ export class ApiService {
     }
 
     return this.http.post<{ data: any }>(`${this.apiUrl}/workout/getWorkout`, body);
-  }}
+  }
+
+  submitDailyWorkoutRatings(rating: any[], username: string): Observable<any>{
+    const body = {
+      rating,
+      username
+    }
+
+    return this.http.post<{ data: any}>( `${this.apiUrl}/workout/submitWorkout`, body);
+  }
+}

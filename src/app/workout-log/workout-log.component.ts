@@ -36,7 +36,12 @@ export class WorkoutLogComponent {
 
   // helper function to format the dates
   formatDate(date: Date): string{
-    return date.toISOString().split('T')[0];
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let formatDate = year + "-" + month + "-" + day
+
+    return formatDate
   }
 
   // creating workout log array using an object
