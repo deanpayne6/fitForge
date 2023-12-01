@@ -32,6 +32,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 
 import { DailyWorkoutCreationComponent } from './daily-workout-creation/daily-workout-creation.component';
 import { StartDailyWorkoutComponent } from './start-daily-workout/start-daily-workout.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -73,6 +74,7 @@ import { StartDailyWorkoutComponent } from './start-daily-workout/start-daily-wo
     MatIconModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatSnackBarModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

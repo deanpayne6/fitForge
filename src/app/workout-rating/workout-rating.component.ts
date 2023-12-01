@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { ApiService } from './api.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IgcRatingComponent, defineComponents } from 'igniteui-webcomponents';
+import { Router } from '@angular/router';
 
 defineComponents(IgcRatingComponent)
 
@@ -22,7 +22,7 @@ export class WorkoutRatingComponent {
     return daysOfTheWeek[dayOfTheWeek];
   }
 
-  constructor(private apiService: ApiService, public userService: UserService, private fb: FormBuilder) {};
+  constructor(private apiService: ApiService, public userService: UserService, private router: Router) {};
 
   // getting username
   username: string = this.userService.getUser().username;
@@ -60,30 +60,44 @@ export class WorkoutRatingComponent {
   isLoadingOnSubmit = false;
 
   ngOnInit(){
-    this.isLoading = true;
+    // this.isLoading = true;
     const delayMS = 1500;
     setTimeout(() =>{
-      this.isLoading = false;
+      // this.isLoading = false;
       this.getWorkoutLog();
     }, delayMS);
   }
 
   userRatingsArray = [];
 
+  // function to track when the user changes the rating
   public ratingChanged(event: CustomEvent, workoutName: string) {
+    // for loop to push rating changes to the array
     for(let workout of this.dailyWorkoutListItem){
       if(workout.workoutName == workoutName){
         workout.workoutRating = event.detail;
-        this.userRatingsArray.push(workout.workoutRating);
       }
     }
   }
   submitValues(): void{
-    this.apiService.submitDailyWorkoutRatings(this.userRatingsArray, this.username).subscribe(response => {
-      console.log(response);
-    }), error => {
-      console.log("There was an error sending the data to the database:\n", error)
-    };
+    this.isLoading = true;
 
+    for(let workout of this.dailyWorkoutListItem){
+      this.userRatingsArray.push(workout.workoutRating)
+    }
+
+    const delayMS = 1500;
+    setTimeout(() => {
+      this.isLoading = false;
+
+      this.apiService.submitDailyWorkoutRatings(this.userRatingsArray, this.username).subscribe(response => {
+        console.log(response);
+      }), error => {
+        console.log("There was an error sending the data to the database:\n", error)
+      };
+  
+      this.router.navigate(['/home']);
+    })
+  
   }
 }

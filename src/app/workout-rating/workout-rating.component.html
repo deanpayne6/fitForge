@@ -27,16 +27,7 @@
             </div>
 
         <div class="rating-button">
-            <!-- change later to redirect to workout log when the page is finished -->
-            <button 
-            mat-button 
-            color="accent"
-            routerLink="/workoutlog"> 
-            <mat-icon class="back-icon">arrow_back</mat-icon>
-            Back to Work Out Log 
-            </button>
-        </div>
-        <div class="rating-button">
+            <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
             <button mat-button color="accent" (click)="submitValues()">Submit Ratings!</button>
         </div>
 

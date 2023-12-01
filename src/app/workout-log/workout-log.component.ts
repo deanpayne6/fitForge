@@ -11,8 +11,8 @@ export class WorkoutLogComponent {
 
   todaysDate = new Date();
   currentDate = new Date();
-  precedingDate = new Date();
-  succeedingDate = new Date();
+
+  delayMS = 1500;
 
 
   getCurrentDayOfWeek(): string {
@@ -52,7 +52,7 @@ export class WorkoutLogComponent {
       workoutSets: data.workoutSets,
       workoutReps: data.workoutReps,
       workoutRest: data.workoutRest,
-      workoutRpe: data.workoutRpe
+      workoutRating: data.workoutRating
     };
     this.workoutLogItem.push(object);
   }
@@ -79,13 +79,12 @@ export class WorkoutLogComponent {
   // pull today's workout information
   ngOnInit(): void{
     this.isLoading = true;
-    const delayMS = 2000;
     setTimeout(() =>{
       this.isLoading = false;
       this.getWorkoutLog();
       console.log(this.workoutLogItem.length);
       console.log(this.formatDate(this.currentDate), this.formatDate(this.todaysDate), this.isEmptyLog);
-    }, delayMS);
+    }, this.delayMS);
     //this.getWorkoutLog();
 
     
@@ -133,8 +132,6 @@ export class WorkoutLogComponent {
     this.focusedMuscleGroups = [];
     this.findFocusedMuscleGroups();
 
-    console.log("ADC. func. post-getting musclegroup workout item",this.workoutLogItem);
-
 
     // looking at a future date
     //      -> change future date to true
@@ -150,67 +147,57 @@ export class WorkoutLogComponent {
       this.isFutureDate = false;
 
     }
-
-    // check to see if the array is populated and we are not viewing a future date
-    //        -> set empty log variable to false
-    // otherwise check to see if the array is empty and we are not looking at a future date
-    //        -> set empty log variable to true
-
-
-    // if( ((this.workoutLogItem.length > 0) && (!this.isFutureDate)) || ((this.isFutureDate)) ){
-      
-    //   this.isEmptyLog = false;
-
-    // }else if( (this.workoutLogItem.length > 1) && (this.currentDate <= this.todaysDate)){
-    //   this.isEmptyLog = true;
-    // }
-    console.log("===================");
-    // console.log("Future Date? ", this.isFutureDate);
-    // console.log("empty log?", this.isEmptyLog);
-    // console.log("Is the log actually empty?", this.workoutLogItem.length);
-    // console.log("Current Date:", this.currentDate, "\nToday's Date:", this.todaysDate);
-    // console.log(this.workoutLogItem);
   }
 
   // get workout information for the day before the current date
   precedingDayLog(): void{
+    this.isLoading = true;
 
     // get the preceding date
-    // this.precedingDate = new Date();
-    this.precedingDate.setDate(this.currentDate.getDate() - 1);
+    const precedingDate = new Date(this.currentDate);
+    precedingDate.setDate(this.currentDate.getDate() - 1);
 
-    console.log("-----------------", this.formatDate(this.currentDate), "=>", this.formatDate(this.precedingDate), "-----------------");
-
+    setTimeout(() => {
+    this.isLoading = false;
 
     // update the new current date
-    this.currentDate = this.precedingDate;
-
-    console.log("prec. func. pre-afterdaychange workout item",this.workoutLogItem);
+    this.currentDate = precedingDate;
 
     // get new workoutlog for new day
     this.getWorkoutLog();
-    console.log("prec. func. post-getting new workoutlog workout item",this.workoutLogItem);
 
     this.afterDayChange();
+
+    }, this.delayMS)
 
   }
 
   // get workout information for the day after the current date
   succeedingDayLog(): void{
+    console.log(this.formatDate(this.currentDate))
+
+    this.isLoading = true;
+
+    const succeedingDate = new Date(this.currentDate);
 
     // get the succeeding date
-    this.succeedingDate.setDate(this.currentDate.getDate() + 1);
+    succeedingDate.setDate(this.currentDate.getDate() + 1);
 
-    // update the new current date
-    this.currentDate = this.succeedingDate;
-    console.log("succ. func. pre-afterdaychange workout item",this.workoutLogItem);
+    setTimeout(() => {
 
-    // get new workoutlog for new day
-    this.getWorkoutLog();
-    console.log("succ. func. post-getting new workoutlog workout item",this.workoutLogItem);
-    
-    // call the helper function
-    this.afterDayChange();
+      this.isLoading = false;
+
+      // update the new current date
+      this.currentDate = succeedingDate;
+
+      // get new workoutlog for new day
+      this.getWorkoutLog();
+      
+      // call the helper function
+      this.afterDayChange();
+    }, this.delayMS)
+
+
 
     }
   

@@ -8,15 +8,16 @@
         
             <div class="date-muscles-header container">
                 <div class="date-navigation">
-                    <button mat-button color="accent" (click)="precedingDayLog()" matTooltip="View the Previous Day's Workout Log"> 
+                    <button mat-button color="accent" (click)="precedingDayLog()" [disabled]="isLoading" matTooltip="View the Previous Day's Workout Log"> 
                         <mat-icon class="back-icon">arrow_back</mat-icon>
                     </button>
                     <p class="date fw-bold">{{getCurrentDayOfWeek()}} ({{formatDate(currentDate)}})</p>
-                    <button mat-button color="accent" (click)="succeedingDayLog()" matTooltip="View the Next Day's Workout Log"> 
+                    <button mat-button color="accent" (click)="succeedingDayLog()" [disabled]="isLoading" matTooltip="View the Next Day's Workout Log"> 
                         <mat-icon class="back-icon">arrow_forward</mat-icon>
                     </button>
-                </div>
-                <p>Major Muscles Targeted</p>
+                </div >
+                <div *ngIf="!isEmptyLog && !isLoading && !isFutureDate">
+                    <p>Major Muscles Targeted</p>
                 <div class="muscle-groups">
                     <div class="muscle-group">
                         <p *ngFor="let group of focusedMuscleGroups" >
@@ -24,13 +25,14 @@
                         </p>
                     </div>
                 </div>
+                </div>
             </div>
 
             <div class="workout-log-content container">
                 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 
                 <!-- <p class="date fw-bold">{{getCurrentDayOfWeek()}} ({{formatDate(currentDate)}})</p> -->
-                <div *ngIf="!isEmptyLog">
+                <div *ngIf="!isEmptyLog && !isLoading && !isFutureDate">
                     <div *ngFor="let workout of workoutLogItem" class="exercise">
                         <h6>{{ workout.workoutName }}</h6>
                         <p class="muscle-emphasis"><i>{{ workout.workoutMuscleGroup }}</i></p>
@@ -52,14 +54,14 @@
                             </div>
         
                             <div class="exercise-info">
-                                <p class="fw-bold">RPE</p>
-                                <p> {{ workout.workoutRpe }} </p>
+                                <p class="fw-bold">Rating</p>
+                                <p> {{ workout.workoutRating }} </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div *ngIf="isFutureDate || isEmptyLog" class="log-message container">
+                <div *ngIf="(isFutureDate || isEmptyLog) && !isLoading" class="log-message container">
                     <p *ngIf="isFutureDate"> No workout logged yet! <br> <a routerLink="/createWorkout">Generate a workout</a> if you haven't already!</p>
                     <p *ngIf="isEmptyLog"> No workouts recorded on this day! </p>
 
