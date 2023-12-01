@@ -85,8 +85,6 @@ export class WorkoutLogComponent {
       console.log(this.workoutLogItem.length);
       console.log(this.formatDate(this.currentDate), this.formatDate(this.todaysDate), this.isEmptyLog);
     }, this.delayMS);
-    //this.getWorkoutLog();
-
     
   }
 

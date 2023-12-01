@@ -72,16 +72,24 @@ export class WorkoutRatingComponent {
 
   // function to track when the user changes the rating
   public ratingChanged(event: CustomEvent, workoutName: string) {
+
     // for loop to push rating changes to the array
     for(let workout of this.dailyWorkoutListItem){
+
+      // updating the workout rating based on what workout was rated by the user
       if(workout.workoutName == workoutName){
         workout.workoutRating = event.detail;
       }
     }
   }
+
+  // function to persist the data to the database and redirect user back to the home page
   submitValues(): void{
+
+    // loading spinner to indicate submitting process
     this.isLoading = true;
 
+    // pushing the ratings into the array that we will send to the database
     for(let workout of this.dailyWorkoutListItem){
       this.userRatingsArray.push(workout.workoutRating)
     }
@@ -90,12 +98,14 @@ export class WorkoutRatingComponent {
     setTimeout(() => {
       this.isLoading = false;
 
+      // persist data to the database
       this.apiService.submitDailyWorkoutRatings(this.userRatingsArray, this.username).subscribe(response => {
         console.log(response);
       }), error => {
         console.log("There was an error sending the data to the database:\n", error)
       };
   
+      // reroute the user to the home page
       this.router.navigate(['/home']);
     })
   
