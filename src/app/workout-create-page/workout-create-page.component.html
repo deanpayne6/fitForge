@@ -1,43 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitForge • Create Workout</title>
+</head>
+
+
 <app-toolbar></app-toolbar>
 
 <body>
-  <div class="justify-content-center text-center marg">
-    <p class = "fw-bold tc">Feel free to leave some days empty, you don't have to go hard every day!</p>
+  <div class="justify-content-center text-center">
+    <p class="fw-bold">Feel free to leave some days empty, you don't have to go hard every day!</p>
   </div>
-  <!-- tabs hopefully -->
-  <div>
-  <div class="container mt-3">
-    <div class="row justify-content-center">
-      <div class="col-md-12">
-        <ul class="nav nav-tabs nav-fill">
-          <ng-container *ngFor="let day of workoutDays; let i = index">
-            <li class="nav-item">
-              <ng-container *ngIf="formattedDates[i] as formattedDate">
-                <a class="nav-link" id="day{{ i }}" data-bs-toggle="tab" href="#tab{{ i }}">
-                  Day {{ day }}<br>{{ getDayName(formattedDate) }}<br>{{ formattedDate | date:'MM-dd-yyyy' }}
-                </a>
-              </ng-container>
-            </li>
-          </ng-container>
-        </ul>
-      </div>
-      <div class="col-md-12 mt-3">
-        <div class="tab-content">
-          <div *ngFor="let day of workoutDays; let i = index" class="tab-pane fade" id="tab{{ i }}">
-            <!-- <p>{{ 'Workout content for Day ' + day }}</p> -->
-            <app-daily-workout-creation
-            [initialWorkoutArray]="workoutDaysData[i]"
-            (dataUpdated)="updateWorkoutDaysData(i, $event)"
-            [workoutData]="workoutDaysData[i]"
-            ></app-daily-workout-creation>
-          </div>
-        </div>
-      </div>
-      <button class="btn btn-success btn-edit btn-accept-workout" (click)="acceptWorkout()">ACCEPT WORKOUT</button>
-      <!-- <button class="btn btn-danger btn-inside-edit" (click)="checkForPrexistingWeeklyWorkouts()">SHOW ARRAY</button> -->
-    </div>
-  </div>
-</div>
 
-<router-outlet></router-outlet>
+  <!-- tabs with date, day, and workout day-->
+
+  <div class="row justify-content-center marginal">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-fill">
+        <ng-container *ngFor="let day of workoutDays; let i = index">
+          <li class="nav-item">
+          <ng-container *ngIf="formattedDates[i] as formattedDate">
+            <a class="nav-link" id="day{{ i }}" data-bs-toggle="tab" href="#tab{{ i }}">
+              Day {{ day }}<br>{{ getDayName(formattedDate) }}<br>{{ formattedDate | date:'MM-dd-yyyy' }}
+            </a>
+          </ng-container>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+    <!-- contains the daily-workout component -->
+    <div class="tab-content marginal">
+      <div *ngFor="let day of workoutDays; let i = index" class="tab-pane fade" id="tab{{ i }}">
+        <app-daily-workout-creation [initialWorkoutArray]="workoutDaysData[i]"
+          (dataUpdated)="updateWorkoutDaysData(i, $event)"
+          [workoutData]="workoutDaysData[i]"></app-daily-workout-creation>
+      </div>
+    </div>
+    <button class="btn btn-success" (click)="acceptWorkout()">ACCEPT WORKOUT</button>
+  </div>
+  <router-outlet></router-outlet>
 </body>
+
+</html>

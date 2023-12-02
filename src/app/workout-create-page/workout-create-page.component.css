@@ -2,6 +2,11 @@
 body{
   background-color: #18191A;
   min-height: 100vh;
+  color: white;
+}
+
+button{
+  width: 25%;
 }
 
 a{
@@ -9,27 +14,33 @@ a{
   transition-property: none;
 }
 
-.tc{
-  color: white;
-}
-
 a:hover{
   color:white;
   text-decoration: none;
-  }
-
-.btn-edit{
-    margin-top: 10px;
-    max-width: 15%;
-    justify-content: right;
-    align-items: right;
-  }
-
-.marg{
-  /* margin-top: 2.5%; */
-  padding-top: 15px;
 }
 
-.btn-accept-workout{
-  margin-bottom: 10%;
+.marginal{
+  margin-top: 2%;
+}
+
+p{
+  padding-top: 2%;
+}
+
+@media (max-width: 808px) {
+  .tabs, p{
+    font-size: 70%;
+  }
+}
+
+@media (max-width: 637px) {
+  .tabs, p{
+    font-size: 40%;
+  }
+}
+
+@media (max-width: 465px) {
+  .tabs, p{
+    font-size: 25%;
+  }
 }
