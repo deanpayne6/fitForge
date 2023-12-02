@@ -1,92 +1,78 @@
-<app-toolbar></app-toolbar>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitForge • Workout</title>
+</head>
 
 <body>
-  
-  <div class = "start-container">
+  <app-toolbar></app-toolbar>
 
-    <!-- displaying already did workout for the day -->
-    <div *ngIf="displayMessage" class="d-flex justify-content-center align-items-center">
-      <div class="alert alert-danger text-center">
+  <div class = "start-container">
+    <!-- container to either show workout completed message -->
+    <div class="d-flex justify-content-center">
+      <!-- displaying already did workout for the day -->
+      <div *ngIf="!displayDailyWorkout" class="alert alert-danger text-center">
         <strong>{{ message }}</strong>
       </div>
-    </div>  
+    </div>
     
-    <div *ngIf="displayDailyWorkoutButton" class="d-flex justify-content-center align-items-center">
-      <div>
-    <button class = "btn btn-success" (click)="startDailyWorkout()">Start Workout</button>
-    <!-- <button class = "btn btn-success" (click)="finishWorkout()">FINISH BISH</button> -->
-  </div>
-</div>
-</div>
-
-
-<div class="container mt-3" *ngIf="displayDailyWorkout">
-  <div class="row justify-content-center">
-    <!-- this section div becomes blurred out after the edit button is clicked and/or swap button-->
-    <div class = "individual-workout-container row justify-content-center">
-      <!-- this section is for the name element of the returned array -->
-      <div class="row mt-3 text-center">
-        <div class="col-sm-12 workout-info-container">
+    <!-- this div will actually display the workout info -->
+    <div *ngIf="displayDailyWorkout">
+      <div class="row justify-content-center text-center">
+        
+        <!-- this div contains all the info for the workouts-->
+        <div class="individual-workout-container">
+          
+          <!-- name label and workout name  -->
           <label for="workoutName"><strong>Name:</strong></label>
-          <br>
-          <input class = "form-control text-center" type="text" id="workoutName" [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutName" readonly>
-        </div>
-      </div>
-      
-      <!-- div contains the sets, reps and rest -->
-      <div class="row mt-3 text-center">
-        <div class="col-sm-4 workout-info-container">
-          <label for="workoutSets"><strong>Sets:</strong></label>
-          <br>
-          <input class = "form-control text-center" type="text" id="workoutSets" [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutSets" readonly>
-        </div>
-        <div class="col-sm-4 workout-info-container">
-        <label for="workoutReps"><strong>Reps:</strong></label>
-          <br>
-          <input class = "form-control text-center" type="text" id="workoutReps" [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutReps" readonly>
-        </div>
-        <div class="col-sm-4 workout-info-container">
-          <label for="workoutRest"><strong>Rest:</strong></label>
-          <br>
-          <input class = "form-control text-center" type="text" id="workoutRest" [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutRest" readonly>
-        </div>
-      </div>
-      
-      <!-- div contains the weight and target of the workout -->
-      <div class="row mt-3 text-center">
-        <!-- <div class="col-sm-4 workout-info-container">
-          <label for="workoutTarget"><strong>Weight:</strong></label>
-          <br>
-          <input class = "form-control text-center" readonly>
-        </div> -->
-        <div class="col-sm-12 workout-info-container">
-          <label for="workoutTarget"><strong>Target:</strong></label>
-          <br>
-          <input class = "form-control text-center" type="text" id="workoutTarget" [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutTarget" readonly>
-        </div>
-      </div>
-      
-      <!-- contains the link of the workout -->
-      <div class="row mt-3 text-center">
-        <div class="col-sm-12 workout-info-container">
+          <input class="form-control text-center" type="text" id="workoutName"
+          [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutName" readonly>
+          
+          <!-- labels for sets, reps and rest time and actually workout sets, reps, rest info-->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="workoutSets"><strong>Sets:</strong></label>
+              <input class="form-control text-center" type="text" id="workoutSets"
+              [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutSets" readonly>
+            </div>
+            <div class="col-sm-4">
+              <label for="workoutReps"><strong>Reps:</strong></label>
+              <input class="form-control text-center" type="text" id="workoutReps"
+              [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutReps" readonly>
+            </div>
+            <div class="col-sm-4">
+              <label for="workoutRest"><strong>Rest:</strong></label>
+              <input class="form-control text-center" type="text" id="workoutRest"
+              [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutRest" readonly>
+            </div>
+          </div>
+          
+          <!-- target of workout -->
+          <div class="get-rid">
+            <label for="workoutTarget"><strong>Target:</strong></label>
+            <input class="form-control text-center" type="text" id="workoutTarget"
+            [(ngModel)]="dailyWorkoutData[currentWorkoutIndex].workoutTarget" readonly>
+          </div>
+          
+          <!-- link for the workout -->
           <label for="workoutLink"><strong>Link:</strong></label>
-          <br>
-          <a class = "form-control text-center" [href]="dailyWorkoutData[currentWorkoutIndex].workoutLink" id="workoutLink" target="_blank">Video Link</a>
-        </div>
+          <a class="form-control text-center" [href]="dailyWorkoutData[currentWorkoutIndex].workoutLink" id="workoutLink"
+          target="_blank">Video Link</a>
 
-      </div>
-      <button class="btn btn-secondary btn-edit" (click)="showPreviousWorkout()">Previous</button>
-      <button class="btn btn-secondary btn-edit" (click)="finishWorkout()">Finish</button>
-      <button class="btn btn-secondary btn-edit" (click)="showNextWorkout()">Next</button>
-      
-      <div class="row mt-3 text-center">
-        <div class="col-sm-12 workout-info-container">
+        <button class="btn btn-secondary btn-choice" (click)="showPreviousWorkout()">Previous</button>
+        <button class="btn btn-secondary btn-choice" (click)="finishWorkout()">Finish</button>
+        <button class="btn btn-secondary btn-choice" (click)="showNextWorkout()">Next</button>
+
+        <div class="row text-center">
           <p> {{ currentWorkoutIndex + 1}} / {{totalWorkouts}}</p>
         </div>
-        
       </div>
     </div>
   </div>
 </div>
-
 </body>
+
+</html>
