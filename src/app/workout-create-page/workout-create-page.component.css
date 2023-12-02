@@ -27,6 +27,10 @@ p{
   padding-top: 2%;
 }
 
+.message{
+  font-size: 200%;
+}
+
 @media (max-width: 808px) {
   .tabs, p{
     font-size: 70%;

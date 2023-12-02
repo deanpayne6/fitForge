@@ -35,9 +35,14 @@
     <!-- contains the daily-workout component -->
     <div class="tab-content marginal">
       <div *ngFor="let day of workoutDays; let i = index" class="tab-pane fade" id="tab{{ i }}">
-        <app-daily-workout-creation [initialWorkoutArray]="workoutDaysData[i]"
-          (dataUpdated)="updateWorkoutDaysData(i, $event)"
-          [workoutData]="workoutDaysData[i]"></app-daily-workout-creation>
+        <ng-container *ngIf="i === 0 && workoutStatusNumber === -1; else workoutCreationBlock">
+          <p class="message text-center">{{ workoutStatusMessage }}</p>
+        </ng-container>
+        <ng-template #workoutCreationBlock>
+          <app-daily-workout-creation [initialWorkoutArray]="workoutDaysData[i]"
+            (dataUpdated)="updateWorkoutDaysData(i, $event)"
+            [workoutData]="workoutDaysData[i]"></app-daily-workout-creation>
+        </ng-template>
       </div>
     </div>
     <button class="btn btn-success" (click)="acceptWorkout()">ACCEPT WORKOUT</button>

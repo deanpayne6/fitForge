@@ -11,40 +11,6 @@ export class WorkoutService {
   
   private apiUrl = this.urlService.getUrl();
 
-  getGenerateWorkout(workoutInput: any, workoutLength: string, username: string): Observable<any> {
-    const body = {
-      workoutInput,
-      workoutLength,
-      username
-    };
-
-    return this.http.post<{ data: any }>(`${this.apiUrl}/workout/generateWorkout`, body);
-  }
-
-  // http://localhost:3200/sendMuscleSwap
-
-
-  getNewWorkoutNames(workoutList: any, workoutName: string, username: string): Observable<any>{
-    const body = {
-      workoutList,
-      workoutName,
-      username,
-    };
-
-    return this.http.post<{data: any}>(`${this.apiUrl}/workout/sendMuscleSwap`, body);
-  }
-
-  // updateWorkout
-  getUpdatedWorkout(workoutList: any, newWorkout: string, index: number, username: string): Observable <any>{
-    const body = {
-      workoutList,
-      newWorkout,
-      index,
-      username
-    }
-
-    return this.http.post<{data: any}>(`${this.apiUrl}/workout/updateWorkout`, body);
-  }
 
   sendWorkoutInformation(multipleWorkoutList:any, username: string): Observable <any>{
     const body = {
@@ -61,5 +27,13 @@ export class WorkoutService {
     }
 
     return this.http.post<{data: any}>(`${this.apiUrl}/workout/getWeeklyworkout`, body)
+  }
+
+  getDailyWorkoutStatus(username:string): Observable <any>{
+    const body = {
+      username,
+    }
+
+    return this.http.post<{data: any}>(`${this.apiUrl}/workout/checkWorkout`, body)
   }
 }

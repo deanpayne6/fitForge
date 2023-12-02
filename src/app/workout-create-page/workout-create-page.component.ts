@@ -14,6 +14,10 @@ import { DailyWorkoutCreationComponent } from '../daily-workout-creation/daily-w
 
 export class WorkoutCreatePageComponent {
   workoutDataUpdated: EventEmitter<any[]> = new EventEmitter<any[]>();
+
+  constructor(private workoutService: WorkoutService, public userService: UserService, private router: Router) {
+    this.generateFormattedDates();
+  };
   
   // array to keep track of dates
   formattedDates: string[] = [];
@@ -24,15 +28,30 @@ export class WorkoutCreatePageComponent {
   workoutDays: number[] = [1,2,3,4,5,6,7];
   workoutDaysData: any[] = [[],[],[],[],[],[],[]];
 
+  // status variable to force an outcome
+  workoutStatusNumber: number;
+
+  // message being displayed if workout was completed for the day.
+  workoutStatusMessage: string = 'Sorry buddy, you already too buff for today';
+
   // init function
   ngOnInit() {
     this.checkForPrexistingWeeklyWorkouts();
-  }
+    this.workoutService.getDailyWorkoutStatus(this.username).subscribe(
+      response => {
+        this.workoutStatusNumber = response;
+        this.workoutStatusNumber = -1;
+        if (this.workoutStatusNumber === -1) {
+          console.log(response)
+        }
+      },
+      error => {
+        console.error(error);
+      }
+      );
+    }
 
-  constructor(private workoutService: WorkoutService, public userService: UserService, private router: Router) {
-    this.generateFormattedDates();
-  };
- 
+  
   // this function returns solely the day
   getDayName(dateString: string): string {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
