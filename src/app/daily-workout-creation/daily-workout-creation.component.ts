@@ -107,7 +107,6 @@ export class DailyWorkoutCreationComponent {
 
   // this is the function actually generating the workouts
   generateWorkout(){
-    console.log(this.username);
     console.log("generate workout button clicked!");
     // calling the validating function
     this.validateSelection();

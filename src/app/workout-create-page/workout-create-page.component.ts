@@ -40,7 +40,6 @@ export class WorkoutCreatePageComponent {
     this.workoutService.getDailyWorkoutStatus(this.username).subscribe(
       response => {
         this.workoutStatusNumber = response;
-        this.workoutStatusNumber = -1;
         if (this.workoutStatusNumber === -1) {
           console.log(response)
         }
@@ -50,8 +49,12 @@ export class WorkoutCreatePageComponent {
       }
       );
     }
-
   
+  // DO NOT DELETE THIS ONE! @MYSELF #LUIS
+  updateWorkoutDaysData(index: number, data: any) {
+      this.workoutDaysData[index] = data;
+  }
+
   // this function returns solely the day
   getDayName(dateString: string): string {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -72,10 +75,15 @@ export class WorkoutCreatePageComponent {
     });
   }
 
+  showMe(){
+    console.log(this.workoutDaysData);
+  }
+
+
   // this button is for accepting the workouts
   acceptWorkout(){
     console.log("Accept workout button clicked!");
-      
+    console.log(this.workoutDaysData)
     this.workoutService.sendWorkoutInformation(this.workoutDaysData, this.username).subscribe(response => {
       console.log(response);
       }, error => {
