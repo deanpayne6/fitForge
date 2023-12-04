@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ToolbarComponent {
 
+  logout() {
+    localStorage.removeItem("login_token")
+  }
+
 }
