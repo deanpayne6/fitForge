@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../models/user';
 import { UrlService } from '../url.service';
-
+import { RecoverPassApiService } from './recover-pass-api.service';
 
 @Component({
   selector: 'app-recover-password',
@@ -18,7 +18,9 @@ export class RecoverPasswordComponent {
   constructor(private fb: FormBuilder, 
     private router: Router, 
     public userService: UserService,
-    public urlService: UrlService) { };
+    public urlService: UrlService,
+    private recoverApi: RecoverPassApiService
+    ) { };
 
   userLoginForm: FormGroup;
 
@@ -29,8 +31,22 @@ export class RecoverPasswordComponent {
   }
 
   sendEmail() {
-    const email = {
-      email: this.userLoginForm.get('userEmail').value
+    
+    const email = this.userLoginForm.get('userEmail').value
+
+    if (email) {
+      this.recoverApi.sendPostRequest(email).subscribe(
+        (response) => {
+          if (response.token){
+        
+            this.router.navigate(['/login'])
+          }
+        },
+        (error) => {
+          console.error("Checking email availability error:", error);
+          alert("Invalid data.")
+        }
+      );
     }
   }
 
