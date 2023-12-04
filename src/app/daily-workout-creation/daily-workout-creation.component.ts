@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output, Input, OnInit} from '@angular/core';
 import { DailyWorkoutService } from './daily-workout.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-daily-workout-creation',
@@ -11,8 +12,16 @@ import { Router } from '@angular/router';
 export class DailyWorkoutCreationComponent {
   @Input() initialWorkoutArray: any[] = [];
   @Output() dataUpdated: EventEmitter<any> = new EventEmitter();
-  constructor(private workoutService: DailyWorkoutService, public userService: UserService, private router: Router) {};
-  ngOnInit() {};
+  constructor(
+    private workoutService: DailyWorkoutService, 
+    public userService: UserService, 
+    private router: Router,
+    public authService: AuthService) {};
+  ngOnInit() {
+    if(!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login'])
+    }
+  };
 
   // saving the username
   username: string = this.userService.getUser().username;

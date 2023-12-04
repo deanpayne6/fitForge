@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 import { UserService } from '../user.service';
 import { questionnaire } from '../models/questionnaire';
-import { Router } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-questionnaire-page',
@@ -10,7 +11,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./questionnaire-page.component.css']
 })
 export class QuestionnairePageComponent {
-  constructor (private apiService: ApiService, public userService: UserService, private router: Router) {};
+  constructor (
+    private apiService: ApiService, 
+    public userService: UserService, 
+    private router: Router,
+    public authService: AuthService
+  ) { };
+
+  
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.authService.isLoggedIn()) {
+      return true;
+    } else {
+      // Redirect to the login page if the user is not logged in
+      this.router.navigate(['/login']);
+      return false;
+    }
+  }
 
   current_user = this.userService.getUser();
 

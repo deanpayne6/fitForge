@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { ApiService } from './api.service';
 import { IgcRatingComponent, defineComponents } from 'igniteui-webcomponents';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 defineComponents(IgcRatingComponent)
 
@@ -22,7 +23,14 @@ export class WorkoutRatingComponent {
     return daysOfTheWeek[dayOfTheWeek];
   }
 
-  constructor(private apiService: ApiService, public userService: UserService, private router: Router) {};
+  constructor(
+    private apiService: ApiService, 
+    public userService: UserService, 
+    private router: Router,
+    public authService: AuthService
+  ) {};
+
+  
 
   // getting username
   username: string = this.userService.getUser().username;
@@ -60,6 +68,12 @@ export class WorkoutRatingComponent {
   isLoadingOnSubmit = false;
 
   ngOnInit(){
+    
+    if(!this.authService.isLoggedIn()) {
+      console.log("User is not logged in.")
+      this.router.navigate(['/login'])
+    }
+
     // this.isLoading = true;
     const delayMS = 1500;
     setTimeout(() =>{

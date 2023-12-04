@@ -10,17 +10,17 @@ import { WorkoutCreatePageComponent } from './workout-create-page/workout-create
 import { WorkoutRatingComponent } from './workout-rating/workout-rating.component';
 import { WorkoutLogComponent } from './workout-log/workout-log.component';
 import { StartDailyWorkoutComponent } from './start-daily-workout/start-daily-workout.component';
-
+import { AuthGuard } from './auth.guard';
 const routes: Routes = [
   {path: '', component: InitalLoginPageComponent},
   {path: 'login', component: InitalLoginPageComponent},
   {path: 'register', component: CreateAccountPageComponent},
-  {path: 'userquestionnaire', component: QuestionnairePageComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'createWorkout', component:WorkoutCreatePageComponent},
-  {path: 'workoutrating', component:WorkoutRatingComponent},
-  {path: 'workoutlog', component:WorkoutLogComponent},
-  {path: 'startWorkout', component:StartDailyWorkoutComponent},
+  {path: 'userquestionnaire', component: QuestionnairePageComponent, canActivate: [AuthGuard]},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'createWorkout', component:WorkoutCreatePageComponent, canActivate: [AuthGuard]},
+  {path: 'workoutrating', component:WorkoutRatingComponent, canActivate: [AuthGuard]},
+  {path: 'workoutlog', component:WorkoutLogComponent, canActivate: [AuthGuard]},
+  {path: 'startWorkout', component:StartDailyWorkoutComponent, canActivate: [AuthGuard]},
   {path: '**', component: HomeComponent},
 ];
 
