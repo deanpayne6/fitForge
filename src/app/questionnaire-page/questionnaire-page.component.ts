@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 import { UserService } from '../user.service';
 import { questionnaire } from '../models/questionnaire';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-questionnaire-page',
@@ -15,21 +14,11 @@ export class QuestionnairePageComponent {
     private apiService: ApiService, 
     public userService: UserService, 
     private router: Router,
-    public authService: AuthService
   ) { };
 
   
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.authService.isLoggedIn()) {
-      return true;
-    } else {
-      // Redirect to the login page if the user is not logged in
-      this.router.navigate(['/login']);
-      return false;
-    }
-  }
-
+  
   current_user = this.userService.getUser();
 
   selectedActivityLevel: string = '';

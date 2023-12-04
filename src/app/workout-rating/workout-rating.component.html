@@ -27,8 +27,7 @@
             </div>
 
         <div class="rating-button">
-            <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
-            <button mat-button color="accent" (click)="submitValues()">Submit Ratings!</button>
+            <button mat-button color="accent" (click)="submitValues()" [disabled]="isLoading">Submit Ratings!</button>
         </div>
 
     </div>

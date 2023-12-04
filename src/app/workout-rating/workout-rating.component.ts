@@ -68,16 +68,11 @@ export class WorkoutRatingComponent {
   isLoadingOnSubmit = false;
 
   ngOnInit(){
-    
-    if(!this.authService.isLoggedIn()) {
-      console.log("User is not logged in.")
-      this.router.navigate(['/login'])
-    }
 
-    // this.isLoading = true;
+    this.isLoading = true;
     const delayMS = 1500;
     setTimeout(() =>{
-      // this.isLoading = false;
+      this.isLoading = false;
       this.getWorkoutLog();
     }, delayMS);
   }
