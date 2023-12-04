@@ -33,6 +33,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { DailyWorkoutCreationComponent } from './daily-workout-creation/daily-workout-creation.component';
 import { StartDailyWorkoutComponent } from './start-daily-workout/start-daily-workout.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 
 
 
@@ -53,7 +54,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     WorkoutLogComponent,
     LoadingSpinnerComponent,
     DailyWorkoutCreationComponent,
-    StartDailyWorkoutComponent
+    StartDailyWorkoutComponent,
+    RecoverPasswordComponent
   ],
   imports: [
     BrowserModule,
