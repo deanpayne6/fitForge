@@ -11,6 +11,7 @@ import { WorkoutRatingComponent } from './workout-rating/workout-rating.componen
 import { WorkoutLogComponent } from './workout-log/workout-log.component';
 import { StartDailyWorkoutComponent } from './start-daily-workout/start-daily-workout.component';
 import { AuthGuard } from './auth.guard';
+import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 const routes: Routes = [
   {path: '', component: InitalLoginPageComponent},
   {path: 'login', component: InitalLoginPageComponent},
@@ -21,7 +22,9 @@ const routes: Routes = [
   {path: 'workoutrating', component:WorkoutRatingComponent, canActivate: [AuthGuard]},
   {path: 'workoutlog', component:WorkoutLogComponent, canActivate: [AuthGuard]},
   {path: 'startWorkout', component:StartDailyWorkoutComponent, canActivate: [AuthGuard]},
+  {path: 'recovery', component: RecoverPasswordComponent},
   {path: '**', component: HomeComponent},
+  
 ];
 
 @NgModule({
