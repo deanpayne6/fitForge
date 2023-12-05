@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { UrlService } from '../url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public urlService: UrlService) {}
 
-  private apiUrl = "http://localhost:3200";
+  private apiUrl = this.urlService.getUrl();
 
   getWorkoutLogData(username: string, dateRequested: any): Observable<any> {
     const body = {
