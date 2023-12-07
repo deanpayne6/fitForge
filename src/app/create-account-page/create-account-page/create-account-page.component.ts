@@ -136,6 +136,7 @@ export class CreateAccountPageComponent {
           console.log("Registration successful.");
           console.log("Response data:", response.body);
           this.userService.setUser(newUser);
+          localStorage.setItem("login_token", response.token);
           this.router.navigate(['/userquestionnaire']);
         } else if (response.status === "400") {
           console.error("Registration failed with status code:", response.status);

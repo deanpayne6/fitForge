@@ -32,8 +32,9 @@ export class RecoverPasswordComponent {
 
   sendEmail() {
     
-    const email = this.userLoginForm.get('userEmail').value
-
+    const email = {
+      email: this.userLoginForm.get('userEmail').value
+    }
     if (email) {
       this.recoverApi.sendPostRequest(email).subscribe(
         (response) => {
