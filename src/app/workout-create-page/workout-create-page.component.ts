@@ -93,13 +93,18 @@ export class WorkoutCreatePageComponent {
     this.router.navigate(['/home'])
   };
 
-  // this formats the date into mm-dd-yy format
+  // this formats the date into mm-dd-yyyy format
   private generateFormattedDates() {
     const currentDate = new Date();
     this.formattedDates = this.workoutDays.map((_, index) => {
       const date = new Date(currentDate);
       date.setDate(currentDate.getDate() + index);
-      return formatDate(date, 'MM-dd-yy', 'en-US');
+      date.setHours(date.getHours() - 8);
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      let formatDate = month + "-" + day + "-" + year;
+      return formatDate;
     });
   };
 
