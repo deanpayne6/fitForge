@@ -28,10 +28,10 @@ export class DailyWorkoutCreationComponent {
 
   // display options for workouts, lengths
   workoutOptions: string[] = ['Chest','Shoulders','Back','Biceps','Triceps','Abs','Legs'];
-  workoutLengthOptions: string[] = ['short', 'medium', 'long'];
+  workoutLengthOptions: string[] = ['Short', 'Medium', 'Long'];
 
   // default options so the user can not accidentally click generate without inputs, other inputs can be empty
-  selectedWorkoutLength: string = 'short';
+  selectedWorkoutLength: string = 'Short';
   selectedOption1: string = "Chest";
   selectedOption2: string = "";
   selectedOption3: string = "";
@@ -68,7 +68,7 @@ export class DailyWorkoutCreationComponent {
       this.selectedOptionArray.push(this.selectedOption2);
     }
 
-    if (this.selectedWorkoutLength !== "short"){
+    if (this.selectedWorkoutLength !== "Short"){
       if (this.selectedOption3 !== ""){
         this.selectedOptionArray.push(this.selectedOption3);
       }
@@ -96,7 +96,7 @@ export class DailyWorkoutCreationComponent {
       this.selectedOption1 = "Chest";
       this.selectedOption2 = "";
       this.selectedOption3 = "";
-      this.selectedWorkoutLength = 'short';
+      this.selectedWorkoutLength = 'Short';
     }
   };
 
