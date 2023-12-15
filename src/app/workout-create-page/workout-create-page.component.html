@@ -24,7 +24,7 @@
           <li class="nav-item">
           <ng-container *ngIf="formattedDates[i] as formattedDate">
             <a class="nav-link" id="day{{ i }}" data-bs-toggle="tab" href="#tab{{ i }}">
-              Day {{ day }}<br>{{ getDayName(formattedDate) }}<br>{{ formattedDate | date:'MM-dd-yyyy' }}
+              Day {{ day }}<br>{{ getDayName(formattedDate) }}<br>{{ formattedDate }}
             </a>
           </ng-container>
         </li>

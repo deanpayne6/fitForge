@@ -35,7 +35,7 @@
             <option *ngFor="let option of workoutOptions">{{ option }}</option>
           </select>
           <!-- extra div for workout selection is needed -->
-          <div *ngIf="selectedWorkoutLength !== 'short'">
+          <div *ngIf="selectedWorkoutLength !== 'Short'">
             <select class="form-control text-center" id="workoutDropdown3" [(ngModel)]="selectedOption3">
               <option *ngFor="let option of workoutOptions">{{ option }}</option>
             </select>
