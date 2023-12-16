@@ -32,7 +32,7 @@ export class WorkoutCreatePageComponent {
   workoutStatusNumber: number;
 
   // message being displayed if workout was completed for the day.
-  workoutStatusMessage: string = 'Sorry buddy, you already too buff for today';
+  workoutStatusMessage: string = "Sorry buddy, you already too buff for today";
 
   // init function
   ngOnInit() {
@@ -57,7 +57,7 @@ export class WorkoutCreatePageComponent {
 
   // this function returns solely the day
   getDayName(dateString: string): string {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const date = new Date(dateString);
     return days[date.getDay()]; //date.getDay returns int, which is why I use days array
   }
