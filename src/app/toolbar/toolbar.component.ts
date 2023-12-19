@@ -11,4 +11,6 @@ export class ToolbarComponent {
     localStorage.removeItem("login_token")
   }
 
+  showMenu
+
 }

@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'workoutlog', component:WorkoutLogComponent, canActivate: [AuthGuard]},
   {path: 'startWorkout', component:StartDailyWorkoutComponent, canActivate: [AuthGuard]},
   {path: 'recovery', component: RecoverPasswordComponent},
-  {path: '**', component: HomeComponent},
+  {path: '**', component: InitalLoginPageComponent},
   
 ];
 

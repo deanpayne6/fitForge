@@ -29,6 +29,7 @@ import { WorkoutRatingComponent } from './workout-rating/workout-rating.componen
 import { WorkoutLogComponent } from './workout-log/workout-log.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { DailyWorkoutCreationComponent } from './daily-workout-creation/daily-workout-creation.component';
 import { StartDailyWorkoutComponent } from './start-daily-workout/start-daily-workout.component';
@@ -55,7 +56,7 @@ import { RecoverPasswordComponent } from './recover-password/recover-password.co
     LoadingSpinnerComponent,
     DailyWorkoutCreationComponent,
     StartDailyWorkoutComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +78,7 @@ import { RecoverPasswordComponent } from './recover-password/recover-password.co
     MatToolbarModule,
     MatTooltipModule,
     MatSnackBarModule,
+    MatMenuModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

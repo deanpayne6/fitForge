@@ -127,7 +127,6 @@ export class WorkoutLogComponent {
 
 
     // reset the muscle group array and recall it
-    this.focusedMuscleGroups = [];
     this.findFocusedMuscleGroups();
 
 
@@ -155,6 +154,8 @@ export class WorkoutLogComponent {
     const precedingDate = new Date(this.currentDate);
     precedingDate.setDate(this.currentDate.getDate() - 1);
 
+    this.focusedMuscleGroups = [];
+
     setTimeout(() => {
     this.isLoading = false;
 
@@ -180,6 +181,8 @@ export class WorkoutLogComponent {
 
     // get the succeeding date
     succeedingDate.setDate(this.currentDate.getDate() + 1);
+
+    this.focusedMuscleGroups = [];
 
     setTimeout(() => {
 
